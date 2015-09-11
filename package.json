@@ -4,6 +4,8 @@
   "description": "Creating Climb.social wall with React.js",
   "main": "index.js",
   "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
