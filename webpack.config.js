@@ -1,12 +1,42 @@
-/**
- * Created by michele on 11/09/15.
- */
-
-var getConfig = require('hjs-webpack');
+var path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
-module.exports = getConfig({
-    in: 'src/app.js',
-    out: 'dist',
-    clearBeforeBuild: true
-});
+module.exports = {
+
+    cache: true,
+
+    context: path.join(__dirname, 'src'),
+
+    entry: './index.jsx',
+
+    output: {
+        path: path.join(__dirname, 'dist'),
+        filename: 'bundle.js',
+        publicPath: '/'
+    },
+
+    module: {
+        loaders: [
+            {
+                test: /\.jsx?$/,
+                loader: 'babel'
+            }
+        ]
+    },
+
+    externals: {
+        'react': 'React'
+    },
+
+    resolve: {
+        extensions: ['', '.js', '.jsx']
+    },
+
+    plugins: [
+        new HtmlWebpackPlugin({
+            inject: true,
+            template: 'src/index.html'
+        })
+    ]
+};
