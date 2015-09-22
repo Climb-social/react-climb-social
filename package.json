@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack",
-    "test": "karma start",
+    "test": "karma start --no-single-run",
+    "test:single": "karma start",
     "check-coverage": "istanbul check-coverage --statements 100 --branches 100 --functions 100 --lines 100"
   },
   "repository": {

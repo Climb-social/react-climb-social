@@ -7,7 +7,7 @@ var Component = React.createClass({
 
     render: function () {
         return (
-            <h1>The component is rendering!</h1>
+            <h1>The component is rendering2!</h1>
         );
     }
 
