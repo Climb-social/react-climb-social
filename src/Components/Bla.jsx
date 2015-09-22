@@ -1,9 +1,13 @@
 var React = require('react');
 
+var Bla = React.createClass({
 
-var Component = React.createClass({
+    displayName: 'Bla',
 
-    displayName: 'Component',
+    dog() {
+        "use strict";
+        console.log('hello');
+    },
 
     render: function () {
         return (
@@ -13,4 +17,4 @@ var Component = React.createClass({
 
 });
 
-module.exports = Component;
+module.exports = Bla;

@@ -98,11 +98,12 @@ module.exports = function (config) {
         ],
 
         coverageReporter: {
+
             reporters: [
-                // reporters not supporting the `file` property
                 { type: 'text' },
-                { type: 'lcov' }
+                { type: 'html' },
+                { type: 'json', subdir: '.', file: 'coverage.json' }
             ]
         }
-    })
+    });
 };
