@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack",
-    "test": "jest"
+    "test": "karma start"
   },
   "repository": {
     "type": "git",
@@ -23,8 +23,17 @@
     "babel-core": "^5.8.25",
     "babel-jest": "^5.3.0",
     "babel-loader": "^5.3.2",
+    "chai": "^3.3.0",
     "html-webpack-plugin": "^1.6.1",
     "jest-cli": "^0.5.7",
+    "karma": "^0.13.10",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-cli": "^0.1.0",
+    "karma-mocha": "^0.2.0",
+    "karma-sourcemap-loader": "^0.3.5",
+    "karma-webpack": "^1.7.0",
+    "mocha": "^2.3.3",
     "react-tools": "^0.13.3",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.11.0"
@@ -34,6 +43,8 @@
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
-    "unmockedModulePathPatterns": ["<rootDir>/node_modules/react"]
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react"
+    ]
   }
 }
