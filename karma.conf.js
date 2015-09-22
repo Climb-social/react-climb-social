@@ -1,3 +1,5 @@
+var path = require('path');
+
 module.exports = function (config) {
     config.set({
 
@@ -24,7 +26,17 @@ module.exports = function (config) {
                         loader: 'babel-loader',
                         exclude: /node_modules/
                     }
+                ],
+
+                postLoaders: [
+                    // instrument only testing sources with Istanbul
+                    {
+                        test: /\.jsx$/,
+                        include: path.resolve('src/Components/'),
+                        loader: 'istanbul-instrumenter'
+                    }
                 ]
+
             }
         },
 
@@ -46,7 +58,7 @@ module.exports = function (config) {
         // test results reporter to use
         // possible values: 'dots', 'progress'
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-        reporters: ['mocha'],
+        reporters: ['mocha', 'coverage'],
 
 
         // web server port
@@ -81,7 +93,16 @@ module.exports = function (config) {
             'karma-mocha-reporter',
             'karma-chai',
             'karma-chrome-launcher',
-            'karma-sourcemap-loader'
-        ]
+            'karma-sourcemap-loader',
+            'karma-coverage'
+        ],
+
+        coverageReporter: {
+            reporters: [
+                // reporters not supporting the `file` property
+                { type: 'text' },
+                { type: 'lcov' }
+            ]
+        }
     })
 };
