@@ -1,6 +1,9 @@
-# react-climb-wall
-Creating Climb.social wall with React.js
+# react-climb-social
+Create a [Climb.social](http://climb.social) wall with React.js
 
-## Objectives
-- Create a Climb.social wall with one snippet of `html`
-- Wall looks "not bad"
+## Installing
+Coming soon…
+
+## Existing React project
+
+    <ClimbSocialWall collectionId="XXX" />

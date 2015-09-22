@@ -1,4 +1,4 @@
 var React = require('react'),
-    Component = require('./Components/Component.jsx');
+    Wall = require('./Components/ClimbSocialWall.jsx');
 
-React.render(<Component />, document.getElementById('app'));
+React.render(<Wall />, document.getElementById('app'));
