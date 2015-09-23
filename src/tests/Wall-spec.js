@@ -4,7 +4,7 @@ import { expect } from 'chai';
 import Wall from '../components/Wall';
 
 
-describe('Wall component', () => {
+describe('Wall', () => {
 
     let component;
     let renderedDOM;
@@ -18,7 +18,7 @@ describe('Wall component', () => {
         expect(component).to.exist;
     });
 
-    it('should have a class of `climb__wall`', () => {
+    it('has a class of `climb__wall`', () => {
 
         let rootElement = renderedDOM();
 

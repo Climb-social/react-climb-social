@@ -4,7 +4,7 @@ import { expect } from 'chai';
 import Tile from '../components/Tile';
 
 
-describe('Tile component', () => {
+describe('Tile', () => {
 
     let component;
     let renderedDOM;
@@ -18,12 +18,36 @@ describe('Tile component', () => {
         expect(component).to.exist;
     });
 
-    it('should have a class of `climb__tile`', () => {
+    it('has a class of `climb__tile`', () => {
 
         let rootElement = renderedDOM();
 
         expect(rootElement.tagName).to.equal('DIV');
         expect(rootElement.classList).to.have.length(1);
         expect(rootElement.classList[0]).to.equal('climb__tile');
+    });
+
+    xit('has a child with a class of `climb__tile__content`', () => {
+        expect(true).to.equal(false);
+    });
+
+    xit('renders a message (if specified)', () => {
+        expect(true).to.equal(false);
+    });
+
+    xit('renders an image (if specified)', () => {
+        expect(true).to.equal(false);
+    });
+
+    xit('renders a video (if specified)', () => {
+        expect(true).to.equal(false);
+    });
+
+    xit('displays a link to the author', () => {
+        expect(true).to.equal(false);
+    });
+
+    xit('displays a link to the original item', () => {
+        expect(true).to.equal(false);
     });
 });
