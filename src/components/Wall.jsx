@@ -31,7 +31,9 @@ class Wall extends React.Component {
         let tiles = [];
         this.state.items.forEach(item => {
             tiles.push(
-                <Tile ref={item.id} key={item.id} />
+                <Tile ref={ item.id }
+                      key={ item.id }
+                      message={ item.message }/>
             );
         });
 
