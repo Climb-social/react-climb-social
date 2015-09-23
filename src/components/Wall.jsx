@@ -1,5 +1,6 @@
 import React from 'react';
 import climb from '../utils/climb';
+import Tile from './Tile';
 
 
 class Wall extends React.Component {
@@ -15,7 +16,6 @@ class Wall extends React.Component {
         climb
             .getFeed(this.props.collectionId)
             .then((items) => {
-                debugger;
                 "use strict";
                 this.setState({
                     items: items
@@ -31,9 +31,7 @@ class Wall extends React.Component {
         let tiles = [];
         this.state.items.forEach(item => {
             tiles.push(
-                <div ref={item.id} key={item.id}>
-                    Item
-                </div>
+                <Tile ref={item.id} key={item.id} />
             );
         });
 

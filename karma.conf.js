@@ -25,6 +25,7 @@ webpackConfig.module = {
         }
     ]
 };
+webpackConfig.externals = [];
 
 
 module.exports = function (config) {
