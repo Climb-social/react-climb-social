@@ -1,5 +1,32 @@
 var path = require('path');
 
+var webpackConfig = require('./webpack.config');
+
+webpackConfig.devtool = 'inline-source-map';
+webpackConfig.module = {
+    loaders: [
+        {
+            test: /\.jsx?$/,
+            loader: 'babel-loader',
+            exclude: /node_modules/
+        }
+    ],
+
+    noParse: [
+        path.join('node_modules', '/cheerio')
+    ],
+
+    postLoaders: [
+        // instrument only testing sources with Istanbul
+        {
+            test: /\.jsx$/,
+            include: path.resolve('src/components/'),
+            loader: 'istanbul-instrumenter'
+        }
+    ]
+};
+
+
 module.exports = function (config) {
     config.set({
 
@@ -17,28 +44,7 @@ module.exports = function (config) {
             'tests.webpack.js'
         ],
 
-        webpack: { //kind of a copy of your webpack config
-            devtool: 'inline-source-map', //just do inline source maps instead of the default
-            module: {
-                loaders: [
-                    {
-                        test: /\.jsx?$/,
-                        loader: 'babel-loader',
-                        exclude: /node_modules/
-                    }
-                ],
-
-                postLoaders: [
-                    // instrument only testing sources with Istanbul
-                    {
-                        test: /\.jsx$/,
-                        include: path.resolve('src/Components/'),
-                        loader: 'istanbul-instrumenter'
-                    }
-                ]
-
-            }
-        },
+        webpack: webpackConfig,
 
         webpackServer: {
             noInfo: true //please don't spam the console when running in karma!
