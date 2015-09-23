@@ -19,15 +19,15 @@ describe('Tile Message', () => {
     });
 
     it('has a class of `climb__tile__message`', () => {
-
         let rootElement = renderedDOM();
-
         expect(rootElement.tagName).to.equal('DIV');
         expect(rootElement.classList).to.have.length(1);
         expect(rootElement.classList[0]).to.equal('climb__tile__message');
     });
 
-    xit('renders html', () => {
-        expect(true).to.equal(false);
+    it('renders html', () => {
+        let rootElement = renderedDOM();
+        expect(rootElement.children.length).to.equal(1);
+        expect(rootElement.innerHTML).to.equal("hello <strong>person</strong>!");
     });
 });
