@@ -106,6 +106,11 @@ module.exports = function (config) {
 
         coverageReporter: {
 
+            instrumenters: {isparta: require('isparta')},
+            instrumenter: {
+                '**/*.jsx': 'isparta'
+            },
+
             reporters: [
                 { type: 'text' },
                 { type: 'html' },

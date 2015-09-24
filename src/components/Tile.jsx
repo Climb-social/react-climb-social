@@ -13,8 +13,10 @@ class Tile extends React.Component {
             )
         }
 
+        let classString = `climb__tile climb__tile--${this.props.item.source_type}`;
+
         return (
-            <div className="climb__tile">
+            <div className={ classString }>
                 <div className="climb__tile__content">
                     { message }
                 </div>
