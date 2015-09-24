@@ -34,7 +34,7 @@ class Wall extends React.Component {
             tiles.push(
                 <Tile ref={ item.id }
                       key={ item.id }
-                      message={ item.message }/>
+                      item={ item }/>
             );
         });
 
