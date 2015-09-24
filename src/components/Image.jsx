@@ -5,13 +5,16 @@ class Image extends React.Component {
 
     render() {
         return (
-            <img className="climb__tile__image" src={ this.props.body } />
+            <img className="climb__tile__image"
+                 src={ this.props.src }/>
         );
     }
 }
 
 Image.propTypes = {
-    body: React.PropTypes.string.isRequired
+    src: React.PropTypes.string.isRequired,
+    width: React.PropTypes.number,
+    height: React.PropTypes.number
 };
 
 export default Image;

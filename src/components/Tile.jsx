@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from './Image';
 import Message from './Message';
-import Avatar from './Avatar';
 import Author from './Author';
 
 
@@ -10,45 +9,51 @@ class Tile extends React.Component {
     render() {
 
         var image;
-        if (this.props.item.image != null) {
+        if (this.props.image !== null) {
+
+            let { url:src, width, height} = this.props.image;
+
             image = (
-                <Image body={this.props.item.image.url}/>
+                <Image src={ src }
+                       width={ width }
+                       height={ height }/>
             )
         }
 
         var message;
-        if (this.props.item.message) {
+        if (this.props.message) {
             message = (
-                <Message body={this.props.item.message}/>
+                <Message body={ this.props.message }/>
             )
         }
 
-        var avatar;
-        if (this.props.item.author.picture) {
-            avatar = (
-                <Avatar body={this.props.item.author.picture}/>
-            )
+
+        let classString = `climb__tile climb__tile--${this.props.source_type}`;
+
+        if (this.props.image && this.props.video_url) {
+            classString += ' climb__tile--has-media'
         }
 
-        var author;
-        if (this.props.item.author.name) {
-            author = (
-                <Author body={this.props.item.author.name}/>
-            )
+        if (this.props.image) {
+            classString += ' climb__tile--has-image'
         }
 
-        let classString = `climb__tile climb__tile--${this.props.item.source_type}`;
+        if (this.props.video_url) {
+            classString += ' climb__tile--has-video'
+        }
+
+        let { author } = this.props;
 
         return (
             <div className={ classString }>
+
+                { image }
+
                 <div className="climb__tile__content">
-                    { image }
                     { message }
                 </div>
-                <div className="climb__tile__author">
-                    { avatar }
-                    { author }
-                </div>
+
+                <Author {...author} />
 
             </div>
         );
@@ -57,7 +62,26 @@ class Tile extends React.Component {
 
 
 Tile.propTypes = {
-    item: React.PropTypes.object.isRequired
+
+    // Required attrs
+    link: React.PropTypes.string.isRequired,
+    source_type: React.PropTypes.string.isRequired,
+    timestamp: React.PropTypes.number.isRequired,
+    author: React.PropTypes.shape({
+        username: React.PropTypes.string.isRequired,
+        profile_pic: React.PropTypes.string.isRequired,
+        link: React.PropTypes.string.isRequired,
+    }),
+
+    // Optional attrs
+    message: React.PropTypes.string,
+    video_src: React.PropTypes.string,
+    image: React.PropTypes.shape({
+        src: React.PropTypes.string.isRequired,
+        width: React.PropTypes.number.isRequired,
+        height: React.PropTypes.number.isRequired,
+    }),
+
 };
 
 export default Tile;

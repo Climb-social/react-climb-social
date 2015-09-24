@@ -31,10 +31,15 @@ class Wall extends React.Component {
         let tiles = [];
         this.state.items.forEach(item => {
 
+            // What's with the `...`?
+            // It's ES6.
+            // https://facebook.github.io/react/docs/transferring-props.html#transferring-with-...-in-jsx
+            let { id, ...otherProps } = item;
+
             tiles.push(
-                <Tile ref={ item.id }
-                      key={ item.id }
-                      item={ item }/>
+                <Tile ref={ id }
+                      key={ id }
+                    {...otherProps } />
             );
         });
 
