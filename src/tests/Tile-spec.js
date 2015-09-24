@@ -10,7 +10,7 @@ describe('Tile', () => {
     let renderedDOM;
 
     beforeEach(() => {
-        component = TestUtils.renderIntoDocument(<Tile/>);
+        component = TestUtils.renderIntoDocument(<Tile item={ {source_type:'twitter'} }/>);
         renderedDOM = () => React.findDOMNode(component);
     });
 
@@ -23,8 +23,9 @@ describe('Tile', () => {
         let rootElement = renderedDOM();
 
         expect(rootElement.tagName).to.equal('DIV');
-        expect(rootElement.classList).to.have.length(1);
+        expect(rootElement.classList).to.have.length(2);
         expect(rootElement.classList[0]).to.equal('climb__tile');
+        expect(rootElement.classList[1]).to.equal('climb__tile--twitter');
     });
 
     xit('has a child with a class of `climb__tile__content`', () => {

@@ -25,4 +25,8 @@ class Tile extends React.Component {
     }
 }
 
+Tile.propTypes = {
+    item: React.PropTypes.object.isRequired
+};
+
 export default Tile;
