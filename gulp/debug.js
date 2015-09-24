@@ -31,7 +31,7 @@ export default (gulp) => {
             // webpack-dev-server options
             contentBase: wpConfig.context,
 
-            hot: true,
+            hot: false,
             // Enable special support for Hot Module Replacement
             // Page is no longer updated, but a "webpackHotUpdate" message is send to the content
             // Use "webpack/hot/dev-server" as additional module in your entry point
