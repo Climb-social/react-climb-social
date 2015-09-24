@@ -16,9 +16,8 @@ class Wall extends React.Component {
         climb
             .getFeed(this.props.collectionId)
             .then((items) => {
-                "use strict";
                 this.setState({
-                    items: items
+                    items
                 });
             });
     }
@@ -28,13 +27,13 @@ class Wall extends React.Component {
     }
 
     render() {
-        let tiles = [];
+        const tiles = [];
         this.state.items.forEach(item => {
 
             // What's with the `...`?
             // It's ES6.
             // https://facebook.github.io/react/docs/transferring-props.html#transferring-with-...-in-jsx
-            let { id, ...otherProps } = item;
+            const {id, ...otherProps} = item;
 
             tiles.push(
                 <Tile ref={ id }

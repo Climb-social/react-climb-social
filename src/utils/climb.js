@@ -4,14 +4,14 @@
 
 import fetchJsonp from 'fetch-jsonp';
 
-function getFeed(collectionId) {
+const getFeed = (collectionId) => {
     return fetchJsonp(`http://app.climb.social/api/v1/collections/${collectionId}`)
         .then(resp => {
             return resp.json();
         });
-}
+};
 
-var climb = {
+const climb = {
     getFeed
 };
 

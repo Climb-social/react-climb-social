@@ -8,41 +8,41 @@ class Tile extends React.Component {
 
     render() {
 
-        var image;
+        let image;
         if (this.props.image !== null) {
 
-            let { url:src, width, height} = this.props.image;
+            const {url: src, width, height} = this.props.image;
 
             image = (
                 <Image src={ src }
                        width={ width }
                        height={ height }/>
-            )
+            );
         }
 
-        var message;
+        let message;
         if (this.props.message) {
             message = (
                 <Message body={ this.props.message }/>
-            )
+            );
         }
 
 
         let classString = `climb__tile climb__tile--${this.props.source_type}`;
 
         if (this.props.image && this.props.video_url) {
-            classString += ' climb__tile--has-media'
+            classString += ' climb__tile--has-media';
         }
 
         if (this.props.image) {
-            classString += ' climb__tile--has-image'
+            classString += ' climb__tile--has-image';
         }
 
         if (this.props.video_url) {
-            classString += ' climb__tile--has-video'
+            classString += ' climb__tile--has-video';
         }
 
-        let { author } = this.props;
+        const {author} = this.props;
 
         return (
             <div className={ classString }>

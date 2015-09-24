@@ -6,7 +6,7 @@ class Message extends React.Component {
     render() {
         return (
             <div className="climb__tile__message"
-                 dangerouslySetInnerHTML={{ __html: this.props.body }}>
+                 dangerouslySetInnerHTML={{__html: this.props.body}}>
             </div>
         );
     }
