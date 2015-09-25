@@ -34,12 +34,13 @@ module.exports = {
         loaders: [
             {
                 test: /\.json$/,
-                loader: 'json',
+                exclude: /node_modules/,
+                loader: 'json'
             },
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
-                loaders: ['react-hot', 'babel']
+                loader: 'babel'
             }
         ]
     },
