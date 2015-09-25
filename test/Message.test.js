@@ -1,13 +1,15 @@
 import React from 'react';
 import TestUtils from 'react/lib/ReactTestUtils';
 import { expect } from 'chai';
-import Message from '../components/Message';
+import Message from '../src/components/Message';
+import jsdom from 'mocha-jsdom';
 
 
-describe('Tile Message', () => {
+describe('Message', () => {
 
     let component;
     let renderedDOM;
+    jsdom();
 
     beforeEach(() => {
         component = TestUtils.renderIntoDocument(<Message body="hello <strong>person</strong>!"/>);

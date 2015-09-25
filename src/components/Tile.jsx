@@ -69,7 +69,7 @@ Tile.propTypes = {
     timestamp: React.PropTypes.number.isRequired,
     author: React.PropTypes.shape({
         username: React.PropTypes.string.isRequired,
-        profile_pic: React.PropTypes.string.isRequired,
+        picture: React.PropTypes.string.isRequired,
         link: React.PropTypes.string.isRequired,
     }),
 
@@ -77,10 +77,10 @@ Tile.propTypes = {
     message: React.PropTypes.string,
     video_src: React.PropTypes.string,
     image: React.PropTypes.shape({
-        src: React.PropTypes.string.isRequired,
+        url: React.PropTypes.string.isRequired,
         width: React.PropTypes.number.isRequired,
         height: React.PropTypes.number.isRequired,
-    }),
+    })
 
 };
 

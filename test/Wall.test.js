@@ -1,13 +1,15 @@
 import React from 'react';
 import TestUtils from 'react/lib/ReactTestUtils';
 import { expect } from 'chai';
-import Wall from '../components/Wall';
+import Wall from '../src/components/Wall';
+import jsdom from 'mocha-jsdom';
 
 
 describe('Wall', () => {
 
     let component;
     let renderedDOM;
+    jsdom();
 
     beforeEach(() => {
         component = TestUtils.renderIntoDocument(<Wall collectionId="55a7d29945284ef60c0ce772"/>);
