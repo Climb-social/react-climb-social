@@ -48,8 +48,6 @@ module.exports = {
     },
     plugins: [
 
-        new webpack.HotModuleReplacementPlugin(),
-
         new HtmlWebpackPlugin({
             inject: true,
             template: 'src/index.html'
