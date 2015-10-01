@@ -7,6 +7,7 @@ class Wall extends React.Component {
 
     constructor(props) {
         super(props);
+        this.displayName = 'Wall';
         this.state = {
             items: []
         };
