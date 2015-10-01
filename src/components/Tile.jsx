@@ -2,6 +2,7 @@ import React from 'react';
 import Image from './Image';
 import Message from './Message';
 import Author from './Author';
+import Interaction from './Interaction';
 
 
 class Tile extends React.Component {
@@ -10,6 +11,7 @@ class Tile extends React.Component {
         super(props);
         this.createImage.bind(this);
         this.createMessage.bind(this);
+        this.createInteraction.bind(this);
         this.createClassString.bind(this);
     }
 
@@ -36,6 +38,16 @@ class Tile extends React.Component {
         return null;
     }
 
+    createInteraction() {
+        if (this.props.link) {
+            return (
+                <Interaction body={ this.props }/>
+            );
+        }
+        return null;
+    }
+
+
     createClassString() {
 
         let classString = `climb__tile climb__tile--${this.props.source_type}`;
@@ -55,19 +67,26 @@ class Tile extends React.Component {
 
         const image = this.createImage();
         const message = this.createMessage();
+        const interaction = this.createInteraction();
         const classString = this.createClassString();
         const {author} = this.props;
 
         return (
             <div className={ classString }>
 
-                { image }
+                <a href={ this.props.link }>
+                    { image }
+                </a>
 
                 <div className="climb__tile__content">
                     { message }
                 </div>
 
                 <Author {...author} />
+
+                <div className="climb__tile__interaction">
+                    { interaction }
+                </div>
 
             </div>
         );
