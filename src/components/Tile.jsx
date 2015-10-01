@@ -23,11 +23,11 @@ class Tile extends React.Component {
                        height={ height }/>
             );
         }
-
         return null;
     }
 
     createMessage() {
+
         if (this.props.message) {
             return (
                 <Message body={ this.props.message }/>
@@ -49,7 +49,6 @@ class Tile extends React.Component {
         }
 
         return classString;
-
     }
 
     render() {

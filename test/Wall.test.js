@@ -30,6 +30,11 @@ describe('Wall', () => {
     });
 
     xit('Can limit the number of items displayed', () => {
+        component = TestUtils.renderIntoDocument(<Wall collectionId="55a7d29945284ef60c0ce772" limit="4" />);
+        renderedDOM = () => React.findDOMNode(component);
 
+        let rootElement = renderedDOM();
+
+        expect(rootElement.children.length).to.equal(4);
     });
 });

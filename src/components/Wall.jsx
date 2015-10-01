@@ -51,7 +51,8 @@ class Wall extends React.Component {
 }
 
 Wall.propTypes = {
-    collectionId: React.PropTypes.string.isRequired
+    collectionId: React.PropTypes.string.isRequired,
+    limit: React.PropTypes.number
 };
 
 export default Wall;
