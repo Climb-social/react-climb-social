@@ -26,7 +26,20 @@ class Wall extends React.Component {
         this.init();
     }
 
+    componentDidUpdate() {
+        let cb;
+        if (window.climb && window.climb.initCallback) {
+            cb = window.climb.initCallback;
+        } else {
+            // noop
+            cb = () => {
+            };
+        }
+        cb();
+    }
+
     render() {
+        window.console.log('rendering wall');
         const tiles = [];
         this.state.items.forEach(item => {
 

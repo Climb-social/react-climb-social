@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "test": "mocha --compilers js:babel/register --recursive",
-        "cover": "istanbul cover _mocha -- test/ -R spec --compilers js:babel/register",
+        "cover": "istanbul cover _mocha -- test/ -R spec --compilers js:babel/register --opts ./test/mocha.opts",
         "start": "webpack-dev-server --content-base src/",
         "build": "webpack -p"
     },
@@ -34,6 +34,8 @@
         "jsdom": "^6.5.1",
         "mocha": "^2.3.3",
         "mocha-jsdom": "^1.0.0",
+        "sinon": "^1.17.1",
+        "sinon-chai": "^2.8.0",
         "webpack": "^1.10.5",
         "webpack-dev-server": "^1.10.1"
     },
