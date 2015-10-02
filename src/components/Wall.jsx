@@ -7,13 +7,17 @@ class Wall extends React.Component {
 
     constructor(props) {
         super(props);
-        this.displayName = 'Wall';
         this.state = {
             items: []
         };
     }
 
     init() {
+
+        if (!this.props.collectionId) {
+            return;
+        }
+
         climb
             .getFeed(this.props.collectionId)
             .then((items) => {
@@ -29,8 +33,8 @@ class Wall extends React.Component {
 
     componentDidUpdate() {
         let cb;
-        if (window.climb && window.climb.initCallback) {
-            cb = window.climb.initCallback;
+        if (window.Climb && window.Climb.onUpdate) {
+            cb = window.Climb.onUpdate;
         } else {
             // noop
             cb = () => {
@@ -40,7 +44,6 @@ class Wall extends React.Component {
     }
 
     render() {
-        window.console.log('rendering wall');
         const tiles = [];
         this.state.items.forEach(item => {
 
@@ -64,6 +67,7 @@ class Wall extends React.Component {
     }
 }
 
+Wall.displayName = 'Wall';
 Wall.propTypes = {
     collectionId: React.PropTypes.string.isRequired,
     limit: React.PropTypes.number

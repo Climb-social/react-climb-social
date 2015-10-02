@@ -2,7 +2,7 @@
     "name": "react-climb-social",
     "version": "0.0.1",
     "description": "Creating Climb.social wall with React.js",
-    "main": "index.js",
+    "main": "src/index.js",
     "scripts": {
         "test": "mocha --compilers js:babel/register --recursive",
         "cover": "istanbul cover _mocha -- test/ -R spec --compilers js:babel/register --opts ./test/mocha.opts",

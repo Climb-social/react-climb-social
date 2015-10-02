@@ -2,6 +2,8 @@ var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
+var IS_PRODUCTION = 'production' === process.env.NODE_ENV;
+
 module.exports = {
     devtool: 'inline-source-map',
     debug: true,
@@ -10,7 +12,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/',
-        filename: 'bundle.js'
+        filename: 'react-climb-social.js'
     },
     resolve: {
         root: path.resolve(__dirname),
@@ -49,9 +51,23 @@ module.exports = {
     },
     plugins: [
 
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'production')
+            }
+        }),
+
         new HtmlWebpackPlugin({
             inject: true,
             template: 'src/index.html'
         })
     ]
 };
+
+if (IS_PRODUCTION) {
+    webpackConfig.plugins.push(
+        new webpack.optimize.DedupePlugin()
+    );
+
+    webpackConfig.output.filename = 'react-climb-social.min.js';
+}

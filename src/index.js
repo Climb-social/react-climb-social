@@ -1,9 +1,20 @@
-import App from './app.jsx';
+import React from 'react';
+import Wall from './components/Wall.jsx';
 
-//window.climb = {
-//    initCallback() {
-//        window.console.log(`I'm the callback`);
-//    }
-//};
+if (window) {
+    window.Climb = window.Climb || {};
 
-App.start();
+    const $targets = document.querySelectorAll('.climb-wall');
+
+    for (let i = 0; i < $targets.length; ++i) {
+        const $item = $targets[i];
+        const collectionId = $item.dataset.collectionId;
+        const limit = $item.dataset.limit;
+
+        React.render(
+            React.createElement(Wall, {collectionId, limit}), $item
+        );
+    }
+}
+
+export default Wall;
