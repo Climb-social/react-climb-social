@@ -20,10 +20,13 @@ class Wall extends React.Component {
 
         climb
             .getFeed(this.props.collectionId)
-            .then((items) => {
+            .bufferWithCount(10)
+            .subscribe(items => {
+
                 this.setState({
                     items
                 });
+
             });
     }
 
