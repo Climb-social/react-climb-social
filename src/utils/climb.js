@@ -1,9 +1,9 @@
 import Rx from 'rx';
 import fetchJsonp from 'fetch-jsonp';
 
-const getFeed = (collectionId) => {
+const getStream = (collectionId) => {
 
-    const pollRate = 30 * 1000; // 30 seconds
+    const pollRate = 5 * 1000;
 
     let min_id = 0;
 
@@ -17,7 +17,7 @@ const getFeed = (collectionId) => {
             return url;
         })
 
-        .flatMap(function (baseUrl) {
+        .flatMap(baseUrl => {
 
             const requestUrl = `${baseUrl}?min_id=${min_id}`;
 
@@ -44,7 +44,7 @@ const getFeed = (collectionId) => {
 };
 
 const climb = {
-    getFeed
+    getStream
 };
 
 export default climb;

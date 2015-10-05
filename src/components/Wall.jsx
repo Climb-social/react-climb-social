@@ -19,14 +19,15 @@ class Wall extends React.Component {
         }
 
         climb
-            .getFeed(this.props.collectionId)
-            .bufferWithCount(10)
-            .subscribe(items => {
+            .getStream(this.props.collectionId)
+            .subscribe(item => {
+
+                const currentWindow = this.state.items.splice(0);
+                currentWindow.unshift(item);
 
                 this.setState({
-                    items
+                    items: currentWindow
                 });
-
             });
     }
 
