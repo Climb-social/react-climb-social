@@ -20,14 +20,14 @@ class Wall extends React.Component {
 
         climb
             .getStream(this.props.collectionId)
-            .subscribe(item => {
+            .subscribe(items => {
 
-                const currentWindow = this.state.items.splice(0);
-                currentWindow.unshift(item);
+                const maxSize = 30;
 
                 this.setState({
-                    items: currentWindow
+                    items: items.splice(0, maxSize)
                 });
+
             });
     }
 
@@ -49,7 +49,7 @@ class Wall extends React.Component {
 
     render() {
         const tiles = [];
-        this.state.items.forEach(item => {
+        this.state.items.map(item => {
 
             // What's with the `...`?
             // It's ES6.
@@ -57,8 +57,7 @@ class Wall extends React.Component {
             const {id, ...otherProps} = item;
 
             tiles.push(
-                <Tile ref={ id }
-                      key={ id }
+                <Tile key={id}
                     {...otherProps } />
             );
         });
