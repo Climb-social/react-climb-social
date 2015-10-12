@@ -1,79 +1,86 @@
-import React from 'react';
-import climb from '../utils/climb';
+import React, {Component, PropTypes} from 'react';
 import Tile from './Tile';
+import {TransitionMotion, spring} from 'react-motion';
 
 
-class Wall extends React.Component {
+class Wall extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            items: []
+    }
+
+    static propTypes = {
+        items: PropTypes.object.isRequired
+    };
+
+    getStyles() {
+        const configs = {};
+        Object.keys(this.props.items).map(key => {
+            configs[key] = {
+                opacity: spring(1),
+                width: spring(100),
+                height: spring(200),
+                item: this.props.items[key]
+            };
+        });
+        return configs;
+    }
+
+    willEnter(key) {
+        return {
+            opacity: spring(0),
+            width: spring(0),
+            height: spring(0),
+            item: this.props.items[key]
         };
     }
 
-    init() {
-
-        if (!this.props.collectionId) {
-            return;
-        }
-
-        climb
-            .getStream(this.props.collectionId)
-            .subscribe(items => {
-
-                const maxSize = 30;
-
-                this.setState({
-                    items: items.splice(0, maxSize)
-                });
-
-            });
+    willLeave(key, style) {
+        return {
+            opacity: spring(0),
+            width: spring(0),
+            height: spring(0),
+            item: style.item
+        };
     }
 
-    componentDidMount() {
-        this.init();
-    }
+    renderTile(key, itemValues) {
 
-    componentDidUpdate() {
-        let cb;
-        if (window.Climb && window.Climb.onUpdate) {
-            cb = window.Climb.onUpdate;
-        } else {
-            // noop
-            cb = () => {
-            };
-        }
-        cb();
+        const {item, ...styleConfig} = itemValues;
+        const {...itemProps} = item;
+
+        const style = {
+            opacity: styleConfig.opacity,
+            transform: `scaleX(${styleConfig.width}%)`,
+            height: `${styleConfig.height}px`,
+            outline: '2px solid black'
+        };
+
+        return (
+            <Tile key={key}
+                  style={style}
+                {...itemProps } />
+        );
+
     }
 
     render() {
-        const tiles = [];
-        this.state.items.map(item => {
-
-            // What's with the `...`?
-            // It's ES6.
-            // https://facebook.github.io/react/docs/transferring-props.html#transferring-with-...-in-jsx
-            const {id, ...otherProps} = item;
-
-            tiles.push(
-                <Tile key={id}
-                    {...otherProps } />
-            );
-        });
-
         return (
-            <div className="climb__wall">
-                { tiles }
-            </div>
+            <TransitionMotion
+                styles={this.getStyles.bind(this)()}
+                willEnter={this.willEnter.bind(this)}
+                willLeave={this.willLeave.bind(this)}>
+                {values =>
+                    <div className="climb__wall">
+                        {Object.keys(values).map(key => {
+                            const itemValues = values[key];
+                            return this.renderTile(key, itemValues);
+                        })}
+                    </div>
+                }
+            </TransitionMotion>
         );
     }
 }
-
-Wall.displayName = 'Wall';
-Wall.propTypes = {
-    collectionId: React.PropTypes.string.isRequired,
-    limit: React.PropTypes.number
-};
 
 export default Wall;

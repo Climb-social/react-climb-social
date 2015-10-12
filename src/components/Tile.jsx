@@ -72,7 +72,8 @@ class Tile extends React.Component {
         const {author} = this.props;
 
         return (
-            <div className={ classString }>
+            <div className={ classString }
+                 style={this.props.style}>
 
                 <a href={ this.props.link }>
                     { image }

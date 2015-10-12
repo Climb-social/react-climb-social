@@ -1,5 +1,5 @@
 import React from 'react';
-import Wall from './components/Wall.jsx';
+import WallContainer from './components/WallContainer.jsx';
 
 if (window) {
     window.Climb = window.Climb || {};
@@ -12,9 +12,9 @@ if (window) {
         const limit = $item.dataset.limit;
 
         React.render(
-            React.createElement(Wall, {collectionId, limit}), $item
+            React.createElement(WallContainer, {collectionId, limit}), $item
         );
     }
 }
 
-export default Wall;
+export default WallContainer;
