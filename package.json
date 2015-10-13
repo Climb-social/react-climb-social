@@ -1,49 +1,48 @@
 {
-    "name": "react-climb-social",
-    "version": "0.0.1",
-    "description": "Creating Climb.social wall with React.js",
-    "main": "src/index.js",
-    "scripts": {
-        "test": "mocha --compilers js:babel/register --recursive",
-        "cover": "istanbul cover _mocha -- test/ -R spec --compilers js:babel/register --opts ./test/mocha.opts",
-        "start": "webpack-dev-server --content-base src/",
-        "build": "webpack -p"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/Climb-social/react-climb-social.git"
-    },
-    "keywords": [],
-    "author": "Michele Memoli <michele@100shapes.com>",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/Climb-social/react-climb-social/issues"
-    },
-    "homepage": "https://github.com/Climb-social/react-climb-social#readme",
-    "devDependencies": {
-        "babel": "^5.8.19",
-        "babel-core": "^5.8.19",
-        "babel-eslint": "^4.0.5",
-        "babel-loader": "^5.3.2",
-        "chai": "^3.3.0",
-        "eslint": "^1.1.0",
-        "eslint-loader": "^1.0.0",
-        "eslint-plugin-react": "^3.1.0",
-        "fetch-jsonp": "^0.9.2",
-        "html-webpack-plugin": "^1.6.1",
-        "istanbul": "^0.3.17",
-        "jsdom": "^6.5.1",
-        "lodash": "^3.10.1",
-        "mocha": "^2.3.3",
-        "mocha-jsdom": "^1.0.0",
-        "react-motion": "^0.3.0",
-        "rx": "^4.0.0",
-        "sinon": "^1.17.1",
-        "sinon-chai": "^2.8.0",
-        "webpack": "^1.10.5",
-        "webpack-dev-server": "^1.10.1"
-    },
-    "dependencies": {
-        "react": "^0.13.3"
-    }
+  "name": "react-climb-social",
+  "version": "0.0.1",
+  "description": "Creating Climb.social wall with React.js",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha --compilers js:babel/register --recursive",
+    "cover": "istanbul cover _mocha -- test/ -R spec --compilers js:babel/register --opts ./test/mocha.opts",
+    "start": "webpack-dev-server --content-base src/",
+    "build": "webpack -p"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Climb-social/react-climb-social.git"
+  },
+  "keywords": [],
+  "author": "Michele Memoli <michele@100shapes.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Climb-social/react-climb-social/issues"
+  },
+  "homepage": "https://github.com/Climb-social/react-climb-social#readme",
+  "devDependencies": {
+    "babel": "^5.8.19",
+    "babel-core": "^5.8.19",
+    "babel-eslint": "^4.0.5",
+    "babel-loader": "^5.3.2",
+    "chai": "^3.3.0",
+    "climb-social": "^1.1.0",
+    "eslint": "^1.1.0",
+    "eslint-loader": "^1.0.0",
+    "eslint-plugin-react": "^3.1.0",
+    "html-webpack-plugin": "^1.6.1",
+    "istanbul": "^0.3.17",
+    "jsdom": "^6.5.1",
+    "lodash": "^3.10.1",
+    "mocha": "^2.3.3",
+    "mocha-jsdom": "^1.0.0",
+    "react-motion": "^0.3.0",
+    "sinon": "^1.17.1",
+    "sinon-chai": "^2.8.0",
+    "webpack": "^1.10.5",
+    "webpack-dev-server": "^1.10.1"
+  },
+  "dependencies": {
+    "react": "^0.13.3"
+  }
 }

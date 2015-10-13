@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import climb from '../utils/climb';
+import climb from 'climb-social';
 import Wall from './Wall';
 
 
