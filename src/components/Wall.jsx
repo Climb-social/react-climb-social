@@ -5,10 +5,6 @@ import {TransitionMotion, spring} from 'react-motion';
 
 class Wall extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     static propTypes = {
         items: PropTypes.object.isRequired
     };
@@ -18,8 +14,7 @@ class Wall extends Component {
         Object.keys(this.props.items).map(key => {
             configs[key] = {
                 opacity: spring(1),
-                width: spring(100),
-                height: spring(200),
+                scale: spring(1),
                 item: this.props.items[key]
             };
         });
@@ -29,8 +24,7 @@ class Wall extends Component {
     willEnter(key) {
         return {
             opacity: spring(0),
-            width: spring(0),
-            height: spring(0),
+            scale: spring(0),
             item: this.props.items[key]
         };
     }
@@ -38,8 +32,7 @@ class Wall extends Component {
     willLeave(key, style) {
         return {
             opacity: spring(0),
-            width: spring(0),
-            height: spring(0),
+            scale: spring(0),
             item: style.item
         };
     }
@@ -51,9 +44,9 @@ class Wall extends Component {
 
         const style = {
             opacity: styleConfig.opacity,
-            transform: `scaleX(${styleConfig.width}%)`,
-            height: `${styleConfig.height}px`,
-            outline: '2px solid black'
+            transform: `scale(${styleConfig.scale})`,
+            '-webkit-backface-visibility': 'hidden',
+            '-webkit-perspective': '1000'
         };
 
         return (

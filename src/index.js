@@ -12,7 +12,8 @@ if (window) {
         const limit = $item.dataset.limit;
 
         React.render(
-            React.createElement(WallContainer, {collectionId, limit}), $item
+            React.createElement(WallContainer, {collectionId, limit}),
+            $item
         );
     }
 }
