@@ -47,11 +47,8 @@ class WallContainer extends Component {
                     items: mappedItems
                 });
 
-            }.bind(this)
-    )
+            });
     }
-
-;
 
     componentDidMount() {
         this.init();

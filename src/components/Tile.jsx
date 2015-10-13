@@ -9,10 +9,6 @@ class Tile extends React.Component {
 
     constructor(props) {
         super(props);
-        this.createImage.bind(this);
-        this.createMessage.bind(this);
-        this.createInteraction.bind(this);
-        this.createClassString.bind(this);
     }
 
     createImage() {
@@ -104,7 +100,7 @@ Tile.propTypes = {
     author: React.PropTypes.shape({
         username: React.PropTypes.string.isRequired,
         picture: React.PropTypes.string.isRequired,
-        link: React.PropTypes.string.isRequired,
+        link: React.PropTypes.string.isRequired
     }),
 
     // Optional attrs
@@ -113,7 +109,7 @@ Tile.propTypes = {
     image: React.PropTypes.shape({
         url: React.PropTypes.string.isRequired,
         width: React.PropTypes.number.isRequired,
-        height: React.PropTypes.number.isRequired,
+        height: React.PropTypes.number.isRequired
     })
 
 };
