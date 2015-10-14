@@ -1,4 +1,5 @@
 import React from 'react';
+
 import WallContainer from './components/WallContainer';
 
 import './style/main.scss';
@@ -20,4 +21,6 @@ if (window) {
     }
 }
 
-export default WallContainer;
+export {WallContainer};
+export {Wall} from './components/Wall';
+export {Tile} from './components/Tile';

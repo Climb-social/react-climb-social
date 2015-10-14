@@ -48,8 +48,8 @@ class Wall extends Component {
         const style = {
             opacity: styleConfig.opacity,
             width: `${styleConfig.width}px`,
-            'margin-left': styleConfig.margin,
-            'margin-right': styleConfig.margin
+            marginLeft: styleConfig.margin,
+            marginRight: styleConfig.margin
         };
 
         return (

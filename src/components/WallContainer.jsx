@@ -10,7 +10,7 @@ class WallContainer extends Component {
     }
 
     state = {
-        items: []
+        items: {}
     };
 
     static propTypes = {
