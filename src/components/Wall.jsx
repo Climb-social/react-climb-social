@@ -14,7 +14,8 @@ class Wall extends Component {
         Object.keys(this.props.items).map(key => {
             configs[key] = {
                 opacity: spring(1),
-                scale: spring(1),
+                width: spring(375),
+                margin: spring(10),
                 item: this.props.items[key]
             };
         });
@@ -24,7 +25,8 @@ class Wall extends Component {
     willEnter(key) {
         return {
             opacity: spring(0),
-            scale: spring(0),
+            width: spring(0),
+            margin: spring(0),
             item: this.props.items[key]
         };
     }
@@ -32,7 +34,8 @@ class Wall extends Component {
     willLeave(key, style) {
         return {
             opacity: spring(0),
-            scale: spring(0),
+            width: spring(0),
+            margin: spring(0),
             item: style.item
         };
     }
@@ -44,9 +47,9 @@ class Wall extends Component {
 
         const style = {
             opacity: styleConfig.opacity,
-            transform: `scale(${styleConfig.scale})`,
-            '-webkit-backface-visibility': 'hidden',
-            '-webkit-perspective': '1000'
+            width: `${styleConfig.width}px`,
+            'margin-left': styleConfig.margin,
+            'margin-right': styleConfig.margin
         };
 
         return (

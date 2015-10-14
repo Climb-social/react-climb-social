@@ -15,11 +15,6 @@ class Author extends React.Component {
                 <h4 className="climb__tile__author__username">
                     { this.props.username }
                 </h4>
-
-                <h4 className="climb__tile__author__followers">
-                    { this.props.followers_count }
-                </h4>
-
             </a>
         );
     }

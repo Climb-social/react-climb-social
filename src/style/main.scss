@@ -1,0 +1,112 @@
+$color-grey-light: #f6f6f6;
+$color-grey-dark: #bcbcbc;
+
+
+.climb__wall {
+    display: flex;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-size: 100%;
+    font-family: sans-serif;
+}
+
+.climb__tile {
+    display: flex;
+    flex-shrink: 0;
+    height: 425px;
+    box-sizing: border-box;
+    justify-content: flex-end;
+    flex-direction: column;
+    outline: 1px solid transparent;
+    margin-bottom: 20px;
+
+    overflow: hidden;
+    text-align: left;
+    border-radius: 7px;
+    background-color: $color-grey-light;
+
+    backface-visibility: hidden;
+    perspective: 1000px;
+
+}
+
+.climb__tile__content {
+    z-index: 1;
+    padding: 26px;
+
+    background-color: $color-grey-light;
+
+    .climb__tile--has-no-image & {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-sizing: border-box;
+    }
+}
+
+.climb__tile__image {
+    max-width: 100%;
+    position: absolute;
+    top: 0;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+.climb__tile__message {
+    z-index: 1;
+    margin-bottom: 24px;
+
+    > a {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 260px;
+        display: inline-block;
+        vertical-align: bottom;
+    }
+
+    .climb__tile--has-no-image & {
+        font-size: 185%;
+    }
+}
+
+.climb__tile__author {
+    display: block;
+    margin: -10px;
+
+    img {
+        border-radius: 25px;
+        width: 34px;
+    }
+
+    .climb__tile__author__username {
+        display: inline-block;
+        margin: 0 0 0 10px;
+        line-height: 34px;
+        vertical-align: top;
+    }
+}
+
+
+.climb-badge {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9;
+    background: #A9CAE2 url('../img/climb.social_logo--small.png') center center no-repeat;
+    width: 200px;
+    height: 80px;
+    border-radius: 5px;
+
+    > span {
+        position: absolute !important;
+        top: -9999px !important;
+        left: -9999px !important;
+    }
+}
+

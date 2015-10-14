@@ -1,5 +1,7 @@
 import React from 'react';
-import WallContainer from './components/WallContainer.jsx';
+import WallContainer from './components/WallContainer';
+
+import './style/main.scss';
 
 if (window) {
     window.Climb = window.Climb || {};

@@ -2,7 +2,6 @@ import React from 'react';
 import Image from './Image';
 import Message from './Message';
 import Author from './Author';
-import Interaction from './Interaction';
 
 
 class Tile extends React.Component {
@@ -34,26 +33,20 @@ class Tile extends React.Component {
         return null;
     }
 
-    createInteraction() {
-        if (this.props.link) {
-            return (
-                <Interaction body={ this.props }/>
-            );
-        }
-        return null;
-    }
-
-
     createClassString() {
 
         let classString = `climb__tile climb__tile--${this.props.source_type}`;
 
         if (this.props.image) {
             classString += ' climb__tile--has-media climb__tile--has-image';
+        } else {
+            classString += ' climb__tile--has-no-image';
         }
 
         if (this.props.video_url) {
             classString += ' climb__tile--has-media climb__tile--has-video';
+        } else {
+            classString += ' climb__tile--has-no-video';
         }
 
         return classString;
@@ -63,7 +56,6 @@ class Tile extends React.Component {
 
         const image = this.createImage();
         const message = this.createMessage();
-        const interaction = this.createInteraction();
         const classString = this.createClassString();
         const {author} = this.props;
 
@@ -77,14 +69,9 @@ class Tile extends React.Component {
 
                 <div className="climb__tile__content">
                     { message }
+
+                    <Author {...author} />
                 </div>
-
-                <Author {...author} />
-
-                <div className="climb__tile__interaction">
-                    { interaction }
-                </div>
-
             </div>
         );
     }
