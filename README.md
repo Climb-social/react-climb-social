@@ -1,4 +1,7 @@
 # react-climb-social
+
+[![Travis build](https://img.shields.io/travis/Climb-social/react-climb-social.svg?style=flat-square)](https://travis-ci.org/Climb-social/react-climb-social)
+
 Create a [Climb.social](http://climb.social) wall with React.js
 
 ## Installing
