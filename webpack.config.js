@@ -12,7 +12,9 @@ var webpackConfig = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/',
-        filename: 'react-climb-social.js'
+        filename: 'react-climb-social.js',
+        library: 'react-climb-social',
+        libraryTarget: 'umd'
     },
     resolve: {
         root: path.resolve(__dirname),
@@ -57,7 +59,12 @@ var webpackConfig = {
         ]
     },
     externals: {
-        'react': 'React'
+        'react': {
+            root: 'React',
+            commonjs2: 'react',
+            commonjs: 'react',
+            amd: 'react'
+        }
     },
     plugins: [
 
