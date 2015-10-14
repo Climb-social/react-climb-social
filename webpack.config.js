@@ -4,7 +4,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var IS_PRODUCTION = 'production' === process.env.NODE_ENV;
 
-module.exports = {
+var webpackConfig = {
     devtool: 'inline-source-map',
     debug: true,
     context: path.resolve(__dirname),
@@ -82,3 +82,5 @@ if (IS_PRODUCTION) {
 
     webpackConfig.output.filename = 'react-climb-social.min.js';
 }
+
+module.exports = webpackConfig;

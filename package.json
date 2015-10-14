@@ -7,7 +7,7 @@
     "test": "mocha --compilers js:babel/register --recursive",
     "cover": "istanbul cover _mocha -- test/ -R spec --compilers js:babel/register --opts ./test/mocha.opts",
     "start": "webpack-dev-server --content-base src/",
-    "build": "webpack -p"
+    "build": "NODE_ENV=production webpack -p"
   },
   "repository": {
     "type": "git",
