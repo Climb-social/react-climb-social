@@ -42,8 +42,7 @@ var webpackConfig = {
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
-                loader: 'babel',
-                query: {stage: 0}
+                loader: 'babel'
             },
             {
                 test: /\.png$/,
