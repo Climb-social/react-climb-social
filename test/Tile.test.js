@@ -1,5 +1,6 @@
 import React from 'react';
 import TestUtils from 'react/lib/ReactTestUtils';
+import ReactDOM from 'react/lib/ReactDOM';
 import { expect } from 'chai';
 import Tile from '../src/components/Tile';
 import jsdom from 'mocha-jsdom';
@@ -36,7 +37,7 @@ describe('Tile', () => {
         component = TestUtils.renderIntoDocument(
             <Tile {...props} />
         );
-        renderedDOM = () => React.findDOMNode(component);
+        renderedDOM = () => ReactDOM.findDOMNode(component);
     });
 
     it('renders without problems', () => {

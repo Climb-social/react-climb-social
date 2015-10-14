@@ -1,8 +1,10 @@
 import React from 'react';
 import TestUtils from 'react/lib/ReactTestUtils';
+import ReactDOM from 'react/lib/ReactDOM';
 import {expect, chai} from 'chai';
 import Wall from '../src/components/Wall';
 import jsdom from 'mocha-jsdom';
+
 
 describe('Wall', () => {
 
@@ -10,15 +12,8 @@ describe('Wall', () => {
     let renderedDOM;
     jsdom();
 
-    //beforeEach(() => {
-    //    global.navigator = {
-    //        userAgent: 'node.js'
-    //    };
-    //    component = TestUtils.renderIntoDocument(<Wall collectionId="55a7d29945284ef60c0ce772"/>);
-    //    renderedDOM = () => React.findDOMNode(component);
-    //});
-
-    xit('renders without problems', () => {
+    it('renders without problems', () => {
+        const component = TestUtils.renderIntoDocument(<Wall items={{}}/>);
         expect(component).to.exist;
     });
 

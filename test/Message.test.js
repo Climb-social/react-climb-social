@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react/react';
+import ReactDOM from 'react/lib/ReactDOM';
 import TestUtils from 'react/lib/ReactTestUtils';
 import { expect } from 'chai';
 import Message from '../src/components/Message';
@@ -13,7 +14,7 @@ describe('Message', () => {
 
     beforeEach(() => {
         component = TestUtils.renderIntoDocument(<Message body="hello <strong>person</strong>!"/>);
-        renderedDOM = () => React.findDOMNode(component);
+        renderedDOM = () => ReactDOM.findDOMNode(component);
     });
 
     it('renders without problems', () => {

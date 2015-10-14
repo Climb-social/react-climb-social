@@ -1,64 +1,62 @@
 {
-    "name": "react-climb-social",
-    "description": "Creating Climb.social wall with React.js",
-    "version": "0.0.0-semantically-released",
-    "main": "src/index.js",
-    "scripts": {
-        "commit": "git-cz",
-        "test": "mocha --compilers js:babel/register test/*.test.js",
-        "cover": "istanbul cover _mocha -- test/ -R spec --compilers js:babel/register --opts ./test/mocha.opts",
-        "start": "webpack-dev-server --content-base src/",
-        "build": "NODE_ENV=production webpack -p",
-        "semantic-release": "semantic-release pre && npm publish && semantic-release post"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/Climb-social/react-climb-social.git"
-    },
-    "keywords": [],
-    "author": "Michele Memoli <michele@100shapes.com>",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/Climb-social/react-climb-social/issues"
-    },
-    "homepage": "https://github.com/Climb-social/react-climb-social#readme",
-    "devDependencies": {
-        "autoprefixer-loader": "^3.1.0",
-        "babel": "^5.8.19",
-        "babel-core": "^5.8.19",
-        "babel-eslint": "^4.0.5",
-        "babel-loader": "^5.3.2",
-        "chai": "^3.3.0",
-        "climb-social": "^1.1.0",
-        "commitizen": "^1.0.5",
-        "core-js": "^1.2.1",
-        "css-loader": "^0.19.0",
-        "cz-conventional-changelog": "^1.1.2",
-        "eslint": "^1.1.0",
-        "eslint-loader": "^1.0.0",
-        "eslint-plugin-react": "^3.1.0",
-        "file-loader": "^0.8.4",
-        "html-webpack-plugin": "^1.6.1",
-        "istanbul": "^0.3.17",
-        "jsdom": "^6.5.1",
-        "lodash": "^3.10.1",
-        "mocha": "^2.3.3",
-        "mocha-jsdom": "^1.0.0",
-        "node-sass": "^3.3.3",
-        "react": "^0.14.0",
-        "react-motion": "^0.3.0",
-        "sass-loader": "^3.0.0",
-        "semantic-release": "^4.3.5",
-        "sinon": "^1.17.1",
-        "sinon-chai": "^2.8.0",
-        "style-loader": "^0.12.4",
-        "webpack": "^1.10.5",
-        "webpack-dev-server": "^1.10.1"
-    },
-    "czConfig": {
-        "path": "node_modules/cz-conventional-changelog"
-    },
-    "babel": {
-        "stage": 0
-    }
+  "name": "react-climb-social",
+  "description": "Creating Climb.social wall with React.js",
+  "version": "0.0.0-semantically-released",
+  "main": "src/index.js",
+  "scripts": {
+    "commit": "git-cz",
+    "test": "mocha --compilers js:babel/register test/*.test.js",
+    "cover": "istanbul cover _mocha -- test/ -R spec --compilers js:babel/register --opts ./mocha.opts",
+    "start": "webpack-dev-server --content-base src/",
+    "build": "NODE_ENV=production webpack -p",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Climb-social/react-climb-social.git"
+  },
+  "keywords": [],
+  "author": "Michele Memoli <michele@100shapes.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Climb-social/react-climb-social/issues"
+  },
+  "homepage": "https://github.com/Climb-social/react-climb-social#readme",
+  "devDependencies": {
+    "autoprefixer-loader": "^3.1.0",
+    "babel": "^5.8.19",
+    "babel-core": "^5.8.19",
+    "babel-eslint": "^4.0.5",
+    "babel-loader": "^5.3.2",
+    "chai": "^3.3.0",
+    "climb-social": "^1.1.0",
+    "commitizen": "^1.0.5",
+    "core-js": "^1.2.1",
+    "css-loader": "^0.19.0",
+    "cz-conventional-changelog": "^1.1.2",
+    "eslint": "^1.1.0",
+    "eslint-loader": "^1.0.0",
+    "eslint-plugin-react": "^3.1.0",
+    "file-loader": "^0.8.4",
+    "html-webpack-plugin": "^1.6.1",
+    "istanbul": "^0.3.17",
+    "jsdom": "^6.5.1",
+    "lodash": "^3.10.1",
+    "mocha": "^2.3.3",
+    "mocha-jsdom": "^1.0.0",
+    "node-sass": "^3.3.3",
+    "react": "^0.14.0",
+    "react-motion": "^0.3.0",
+    "sass-loader": "^3.0.0",
+    "semantic-release": "^4.3.5",
+    "style-loader": "^0.12.4",
+    "webpack": "^1.10.5",
+    "webpack-dev-server": "^1.10.1"
+  },
+  "czConfig": {
+    "path": "node_modules/cz-conventional-changelog"
+  },
+  "babel": {
+    "stage": 0
+  }
 }
