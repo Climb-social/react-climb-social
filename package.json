@@ -50,6 +50,7 @@
     "sass-loader": "^3.0.0",
     "semantic-release": "^4.3.5",
     "style-loader": "^0.12.4",
+    "svg-inline-loader": "^0.3.0",
     "webpack": "^1.10.5",
     "webpack-dev-server": "^1.10.1"
   },

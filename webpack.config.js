@@ -52,6 +52,11 @@ var webpackConfig = {
                 loader: 'file'
             },
             {
+                test: /\.svg$/,
+                exclude: /node_modules/,
+                loader: 'svg-inline'
+            },
+            {
                 test: /\.scss$/,
                 exclude: /node_modules/,
                 loader: 'style!css!autoprefixer-loader?browsers=last 2 version!sass'
