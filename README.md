@@ -2,12 +2,18 @@
 
 [![Travis build](https://img.shields.io/travis/Climb-social/react-climb-social.svg?style=flat-square)](https://travis-ci.org/Climb-social/react-climb-social)
 
-Create a [Climb.social](http://climb.social) wall with React.js
+Create a [Climb.social](http://climb.social/?utm_source=github&utm_medium=readme&utm_campaign=react-climb-social) wall with React.js
+
+Not using React? Try [angular-climb](https://github.com/Climb-social/angular-climb), a [plain JS lib](https://github.com/Climb-social/climb-social) or the simple [JSONP REST API](https://github.com/Climb-social/climb-social).
 
 ## Installing
     npm install -D react-climb-social
 
 ## Usage
+
+Make sure you've got a [Climb.social account](http://app.climb.social/#signup), you've made a new collection and you've approved some content.
+
+Then note down your `collectionId`.
 
 There's a couple of ways you can use this library.
 
