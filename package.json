@@ -8,7 +8,7 @@
     "test": "mocha --compilers js:babel/register test/*.test.js",
     "cover": "istanbul cover _mocha -- test/ -R spec --compilers js:babel/register --opts ./mocha.opts",
     "start": "webpack-dev-server --content-base src/",
-    "build": "NODE_ENV=production webpack -p",
+    "build": "webpack && NODE_ENV=production webpack -p",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
