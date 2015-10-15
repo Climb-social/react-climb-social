@@ -1,7 +1,7 @@
 {
   "name": "react-climb-social",
   "description": "Creating Climb.social wall with React.js",
-  "version": "0.0.0-semantically-released",
+  "version": "1.1.1",
   "main": "dist/react-climb-social.js",
   "scripts": {
     "commit": "git-cz",
