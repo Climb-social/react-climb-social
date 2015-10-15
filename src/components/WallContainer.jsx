@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import climb from 'climb-social';
 import Wall from './Wall';
+import Badge from './ClimbBadge';
 
 
 class WallContainer extends Component {
@@ -68,7 +69,10 @@ class WallContainer extends Component {
 
     render() {
         return (
-            <Wall items={this.state.items}/>
+            <div>
+                <Wall items={this.state.items}/>
+                <Badge />
+            </div>
         );
     }
 }
