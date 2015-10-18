@@ -14,8 +14,8 @@ class Wall extends Component {
         Object.keys(this.props.items).map(key => {
             configs[key] = {
                 opacity: spring(1),
-                width: spring(375),
-                margin: spring(10),
+                width: spring(30),
+                margin: spring(1),
                 item: this.props.items[key]
             };
         });
@@ -47,9 +47,9 @@ class Wall extends Component {
 
         const style = {
             opacity: styleConfig.opacity,
-            width: `${styleConfig.width}px`,
-            marginLeft: styleConfig.margin,
-            marginRight: styleConfig.margin
+            width: `${styleConfig.width}%`,
+            marginLeft: `${styleConfig.margin}%`,
+            marginRight: `${styleConfig.margin}%`
         };
 
         return (
