@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import Slide from './slide';
+import {TransitionMotion, spring} from 'react-motion';
 
 
 class Slideshow extends Component {
@@ -18,7 +19,7 @@ class Slideshow extends Component {
     };
 
     static defaultProps = {
-        delay: 3
+        delay: 5
     };
 
     componentDidMount() {
@@ -38,20 +39,80 @@ class Slideshow extends Component {
         });
     }
 
-    render() {
+    getStyles() {
+        const currentKey = Object.keys(this.props.items)[this.state.currentItemIndex];
+        const configs = {};
+        Object.keys(this.props.items).map(key => {
+            configs[key] = {
+                opacity: spring(0),
+                scale: spring(0),
+                zIndex: -5,
+                item: this.props.items[key]
+            };
 
-        const key = Object.keys(this.props.items)[this.state.currentItemIndex];
+            if (key === currentKey) {
+                Object.assign(configs[key], {
+                    opacity: spring(1),
+                    scale: spring(1),
+                    zIndex: 1
+                });
 
-        if (!key) {
-            return null;
-        }
+            }
+        });
+        return configs;
+    }
 
-        const item = this.props.items[key];
+    willEnter(key) {
+        return {
+            opacity: spring(0),
+            scale: spring(0),
+            zIndex: -5,
+            item: this.props.items[key]
+        };
+    }
+
+    willLeave(key, style) {
+        return {
+            opacity: spring(0),
+            scale: spring(0),
+            zIndex: -5,
+            item: style.item
+        };
+    }
+
+    renderSlide(key, itemValues) {
+
+        const {item, ...styleConfig} = itemValues;
+
+        const style = {
+            opacity: styleConfig.opacity,
+            zIndex: Math.floor(styleConfig.zIndex),
+            transform: `scale(${styleConfig.scale})`
+        };
 
         return (
-            <div>
-                <Slide key={key} item={item} />
-            </div>
+            <Slide key={key}
+                   item={item}
+                   style={style} />
+        );
+
+    }
+
+    render() {
+        return (
+            <TransitionMotion
+                styles={this.getStyles.bind(this)()}
+                willEnter={this.willEnter.bind(this)}
+                willLeave={this.willLeave.bind(this)}>
+                {values =>
+                    <div className="climb__slideshow__container">
+                        {Object.keys(values).map(key => {
+                            const itemValues = values[key];
+                            return this.renderSlide(key, itemValues);
+                        })}
+                    </div>
+                }
+            </TransitionMotion>
         );
     }
 }

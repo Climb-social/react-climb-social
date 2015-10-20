@@ -34,12 +34,16 @@ class Slide extends Component {
         const image = this.createImage();
 
         return (
-            <div className="climb-slideshow__slide">
+            <div className="climb-slideshow__slide"
+                 style={this.props.style}>
                 {image}
                 <Message body={ item.message }/>
             </div>
         );
+
     }
 }
 
 export default Slide;
+
+
