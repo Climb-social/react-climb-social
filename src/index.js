@@ -27,7 +27,7 @@ if (window) {
     for (let i = 0; i < $slideshows.length; ++i) {
         const $item = $slideshows[i];
         const collectionId = $item.dataset.collectionId;
-        const delay = $item.dataset.delay;
+        const delay = parseInt($item.dataset.delay, 0);
 
         ReactDOM.render(
             React.createElement(SlideshowContainer, {collectionId, delay}),

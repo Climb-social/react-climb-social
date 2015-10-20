@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import Message from '../common/Message';
+import Panel from './Panel';
 import Image from '../common/Image';
 import {Motion, spring} from 'react-motion';
 
@@ -19,19 +19,19 @@ class Slide extends Component {
     };
 
     state = {
-        shouldDisplayMessage: false
+        shouldDisplayPanel: false
     };
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.isCurrent) {
             setTimeout(() => {
                 this.setState({
-                    shouldDisplayMessage: true
+                    shouldDisplayPanel: true
                 });
-            }, 700);
+            }, 850);
         } else {
             this.setState({
-                shouldDisplayMessage: false
+                shouldDisplayPanel: false
             });
         }
     }
@@ -55,23 +55,27 @@ class Slide extends Component {
 
         if (!this.props.item.image) {
             return (
-                <Message body={ this.props.item.message } />
+                <Panel author={this.props.item.author} message={this.props.item.message} />
             );
         }
 
+        const panelWidth = 300;
+
         const values = {
-            x: this.state.shouldDisplayMessage ? spring(300) : spring(0)
+            x: this.state.shouldDisplayPanel ? spring(0) : spring(panelWidth)
+        };
+
+        const defaultValues = {
+            x: 0
         };
 
         return (
-            <Motion defaultStyle={{x: this.props.item.image ? 0 : 300}}
+            <Motion defaultStyle={defaultValues}
                     style={values}>
-
                 {interpolatedValues =>
-                    <Message body={ this.props.item.message }
-                             style={{
-                                 width: `${interpolatedValues.x}px`}
-                             } />
+                    <Panel author={this.props.item.author}
+                           message={this.props.item.message}
+                           style={{marginLeft: `-${interpolatedValues.x}px`}} />
                 }
 
             </Motion>
@@ -79,8 +83,6 @@ class Slide extends Component {
     }
 
     render() {
-
-        //const {item} = this.props;
         const image = this.createImage();
         const message = this.createMessage();
 
