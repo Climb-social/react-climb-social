@@ -74,9 +74,12 @@ $color-grey-dark: #bcbcbc;
         vertical-align: bottom;
     }
 
-    .climb__tile--has-no-image &,
-    .climb-slideshow__slide-no-image & {
+    .climb__tile--has-no-image & {
         font-size: 185%;
+    }
+
+    .climb-slideshow__slide--has-no-image & {
+        font-size: 220%;
     }
 }
 
@@ -116,6 +119,7 @@ $color-grey-dark: #bcbcbc;
 .climb-slideshow {
     height: 100vh;
     width: 100vw;
+    font-size: 160%;
 }
 
 .climb__slideshow__container {
@@ -139,15 +143,20 @@ $color-grey-dark: #bcbcbc;
 }
 
 .climb-slideshow__panel {
-    background-color: $color-grey-light;
-    display: inline-block;
-    overflow: hidden;
-    position: relative;
-    width: 300px;
     box-sizing: border-box;
+    display: inline-block;
+    position: relative;
     padding: 30px 15px 5px;
+
+    width: 50%;
     border-radius: 3px;
+    background-color: $color-grey-light;
+
     backface-visibility: hidden;
     perspective: 1000px;
+
+    .climb-slideshow__slide--has-no-image & {
+        padding: 30px;
+    }
 
 }

@@ -51,7 +51,7 @@ class Slide extends Component {
         return null;
     }
 
-    createMessage() {
+    createPanel() {
 
         if (!this.props.item.image) {
             return (
@@ -75,22 +75,42 @@ class Slide extends Component {
                 {interpolatedValues =>
                     <Panel author={this.props.item.author}
                            message={this.props.item.message}
-                           style={{marginLeft: `-${interpolatedValues.x}px`}} />
+                           style={{marginLeft: `-${interpolatedValues.x}px`, width: panelWidth}} />
                 }
 
             </Motion>
         );
     }
 
+    createClassString() {
+
+        let classString = `climb-slideshow__slide climb__tile--${this.props.item.source_type}`;
+
+        if (this.props.item.image) {
+            classString += ' climb-slideshow__slide--has-media climb-slideshow__slide--has-image';
+        } else {
+            classString += ' climb-slideshow__slide--has-no-image';
+        }
+
+        if (this.props.item.video_url) {
+            classString += ' climb-slideshow__slide--has-media climb-slideshow__slide--has-video';
+        } else {
+            classString += ' climb-slideshow__slide--has-no-video';
+        }
+
+        return classString;
+    }
+
     render() {
         const image = this.createImage();
-        const message = this.createMessage();
+        const panel = this.createPanel();
+        const classString = this.createClassString();
 
         return (
-            <div className="climb-slideshow__slide"
+            <div className={ classString }
                  style={this.props.style}>
                 {image}
-                {message}
+                {panel}
             </div>
         );
 
