@@ -2,7 +2,7 @@ import React from 'react/react';
 import ReactDOM from 'react/lib/ReactDOM';
 import TestUtils from 'react/lib/ReactTestUtils';
 import { expect } from 'chai';
-import Message from '../src/components/Message';
+import Message from '../src/components/common/Message';
 import jsdom from 'mocha-jsdom';
 
 

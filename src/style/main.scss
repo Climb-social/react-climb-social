@@ -47,12 +47,17 @@ $color-grey-dark: #bcbcbc;
     }
 }
 
-.climb__tile__image {
+.climb__image {
+
+    display: block;
     max-width: 100%;
-    position: absolute;
-    top: 0;
-    border-top-left-radius: 7px;
-    border-top-right-radius: 7px;
+
+    .climb__tile & {
+        position: absolute;
+        top: 0;
+        border-top-left-radius: 7px;
+        border-top-right-radius: 7px;
+    }
 }
 
 .climb__tile__message {
@@ -106,5 +111,20 @@ $color-grey-dark: #bcbcbc;
         top: -9999px !important;
         left: -9999px !important;
     }
+}
+
+.climb-slideshow {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.climb-slideshow__slide {
+    display: block;
+    width: 70%;
+    margin: 0 auto;
+    background-color: $color-grey-light;
 }
 

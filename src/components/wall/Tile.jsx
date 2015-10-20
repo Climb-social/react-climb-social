@@ -1,7 +1,7 @@
 import React from 'react';
-import Image from './Image';
-import Message from './Message';
-import Author from './Author';
+import Image from './../common/Image';
+import Message from './../common/Message';
+import Author from './../common/Author';
 
 
 class Tile extends React.Component {

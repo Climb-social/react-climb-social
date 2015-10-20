@@ -2,7 +2,7 @@ import React from 'react';
 import TestUtils from 'react/lib/ReactTestUtils';
 import ReactDOM from 'react/lib/ReactDOM';
 import { expect } from 'chai';
-import Tile from '../src/components/Tile';
+import Tile from '../src/components/wall/Tile';
 import jsdom from 'mocha-jsdom';
 
 

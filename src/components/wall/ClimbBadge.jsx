@@ -5,7 +5,7 @@ class ClimbBadge extends Component {
 
     render() {
 
-        const logo = require('../img/climb_logo.svg');
+        const logo = require('../../img/climb_logo.svg');
 
         return (
             <a href="http://climb.social/"

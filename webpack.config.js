@@ -69,7 +69,8 @@ var webpackConfig = {
             commonjs2: 'react',
             commonjs: 'react',
             amd: 'react'
-        }
+        },
+        'react-dom': 'ReactDOM'
     },
     plugins: [
 
