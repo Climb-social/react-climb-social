@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import Message from '../common/Message';
 import Image from '../common/Image';
-
+import {Motion, spring} from 'react-motion';
 
 class Slide extends Component {
 
@@ -10,8 +10,31 @@ class Slide extends Component {
     }
 
     static propTypes = {
-        item: PropTypes.object.isRequired
+        item: PropTypes.object.isRequired,
+        isCurrent: PropTypes.bool
     };
+
+    static defaultProps = {
+        isCurrent: false
+    };
+
+    state = {
+        shouldDisplayMessage: false
+    };
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.isCurrent) {
+            setTimeout(() => {
+                this.setState({
+                    shouldDisplayMessage: true
+                });
+            }, 700);
+        } else {
+            this.setState({
+                shouldDisplayMessage: false
+            });
+        }
+    }
 
     createImage() {
 
@@ -28,16 +51,44 @@ class Slide extends Component {
         return null;
     }
 
+    createMessage() {
+
+        if (!this.props.item.image) {
+            return (
+                <Message body={ this.props.item.message } />
+            );
+        }
+
+        const values = {
+            x: this.state.shouldDisplayMessage ? spring(300) : spring(0)
+        };
+
+        return (
+            <Motion defaultStyle={{x: this.props.item.image ? 0 : 300}}
+                    style={values}>
+
+                {interpolatedValues =>
+                    <Message body={ this.props.item.message }
+                             style={{
+                                 width: `${interpolatedValues.x}px`}
+                             } />
+                }
+
+            </Motion>
+        );
+    }
+
     render() {
 
-        const {item} = this.props;
+        //const {item} = this.props;
         const image = this.createImage();
+        const message = this.createMessage();
 
         return (
             <div className="climb-slideshow__slide"
                  style={this.props.style}>
                 {image}
-                <Message body={ item.message }/>
+                {message}
             </div>
         );
 

@@ -76,6 +76,13 @@ $color-grey-dark: #bcbcbc;
     .climb__tile--has-no-image & {
         font-size: 185%;
     }
+
+    .climb-slideshow__slide & {
+        background-color: $color-grey-light;
+        display: inline-block;
+        overflow: hidden;
+        position: relative;
+    }
 }
 
 .climb__tile__author {

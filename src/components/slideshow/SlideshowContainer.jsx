@@ -14,12 +14,15 @@ class SlideshowContainer extends Component {
     };
 
     static propTypes = {
-        collectionId: PropTypes.string.isRequired
+        collectionId: PropTypes.string.isRequired,
+        delay: PropTypes.number
     };
 
     static defaultProps = {
-        collectionId: '561ba63445284e1740e016f7'
+        collectionId: '561ba63445284e1740e016f7',
+        delay: 5
     };
+
 
     init() {
 
@@ -49,7 +52,7 @@ class SlideshowContainer extends Component {
 
     render() {
         return (
-            <Slideshow items={this.state.items}/>
+            <Slideshow items={this.state.items} delay={this.props.delay}/>
         );
     }
 }

@@ -27,9 +27,10 @@ if (window) {
     for (let i = 0; i < $slideshows.length; ++i) {
         const $item = $slideshows[i];
         const collectionId = $item.dataset.collectionId;
+        const delay = $item.dataset.delay;
 
         ReactDOM.render(
-            React.createElement(SlideshowContainer, {collectionId}),
+            React.createElement(SlideshowContainer, {collectionId, delay}),
             $item
         );
     }

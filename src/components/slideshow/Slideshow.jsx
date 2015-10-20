@@ -10,16 +10,12 @@ class Slideshow extends Component {
     }
 
     state = {
-        currentItemIndex: 0
+        currentKey: ''
     };
 
     static propTypes = {
         items: PropTypes.object.isRequired,
-        delay: PropTypes.number
-    };
-
-    static defaultProps = {
-        delay: 5
+        delay: PropTypes.number.isRequired
     };
 
     componentDidMount() {
@@ -32,15 +28,16 @@ class Slideshow extends Component {
     }
 
     nextSlide() {
-        const slideshowLength = Object.keys(this.props.items).length;
-        const newIndex = Math.floor(Math.random() * slideshowLength);
+        const keys = Object.keys(this.props.items);
+        const randomKey = keys[keys.length * Math.random() << 0];
+
         this.setState({
-            currentItemIndex: newIndex
+            currentKey: randomKey
         });
     }
 
     getStyles() {
-        const currentKey = Object.keys(this.props.items)[this.state.currentItemIndex];
+        const currentKey = this.state.currentKey;
         const configs = {};
         Object.keys(this.props.items).map(key => {
             configs[key] = {
@@ -92,6 +89,7 @@ class Slideshow extends Component {
 
         return (
             <Slide key={key}
+                   isCurrent={key === this.state.currentKey}
                    item={item}
                    style={style} />
         );
