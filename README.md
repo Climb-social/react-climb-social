@@ -28,7 +28,7 @@ This is the simple "HTML embed" method:
     <div class="climb-wall" data-collection-id="561ba63445284e1740e016f7" data-limit="6"></div>
     <script src="https://fb.me/react-0.14.0.min.js"></script>
     <script src="https://fb.me/react-dom-0.14.0.min.js"></script>
-    <script src="https://cdn.rawgit.com/Climb-social/react-climb-social/v1.1.3/dist/react-climb-social.min.js"></script>
+    <script src="https://cdn.rawgit.com/Climb-social/react-climb-social/v1.2.0/dist/react-climb-social.min.js"></script>
 
 See the `data-collection-id` attribute in the 1st line? Set that to _your_ Climb CollectionId and you're done.
 
