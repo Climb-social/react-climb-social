@@ -59,11 +59,15 @@ $color-grey-dark: #bcbcbc;
         border-top-left-radius: 7px;
         border-top-right-radius: 7px;
     }
+
+    .climb__slideshow {
+        box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+        border-radius: 7px;
+    }
 }
 
-.climb__tile__message {
+.climb__message {
     z-index: 1;
-    margin-bottom: 24px;
 
     > a {
         white-space: nowrap;
@@ -72,6 +76,10 @@ $color-grey-dark: #bcbcbc;
         max-width: 260px;
         display: inline-block;
         vertical-align: bottom;
+    }
+
+    .climb-tile & {
+        margin-bottom: 24px;
     }
 
     .climb__tile--has-no-image & {

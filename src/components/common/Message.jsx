@@ -9,7 +9,7 @@ class Message extends React.Component {
             .replace(/<a href="http:\/\/pic.twitter.com\/[^>]*>([^<]+)<\/a>/g, '');
 
         return (
-            <div className="climb__tile__message"
+            <div className="climb__message"
                  dangerouslySetInnerHTML={{__html: message}}>
             </div>
         );
