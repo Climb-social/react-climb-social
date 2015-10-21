@@ -25,7 +25,7 @@ describe('Message', () => {
         let rootElement = renderedDOM();
         expect(rootElement.tagName).to.equal('DIV');
         expect(rootElement.classList).to.have.length(1);
-        expect(rootElement.classList[0]).to.equal('climb__tile__message');
+        expect(rootElement.classList[0]).to.equal('climb__message');
     });
 
     it('renders html', () => {
