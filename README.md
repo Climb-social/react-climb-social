@@ -35,6 +35,19 @@ See the `data-collection-id` attribute in the 1st line? Set that to _your_ Climb
 Once that's on the page, you'll probably want to change how it looks. You can do this with CSS.
 Contact [support@climb.social](mailto:support@climb.social) if you're stuck.
 
+### Triggering JavaScript
+
+This library includes a hook for you to use when you want something to happen when the content updates.
+
+Bind a function to `window.Climb.onUpdate` and it will be fired when the content changed:
+
+    window.Climb = {
+        onUpdate: function() {
+            console.log('Climb.social update');
+        }
+    }
+
+
 ### React components
 
 This project also exposes some components for you to use in your existing React projects.
