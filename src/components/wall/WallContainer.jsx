@@ -16,6 +16,7 @@ class WallContainer extends Component {
 
     static propTypes = {
         collectionId: PropTypes.string.isRequired,
+        domain: PropTypes.string,
         limit: PropTypes.oneOfType([
             PropTypes.number,
             PropTypes.string
@@ -24,7 +25,9 @@ class WallContainer extends Component {
 
     static defaultProps = {
         collectionId: '561ba63445284e1740e016f7',
-        limit: 30
+        limit: 30,
+        refresh: 8,
+        domain: 'http://app.climb.social'
     };
 
     init() {
@@ -34,7 +37,11 @@ class WallContainer extends Component {
         }
 
         climb
-            .getStream(this.props.collectionId)
+            .getStream(
+                this.props.collectionId,
+                this.props.refresh,
+                this.props.domain
+            )
             .subscribe(items => {
 
                 const maxSize = parseInt(this.props.limit, 0);

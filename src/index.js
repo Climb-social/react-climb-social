@@ -15,9 +15,10 @@ if (window) {
         const $item = $walls[i];
         const collectionId = $item.dataset.collectionId;
         const limit = $item.dataset.limit;
+        const domain = $item.dataset.domain;
 
         ReactDOM.render(
-            React.createElement(WallContainer, {collectionId, limit}),
+            React.createElement(WallContainer, {collectionId, limit, domain}),
             $item
         );
     }
@@ -28,9 +29,10 @@ if (window) {
         const $item = $slideshows[i];
         const collectionId = $item.dataset.collectionId;
         const delay = parseInt($item.dataset.delay, 0);
+        const domain = $item.dataset.domain;
 
         ReactDOM.render(
-            React.createElement(SlideshowContainer, {collectionId, delay}),
+            React.createElement(SlideshowContainer, {collectionId, delay, domain}),
             $item
         );
     }

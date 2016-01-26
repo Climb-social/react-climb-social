@@ -15,12 +15,15 @@ class SlideshowContainer extends Component {
 
     static propTypes = {
         collectionId: PropTypes.string.isRequired,
+        domain: PropTypes.string,
         delay: PropTypes.number
     };
 
     static defaultProps = {
         collectionId: '561ba63445284e1740e016f7',
-        delay: 5
+        delay: 5,
+        refresh: 8,
+        domain: 'http://app.climb.social'
     };
 
 
@@ -31,7 +34,11 @@ class SlideshowContainer extends Component {
         }
 
         climb
-            .getStream(this.props.collectionId)
+            .getStream(
+                this.props.collectionId,
+                this.props.refresh,
+                this.props.domain
+            )
             .subscribe(items => {
 
                 const mappedItems = {};
