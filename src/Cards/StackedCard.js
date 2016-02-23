@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import Card from './Card'
+import Timestamp from '../Timestamp/Timestamp';
 
 const StackedCard = ({
   message,
@@ -42,9 +43,7 @@ const StackedCard = ({
         Image or video here
       </div>
 
-      <h4 className='Climb__Meta Climb__Meta__Timestamp'>
-        { timestamp }
-      </h4>
+      <Timestamp value={ timestamp } />
 
     </div>
   );
