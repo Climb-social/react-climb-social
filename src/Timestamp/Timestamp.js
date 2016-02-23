@@ -1,18 +1,21 @@
 import React, { PropTypes } from 'react';
 
 const Timestamp = ({
-  value
+  value,
+  link
   }) => {
   const valueStr = new Date(value).toLocaleString();
   return (
-    <h4 className='Climb__Meta Climb__Meta__Timestamp'>
+    <a href={ link }
+       className='Climb__Meta Climb__Meta__Timestamp'>
       { valueStr }
-    </h4>
+    </a>
   )
 };
 
 Timestamp.propTypes = {
-  value: PropTypes.number.isRequired
+  value: PropTypes.number.isRequired,
+  link: PropTypes.string.isRequired
 };
 
 export default Timestamp;

@@ -40,7 +40,8 @@ const StackedCard = ({
         Image or video here
       </div>
 
-      <Timestamp value={ timestamp } />
+      <Timestamp value={ timestamp }
+                 link={ link } />
 
     </div>
   );
