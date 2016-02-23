@@ -9,6 +9,7 @@ const Card = SubCard => props => {
 Card.propTypes = {
   message: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
+  timestamp: PropTypes.string.number,
   author: PropTypes.shape({
     name: PropTypes.string.isRequired,
     link: PropTypes.string.isRequired,

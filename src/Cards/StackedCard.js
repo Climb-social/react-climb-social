@@ -10,7 +10,8 @@ const StackedCard = ({
     link: profileLink,
     username
   },
-  sourceType
+  sourceType,
+  timestamp
   }) => {
   return (
     <div className={ `Climb__Card Climb__Card--Stacked Climb__Card--${sourceType}` }>
@@ -40,6 +41,10 @@ const StackedCard = ({
       <div className='Climb__Media'>
         Image or video here
       </div>
+
+      <h4 className='Climb__Meta Climb__Meta__Timestamp'>
+        { timestamp }
+      </h4>
 
     </div>
   );
