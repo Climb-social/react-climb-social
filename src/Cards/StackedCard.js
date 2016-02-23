@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import Card from './Card'
 import Timestamp from '../Timestamp/Timestamp';
+import TextBody from '../TextBody/TextBody';
 
 const StackedCard = ({
   message,
@@ -33,11 +34,7 @@ const StackedCard = ({
         </h5>
       </div>
 
-      <div className='Climb__TextBody'>
-        <a href={ link }>
-          <p>{ message }</p>
-        </a>
-      </div>
+      <TextBody text={ message } />
 
       <div className='Climb__Media'>
         Image or video here
