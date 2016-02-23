@@ -1,13 +1,12 @@
 import test from 'tape';
-import React from 'react'
-import TestUtils from 'react-addons-test-utils'
+import React from 'react';
+import TestUtils from 'react-addons-test-utils';
 
-import ListView from '../ListView'
+import ListView from '../ListView';
 
 test('ListView output classes', assert => {
-
   const renderer = TestUtils.createRenderer();
-  renderer.render(<ListView />);
+  renderer.render(<ListView items={[{id: 1}]} />);
   const output = renderer.getRenderOutput();
 
   const expected = 'Climb--ListView';
