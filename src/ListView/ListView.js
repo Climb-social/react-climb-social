@@ -12,7 +12,8 @@ class ListView extends React.Component {
   }
 
   componentDidMount() {
-    this.subscription = Climb.getStream(this.props.collectionId)
+    const { collectionId } = this.props;
+    this.subscription = Climb.getStream(collectionId)
       .subscribe(items => {
         this.setState({ items });
       })
