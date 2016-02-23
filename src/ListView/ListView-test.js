@@ -2,7 +2,7 @@ import test from 'tape';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 
-import ListView from '../ListView';
+import ListView from './ListView';
 
 test('ListView output classes', assert => {
   const renderer = TestUtils.createRenderer();

@@ -2,7 +2,7 @@ import test from 'tape';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 
-import BasicCard from '../BasicCard';
+import BasicCard from './BasicCard';
 
 test('BasicCard output classes', assert => {
   const renderer = TestUtils.createRenderer();
