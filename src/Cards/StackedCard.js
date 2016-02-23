@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import Card from './Card'
 
 const StackedCard = ({
   message,
@@ -44,15 +45,4 @@ const StackedCard = ({
   );
 };
 
-StackedCard.propTypes = {
-  message: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
-  author: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    link: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired
-  }).isRequired,
-  sourceType: PropTypes.string.isRequired
-};
-
-export default StackedCard;
+export default Card(StackedCard);
