@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import Climb from 'climb-social';
-import BasicCard from '../Cards/BasicCard';
+import StackedCard from '../Cards/StackedCard';
 
 class ListView extends React.Component {
 
@@ -45,7 +45,7 @@ ListView.propTypes = {
 };
 
 ListView.defaultProps = {
-  Card: BasicCard
+  Card: StackedCard
 };
 
 export default ListView;
