@@ -2,4 +2,5 @@
 set -e
 PATH=$(npm bin):$PATH
 
-./node_modules/.bin/babel-tape-runner ./src/**/*-test.js | faucet
+rm -rf coverage
+./node_modules/.bin/babel-tape-runner ./src/**/tests/*-test.js | faucet

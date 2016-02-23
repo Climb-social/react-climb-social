@@ -6,6 +6,7 @@
   "scripts": {
     "start": "./scripts/startSiteDevServer.sh",
     "build": "./scripts/build.sh",
+    "coverage": "./scripts/coverage.sh",
     "test": "./scripts/test.sh",
     "lint": "eslint .",
     "prepublish": "npm run lint && npm run build"
@@ -43,8 +44,9 @@
     "eslint-config-airbnb": "^0.1.0",
     "eslint-plugin-react": "^3.5.1",
     "extract-text-webpack-plugin": "^0.3.8",
-    "faucet": "0.0.1",
+    "istanbul": "^0.4.2",
     "react": "^0.14.0",
+    "react-addons-test-utils": "^0.14.7",
     "react-dom": "^0.14.0",
     "react-hot-loader": "^1.2.3",
     "tape": "^4.4.0",

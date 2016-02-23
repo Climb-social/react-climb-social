@@ -2,7 +2,9 @@ import React from 'react'
 
 const ListView = () => {
   return (
-    <span>ListView</span>
+    <div className='Climb--ListView'>
+      ListView
+    </div>
   );
 };
 
