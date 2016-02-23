@@ -29,7 +29,9 @@
     "url": "https://github.com/Climb-social/react-climb-social/issues"
   },
   "homepage": "https://github.com/Climb-social/react-climb-social",
-  "dependencies": {},
+  "dependencies": {
+    "climb-social": "^1.2.1"
+  },
   "peerDependencies": {
     "react": "^0.14.0"
   },

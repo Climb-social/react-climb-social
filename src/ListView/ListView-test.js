@@ -6,7 +6,7 @@ import ListView from './ListView';
 
 test('ListView output classes', assert => {
   const renderer = TestUtils.createRenderer();
-  renderer.render(<ListView items={[{id: 1}]} />);
+  renderer.render(<ListView collectionId='aaa' />);
   const output = renderer.getRenderOutput();
 
   const expected = 'Climb--ListView';

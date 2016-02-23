@@ -5,7 +5,7 @@ import { ListView, ComplexCard } from 'react-climb-social';
 const App = () => {
   return (
     <div>
-      <ListView items={[{id: 1}, {id: 2}]}
+      <ListView collectionId='56b4b06908216f0cac62a86b'
                 Card={ComplexCard} />
     </div>
   );
