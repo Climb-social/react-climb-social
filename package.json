@@ -6,6 +6,7 @@
   "scripts": {
     "start": "./scripts/startSiteDevServer.sh",
     "build": "./scripts/build.sh",
+    "test": "./scripts/test.sh",
     "lint": "eslint .",
     "prepublish": "npm run lint && npm run build"
   },
@@ -26,9 +27,7 @@
     "url": "https://github.com/Climb-social/react-climb-social/issues"
   },
   "homepage": "https://github.com/Climb-social/react-climb-social",
-  "dependencies": {
-
-  },
+  "dependencies": {},
   "peerDependencies": {
     "react": "^0.14.0"
   },
@@ -38,14 +37,17 @@
     "babel-core": "^5.8.24",
     "babel-eslint": "^4.1.3",
     "babel-loader": "^5.0.0",
+    "babel-tape-runner": "^1.3.1",
     "css-loader": "^0.9.1",
     "eslint": "^1.6.0",
     "eslint-config-airbnb": "^0.1.0",
     "eslint-plugin-react": "^3.5.1",
     "extract-text-webpack-plugin": "^0.3.8",
+    "faucet": "0.0.1",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
     "react-hot-loader": "^1.2.3",
+    "tape": "^4.4.0",
     "webpack": "^1.8.11",
     "webpack-dev-server": "^1.8.2"
   }

@@ -4,6 +4,6 @@ const ListView = () => {
   return (
     <span>ListView</span>
   );
-}
+};
 
 export default ListView;
