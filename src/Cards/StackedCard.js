@@ -19,11 +19,11 @@ const StackedCard = ({
              width='50'
              height='50'
              alt={`Profile picture of ${name}`} />
-        <h6>
+        <h6 className='Climb__Profile__name'>
           { name }
         </h6>
 
-        <h5>
+        <h5 className='Climb__Profile__username'>
           <a href={ profileLink }>
             @{ username }
           </a>
