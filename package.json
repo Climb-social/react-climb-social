@@ -1,6 +1,6 @@
 {
   "name": "react-climb-social",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "private": false,
   "description": "React components for interactions with Climb.social",
   "main": "lib/index.js",
@@ -51,6 +51,7 @@
     "eslint-config-airbnb": "^0.1.0",
     "eslint-plugin-react": "^3.5.1",
     "extract-text-webpack-plugin": "^0.3.8",
+    "ghooks": "^1.0.3",
     "istanbul": "^0.4.2",
     "react": "^0.14.0",
     "react-addons-test-utils": "^0.14.7",
@@ -62,6 +63,9 @@
     "webpack-dev-server": "^1.8.2"
   },
   "config": {
+    "ghooks": {
+      "pre-commit": "npm run lint && npm run test"
+    },
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
