@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ListView, ComplexCard } from 'react-climb-social';
+import { ListView } from 'react-climb-social';
 
 import 'react-climb-social/styles/main.css';
 
@@ -15,8 +15,7 @@ const App = () => {
 
         <h2>List View</h2>
 
-        <ListView collectionId='56b4b06908216f0cac62a86b'
-                  Card={ComplexCard} />
+        <ListView collectionId='56b4b06908216f0cac62a86b' />
       </div>
     </div>
   );
