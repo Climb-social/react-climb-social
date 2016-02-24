@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import Timestamp from '../Timestamp/Timestamp';
 import TextBody from '../TextBody/TextBody';
+import MediaBody from '../MediaBody/MediaBody';
 
 const StackedCard = ({
   message,
@@ -12,7 +13,9 @@ const StackedCard = ({
     username
   },
   sourceType,
-  timestamp
+  timestamp,
+  image,
+  videoUrl
   }) => {
   return (
     <div className={ `Climb__Card Climb__Card--Stacked Climb__Card--${sourceType}` }>
@@ -35,9 +38,8 @@ const StackedCard = ({
 
       <TextBody text={ message } />
 
-      <div className='Climb__Media'>
-        Image or video here
-      </div>
+      <MediaBody image={ image }
+                 videoUrl={ videoUrl } />
 
       <Timestamp value={ timestamp }
                  link={ link } />
@@ -55,7 +57,13 @@ StackedCard.propTypes = {
     link: PropTypes.string,
     username: PropTypes.string.isRequired
   }).isRequired,
-  sourceType: PropTypes.string.isRequired
+  sourceType: PropTypes.string.isRequired,
+  image: PropTypes.shape({
+    url: PropTypes.string.isRequired,
+    width: PropTypes.number.isRequired,
+    height: PropTypes.number.isRequired
+  }),
+  videoUrl: PropTypes.string
 };
 
 export default StackedCard;

@@ -1,16 +1,34 @@
 import React, { PropTypes } from 'react';
+import ImageBody from './ImageBody'
+import VideoBody from './VideoBody'
 
 const MediaBody = ({
-  text
+  image,
+  videoUrl
   }) => {
-  return (
-    <p className='Climb__TextBody'
-       dangerouslySetInnerHTML={ createMarkup(text) } />
-  )
+
+  if (videoUrl) {
+    return (
+      <VideoBody url={ videoUrl } />
+    );
+  }
+
+  if (image) {
+    return (
+      <ImageBody {...image} />
+    )
+  }
+
+  return <span>No Media</span>;
 };
 
 MediaBody.propTypes = {
-  text: PropTypes.string.isRequired
+  image: PropTypes.shape({
+    url: PropTypes.string.isRequired,
+    width: PropTypes.number.isRequired,
+    height: PropTypes.number.isRequired
+  }),
+  videoUrl: PropTypes.string
 };
 
 export default MediaBody;
