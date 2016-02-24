@@ -10,7 +10,7 @@ const VideoBody = ({
                 type="video/mp4" />
       </video>
     </div>
-  )
+  );
 };
 
 VideoBody.propTypes = {

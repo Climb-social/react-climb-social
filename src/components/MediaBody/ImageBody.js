@@ -12,7 +12,7 @@ const ImageBody = ({
            height={ height}
            alt="" />
     </div>
-  )
+  );
 };
 
 ImageBody.propTypes = {

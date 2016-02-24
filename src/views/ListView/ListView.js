@@ -16,7 +16,7 @@ class ListView extends React.Component {
     this.subscription = Climb.getStream(collectionId)
       .subscribe(items => {
         this.setState({ items });
-      })
+      });
   }
 
   componentWillUnMount() {

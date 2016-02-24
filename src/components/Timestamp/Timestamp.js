@@ -13,14 +13,14 @@ const Timestamp = ({
          className='Climb__Meta Climb__Meta__Timestamp'>
         { valueStr }
       </a>
-    )
-  } else {
-    return (
-      <span className='Climb__Meta Climb__Meta__Timestamp'>
-        { valueStr }
-      </span>
-    )
+    );
   }
+
+  return (
+    <span className='Climb__Meta Climb__Meta__Timestamp'>
+      { valueStr }
+    </span>
+  );
 };
 
 Timestamp.propTypes = {

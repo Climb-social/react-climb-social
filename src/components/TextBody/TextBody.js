@@ -11,7 +11,7 @@ const TextBody = ({
   return (
     <p className='Climb__TextBody'
        dangerouslySetInnerHTML={ createMarkup(text) } />
-  )
+  );
 };
 
 TextBody.propTypes = {

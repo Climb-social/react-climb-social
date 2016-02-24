@@ -1,12 +1,11 @@
 import React, { PropTypes } from 'react';
-import ImageBody from './ImageBody'
-import VideoBody from './VideoBody'
+import ImageBody from './ImageBody';
+import VideoBody from './VideoBody';
 
 const MediaBody = ({
   image,
   videoUrl
   }) => {
-
   if (videoUrl) {
     return (
       <VideoBody url={ videoUrl } />
@@ -16,7 +15,7 @@ const MediaBody = ({
   if (image) {
     return (
       <ImageBody {...image} />
-    )
+    );
   }
 
   return <span>No Media</span>;
