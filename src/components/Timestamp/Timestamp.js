@@ -6,17 +6,26 @@ const Timestamp = ({
   link
   }) => {
   const valueStr = moment(value * 1000).fromNow();
-  return (
-    <a href={ link }
-       className='Climb__Meta Climb__Meta__Timestamp'>
-      { valueStr }
-    </a>
-  )
+
+  if (link) {
+    return (
+      <a href={ link }
+         className='Climb__Meta Climb__Meta__Timestamp'>
+        { valueStr }
+      </a>
+    )
+  } else {
+    return (
+      <span className='Climb__Meta Climb__Meta__Timestamp'>
+        { valueStr }
+      </span>
+    )
+  }
 };
 
 Timestamp.propTypes = {
   value: PropTypes.number.isRequired,
-  link: PropTypes.string.isRequired
+  link: PropTypes.string
 };
 
 export default Timestamp;
