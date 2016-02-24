@@ -1,13 +1,20 @@
+sudo: false
 language: node_js
+notifications:
+  email: false
 node_js:
   - "iojs-2"
 cache:
   directories:
     - node_modules
+before_install:
+  - npm install -g npm@3.x
+before_script:
+  - npm prune
 script:
   - npm run lint
   - npm run coverage
   - npm run build
-before_install:
-  - npm install -g npm@3.x
-after_success: coveralls
+after_script:
+  - npm run coverage
+  - npm run coveralls
