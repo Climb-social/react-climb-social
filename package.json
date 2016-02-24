@@ -38,21 +38,26 @@
     "react": "^0.14.0"
   },
   "devDependencies": {
-    "autoprefixer": "^5.0.0",
+    "autoprefixer": "^6.3.3",
     "babel": "^5.8.23",
     "babel-core": "^5.8.24",
     "babel-eslint": "^4.1.3",
     "babel-loader": "^5.0.0",
     "babel-tape-runner": "^1.3.1",
     "commitizen": "^2.5.0",
-    "css-loader": "^0.9.1",
+    "css-loader": "^0.23.1",
     "cz-conventional-changelog": "^1.1.5",
     "eslint": "^1.6.0",
     "eslint-config-airbnb": "^0.1.0",
+    "eslint-loader": "^1.3.0",
     "eslint-plugin-react": "^3.5.1",
     "extract-text-webpack-plugin": "^0.3.8",
     "ghooks": "^1.0.3",
     "istanbul": "^0.4.2",
+    "less": "^2.6.0",
+    "less-loader": "^2.2.2",
+    "postcss-loader": "^0.8.1",
+    "precss": "^1.4.0",
     "react": "^0.14.0",
     "react-addons-test-utils": "^0.14.7",
     "react-dom": "^0.14.0",
@@ -64,7 +69,7 @@
   },
   "config": {
     "ghooks": {
-      "pre-commit": "npm run lint && npm run test"
+      "pre-commit": "npm run test | faucet"
     },
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
