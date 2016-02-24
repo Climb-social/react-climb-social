@@ -2,23 +2,21 @@ import React, { PropTypes } from 'react';
 
 const ImageBody = ({
   url,
-  width,
   height
   }) => {
+  const styles = {
+    height,
+    backgroundImage: `url(${url})`
+  };
+
   return (
-    <div className='Climb__Image'>
-      <img src={ url }
-           width={ width }
-           height={ height}
-           alt="" />
-    </div>
+    <div className='Climb__Image'
+         style={ styles } />
   );
 };
 
 ImageBody.propTypes = {
-  url: PropTypes.string.isRequired,
-  width: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired
+  url: PropTypes.string.isRequired
 };
 
 export default ImageBody;

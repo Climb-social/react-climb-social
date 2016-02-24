@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { ListView, ComplexCard } from 'react-climb-social';
 
-import 'react-climb-social/styles/main.css'
+import 'react-climb-social/styles/main.css';
 
 const App = () => {
   return (
-    <div className='max-width-4 mx-auto'>
+    <div className='max-width-2 mx-auto'>
       <div className='clearfix'>
 
         <h1>

@@ -5,7 +5,8 @@ const VideoBody = ({
   }) => {
   return (
     <div className='Climb__Video'>
-      <video controls>
+      <video width='100%'
+             controls>
         <source src={ url }
                 type="video/mp4" />
       </video>

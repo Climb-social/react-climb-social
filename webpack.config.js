@@ -15,10 +15,10 @@ module.exports = {
       { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader', 'postcss-loader'), exclude: /node_modules/ }
     ]
   },
-  postcss: function () {
+  postcss: function (webpack) {
     return [
-      require('autoprefixer'),
-      require('precss')()
+      require('autoprefixer')({ browsers: ['last 2 versions'] }),
+      require('precss')
     ];
   },
   externals: [{
