@@ -4,11 +4,12 @@ import TestUtils from 'react-addons-test-utils';
 
 import StackedCard from './StackedCard';
 
-test('StackedCard output class', assert => {
+test('StackedCard output classes', assert => {
   const renderer = TestUtils.createRenderer();
   const props = {
     message: 'I am the message',
     link: 'http://climb.social',
+    timestamp: 1455811260,
     author: {
       pic: 'http://url/to/pic.jpg',
       name: 'ClimbSocialUK',

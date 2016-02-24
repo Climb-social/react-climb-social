@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import Climb from 'climb-social';
-import StackedCard from '../Cards/StackedCard';
+import StackedCard from '../../components/Cards/StackedCard';
 
 class ListView extends React.Component {
 

@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import Card from './Card'
 import Timestamp from '../Timestamp/Timestamp';
 import TextBody from '../TextBody/TextBody';
 
@@ -47,4 +46,16 @@ const StackedCard = ({
   );
 };
 
-export default Card(StackedCard);
+StackedCard.propTypes = {
+  message: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
+  timestamp: PropTypes.number.isRequired,
+  author: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    link: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired
+  }).isRequired,
+  sourceType: PropTypes.string.isRequired
+};
+
+export default StackedCard;
