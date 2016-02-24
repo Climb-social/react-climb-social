@@ -31,7 +31,8 @@
   },
   "homepage": "https://github.com/Climb-social/react-climb-social",
   "dependencies": {
-    "climb-social": "^1.2.1"
+    "climb-social": "^1.2.1",
+    "moment": "^2.11.2"
   },
   "peerDependencies": {
     "react": "^0.14.0"

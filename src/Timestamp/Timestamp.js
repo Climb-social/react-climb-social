@@ -1,10 +1,11 @@
 import React, { PropTypes } from 'react';
+import moment from 'moment';
 
 const Timestamp = ({
   value,
   link
   }) => {
-  const valueStr = new Date(value).toLocaleString();
+  const valueStr = moment(value * 1000).fromNow();
   return (
     <a href={ link }
        className='Climb__Meta Climb__Meta__Timestamp'>
