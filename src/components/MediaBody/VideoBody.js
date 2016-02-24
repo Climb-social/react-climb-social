@@ -4,7 +4,7 @@ const VideoBody = ({
   url,
   }) => {
   return (
-    <div className='Climb__Video'>
+    <div className='Climb__Media Climb__Media--video'>
       <video width='100%'
              controls>
         <source src={ url }

@@ -15,7 +15,7 @@ test('TextBody output classes', assert => {
 
   const expected = true;
 
-  let actual = output
+  const actual = output
     .props.className
     .includes('Climb__TextBody');
 

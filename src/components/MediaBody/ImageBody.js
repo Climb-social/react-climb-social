@@ -10,13 +10,15 @@ const ImageBody = ({
   };
 
   return (
-    <div className='Climb__Image'
-         style={ styles } />
+    <div className='Climb__Media Climb__Media--image'
+         style={ styles }>
+    </div>
   );
 };
 
 ImageBody.propTypes = {
-  url: PropTypes.string.isRequired
+  url: PropTypes.string.isRequired,
+  height: PropTypes.number
 };
 
 export default ImageBody;
