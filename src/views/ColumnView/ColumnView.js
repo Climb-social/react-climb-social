@@ -13,12 +13,7 @@ class ColumnView extends React.Component {
   }
 
   componentDidMount() {
-    const sizes = [
-      { columns: 1, gutter: 30 },
-      { mq: '768px', columns: 2, gutter: 30 },
-      { mq: '1024px', columns: 3, gutter: 30 },
-      { mq: '2000px', columns: 4, gutter: 30 }
-    ];
+    const { collectionId, sizes } = this.props;
 
     this.instance = Bricks({
       container: '.Climb--ColumnView',
@@ -29,7 +24,6 @@ class ColumnView extends React.Component {
     this.instance
       .resize();
 
-    const { collectionId } = this.props;
     this.subscription = Climb.getStream(collectionId)
       .subscribe(items => {
         this.setState({ items });
@@ -60,11 +54,20 @@ class ColumnView extends React.Component {
 
 ColumnView.propTypes = {
   Card: PropTypes.oneOfType([PropTypes.func, PropTypes.elem]),
-  collectionId: PropTypes.string.isRequired
+  collectionId: PropTypes.string.isRequired,
+  sizes: PropTypes.array
 };
 
 ColumnView.defaultProps = {
-  Card: StackedCard
+  Card: StackedCard,
+  sizes: [
+    { columns: 1, gutter: 30 },
+    { mq: '640px', columns: 2, gutter: 30 },
+    { mq: '945px', columns: 3, gutter: 30 },
+    { mq: '1250px', columns: 4, gutter: 30 },
+    { mq: '1556px', columns: 5, gutter: 30 },
+    { mq: '1860px', columns: 6, gutter: 30 }
+  ]
 };
 
 export default ColumnView;
