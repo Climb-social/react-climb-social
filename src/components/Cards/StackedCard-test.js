@@ -4,7 +4,7 @@ import TestUtils from 'react-addons-test-utils';
 
 import StackedCard from './StackedCard';
 
-test('StackedCard output classes', assert => {
+test('StackedCard classes', assert => {
   const renderer = TestUtils.createRenderer();
   const props = {
     message: 'I am the message',

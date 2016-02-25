@@ -16,7 +16,7 @@ test('MediaBody element: Video', assert => {
   const output = renderer.getRenderOutput();
 
   const expected = VideoBody;
-  let actual = output.type;
+  const actual = output.type;
 
   assert.equal(
     actual,
@@ -24,7 +24,7 @@ test('MediaBody element: Video', assert => {
     'VideoBody'
   );
 
-  assert.end()
+  assert.end();
 });
 
 test('MediaBody element: Image', assert => {
@@ -41,7 +41,7 @@ test('MediaBody element: Image', assert => {
   const output = renderer.getRenderOutput();
 
   const expected = ImageBody;
-  let actual = output.type;
+  const actual = output.type;
 
   assert.equal(
     actual,
@@ -49,6 +49,53 @@ test('MediaBody element: Image', assert => {
     'ImageBody'
   );
 
-  assert.end()
+  assert.end();
 });
 
+test('MediaBody element: Both', assert => {
+  const renderer = TestUtils.createRenderer();
+  const props = {
+    image: {
+      url: 'path/to/image.jpg',
+      width: 40,
+      height: 40
+    },
+    videoUrl: 'http://url.to.video.com'
+  };
+
+  renderer.render(<MediaBody {...props} />);
+  const output = renderer.getRenderOutput();
+
+  const expected = VideoBody;
+  const actual = output.type;
+
+  assert.equal(
+    actual,
+    expected,
+    'VideoBody'
+  );
+
+  assert.end();
+});
+
+test('MediaBody element: No media', assert => {
+  const renderer = TestUtils.createRenderer();
+  const props = {
+    image: null,
+    videoUrl: null
+  };
+
+  renderer.render(<MediaBody {...props} />);
+  const output = renderer.getRenderOutput();
+
+  const expected = 'span';
+  const actual = output.type;
+
+  assert.equal(
+    actual,
+    expected,
+    'No Media message'
+  );
+
+  assert.end();
+});
