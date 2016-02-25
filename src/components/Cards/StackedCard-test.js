@@ -32,7 +32,7 @@ test('StackedCard output classes', assert => {
   assert.equal(
     actual,
     expected,
-    'StackedCard should have a `Climb__Card` className'
+    'Climb__Card'
   );
 
   actual = output
@@ -42,7 +42,7 @@ test('StackedCard output classes', assert => {
   assert.equal(
     actual,
     expected,
-    'StackedCard should have a `Climb__Card--Stacked` className'
+    'Climb__Card--Stacked'
   );
 
   actual = output
@@ -52,7 +52,7 @@ test('StackedCard output classes', assert => {
   assert.equal(
     actual,
     expected,
-    'StackedCard should have a `Climb__Card--MegaSocial` className'
+    'Climb__Card--MegaSocial'
   );
 });
 

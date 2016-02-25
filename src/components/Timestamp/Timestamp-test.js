@@ -23,7 +23,7 @@ test('Timestamp output classes', assert => {
   assert.equal(
     actual,
     expected,
-    'Timestamp should have a `Climb__Meta` className'
+    'Climb__Meta'
   );
 
   actual = output
@@ -33,7 +33,7 @@ test('Timestamp output classes', assert => {
   assert.equal(
     actual,
     expected,
-    'StackedCard should have a `Climb__Meta__Timestamp` className'
+    'Climb__Meta__Timestamp'
   );
 });
 

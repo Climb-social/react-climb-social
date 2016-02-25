@@ -22,7 +22,7 @@ test('TextBody output classes', assert => {
   assert.equal(
     actual,
     expected,
-    'TextBody should have a `Climb__TextBody` className'
+    'Climb__TextBody'
   );
 
   assert.end();
