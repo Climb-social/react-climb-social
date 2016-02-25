@@ -11,10 +11,6 @@ before_install:
   - npm install -g npm@3.x
 before_script:
   - npm prune
-script:
-  - npm run lint
-  - npm run coverage
-  - npm run build
 after_script:
   - npm run coverage
   - npm run coveralls
