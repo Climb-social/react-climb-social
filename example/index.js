@@ -13,12 +13,12 @@ const App = () => {
         React Climb Social
       </h1>
 
-      <div className='sm-col sm-col-6 md-col-5 lg-col-4 px2'>
+      <div className='sm-col sm-col-6 md-col-4 lg-col-3 px2'>
         <h2>List View</h2>
         <ListView collectionId='56b4b06908216f0cac62a86b' />
       </div>
 
-      <div className='sm-col sm-col-6 md-col-7 lg-col-8 px2'>
+      <div className='sm-col sm-col-6 md-col-8 lg-col-9 px2'>
         <h2>Column View</h2>
         <ColumnView collectionId='56b4b06908216f0cac62a86b' />
       </div>

@@ -3,10 +3,19 @@
     flex-direction: column;
 }
 
+.Climb__Card {
+    position: relative;
+    overflow: hidden;
+}
+
 .Climb__Media--image {
     max-width: 100%;
     height: auto;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.Climb--ColumnView .Climb__Card {
+    width: 275px;
 }

@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var path = require('path');
 
 module.exports = {
   entry: [
@@ -13,6 +14,9 @@ module.exports = {
     loaders: [
       { test: /\.js$/, loader: 'babel', exclude: /node_modules/ },
       { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader', 'postcss-loader'), exclude: /node_modules/ }
+    ],
+    noParse: [
+      path.join(__dirname, './node_modules/bricks.js/dist/bricks.min.js')
     ]
   },
   postcss: function (webpack) {

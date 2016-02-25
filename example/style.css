@@ -15,7 +15,14 @@ html, body {
     order: -2;
 }
 
-.Climb--ColumnView .Climb__TextBody {
-    order: 8;
-    text-align: right;
+.Climb--ColumnView .Climb__TextBody,
+.Climb--ColumnView .Climb__Profile,
+.Climb--ColumnView .Climb__MediaBody,
+.Climb--ColumnView .Climb__Meta__Timestamp
+{
+    display: none;
+}
+
+.Climb--ColumnView .Climb__Card {
+    padding: 0;
 }
