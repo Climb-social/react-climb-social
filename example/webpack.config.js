@@ -1,6 +1,5 @@
 var path = require('path');
 var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
 
@@ -13,9 +12,9 @@ module.exports = {
   ],
 
   output: {
-    path: '__site__/',
+    path: 'build/',
     filename: '[name].js',
-    publicPath: ''
+    publicPath: 'build'
   },
 
   target: 'web',
@@ -42,7 +41,6 @@ module.exports = {
   },
 
   plugins: [
-    new ExtractTextPlugin('[name].css'),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)

@@ -2,7 +2,7 @@ html, body {
     font-family: sans-serif;
 }
 
-.Climb__Card--Stacked {
+.Climb__Card {
     background-color: aliceblue;
     padding: 1em;
     margin-bottom: 1em;
@@ -11,16 +11,11 @@ html, body {
 }
 
 
-.Climb__Card--Stacked .Climb__Meta__Timestamp {
+.Climb__Meta__Timestamp {
     order: -2;
 }
 
-.Climb__Card--Stacked .Climb__TextBody {
-    order: -1;
-}
-
-.Climb__Card--Stacked .Climb__Profile {
+.Climb--ColumnView .Climb__TextBody {
     order: 8;
     text-align: right;
-    display: flex;
 }
