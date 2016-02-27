@@ -3,9 +3,14 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import RegularSquareView from './RegularSquareView';
+import StackedCard from '../../components/Cards/StackedCard';
 
 test('RegularSquareView classes', assert => {
-  const output = shallow(<RegularSquareView collectionId='aaa' />);
+  const props = {
+    collectionId: 'aaa',
+    Card: StackedCard
+  };
+  const output = shallow(<RegularSquareView {...props} />);
 
   const expected = true;
   const actual = output.hasClass('Climb--RegularSquareView');

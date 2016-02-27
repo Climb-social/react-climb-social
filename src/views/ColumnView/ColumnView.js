@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import Climb from 'climb-social';
 import Bricks from 'bricks.js';
-import StackedCard from '../../components/Cards/StackedCard';
 
 class ColumnView extends React.Component {
 
@@ -53,13 +52,12 @@ class ColumnView extends React.Component {
 }
 
 ColumnView.propTypes = {
-  Card: PropTypes.oneOfType([PropTypes.func, PropTypes.elem]),
+  Card: PropTypes.oneOfType([PropTypes.func, PropTypes.elem]).isRequired,
   collectionId: PropTypes.string.isRequired,
   sizes: PropTypes.array
 };
 
 ColumnView.defaultProps = {
-  Card: StackedCard,
   sizes: [
     { columns: 1, gutter: 30 },
     { mq: '640px', columns: 2, gutter: 30 },
