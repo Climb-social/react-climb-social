@@ -4,10 +4,13 @@ const ImageBody = ({
   url,
   height
   }) => {
-  const styles = {
-    height,
+  let styles = {
     backgroundImage: `url(${url})`
   };
+
+  if (height) {
+    styles = {...styles, height };
+  }
 
   return (
     <div className='Climb__Media Climb__Media--image'
