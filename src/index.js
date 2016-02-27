@@ -23,7 +23,8 @@ const main = () => {
   Array.from(ClimbViews).forEach(elem => {
     const {
       collectionId,
-      view
+      view,
+      limit
       } = elem.dataset;
 
     let props = {
@@ -36,6 +37,13 @@ const main = () => {
       props = {
         ...props,
         View
+      };
+    }
+
+    if (limit) {
+      props = {
+        ...props,
+        limit: parseInt(limit, 10)
       };
     }
 

@@ -14,10 +14,16 @@ class ClimbView extends React.Component {
   }
 
   componentDidMount() {
-    const { collectionId } = this.props;
-    this.subscription = Climb.getStream(collectionId)
+    const {
+      collectionId,
+      refresh,
+      domain,
+      limit
+      } = this.props;
+    this.subscription = Climb.getStream(collectionId, refresh, domain)
       .subscribe(items => {
-        this.setState({ items });
+        const latestItems = items.slice(0, limit);
+        this.setState({ items: latestItems });
       });
   }
 
@@ -42,12 +48,18 @@ class ClimbView extends React.Component {
 ClimbView.propTypes = {
   View: PropTypes.oneOfType([PropTypes.func, PropTypes.elem]),
   Card: PropTypes.oneOfType([PropTypes.func, PropTypes.elem]),
-  collectionId: PropTypes.string.isRequired
+  collectionId: PropTypes.string.isRequired,
+  limit: PropTypes.number,
+  refresh: PropTypes.number,
+  domain: PropTypes.string
 };
 
 ClimbView.defaultProps = {
   View: ListView,
-  Card: StackedCard
+  Card: StackedCard,
+  limit: 30,
+  refresh: 8,
+  domain: 'http://app.climb.social'
 };
 
 export default ClimbView;
