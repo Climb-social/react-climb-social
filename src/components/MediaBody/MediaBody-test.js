@@ -52,7 +52,7 @@ test('MediaBody element: Image', assert => {
   assert.end();
 });
 
-test('MediaBody element: Both', assert => {
+test('MediaBody element: Both specified', assert => {
   const renderer = TestUtils.createRenderer();
   const props = {
     image: {

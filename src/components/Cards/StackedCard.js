@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import Timestamp from '../Timestamp/Timestamp';
 import TextBody from '../TextBody/TextBody';
 import MediaBody from '../MediaBody/MediaBody';
+import Publisher from '../Publisher/Publisher';
 
 const StackedCard = ({
   message,
@@ -20,21 +21,10 @@ const StackedCard = ({
   return (
     <div className={ `Climb__Card Climb__Card--Stacked Climb__Card--${sourceType}` }>
 
-      <div className='Climb__Profile'>
-        <img src={ pic }
-             width='50'
-             height='50'
-             alt={`Profile picture of ${name}`} />
-        <h6 className='Climb__Profile__name'>
-          { name }
-        </h6>
-
-        <h5 className='Climb__Profile__username'>
-          <a href={ profileLink }>
-            @{ username }
-          </a>
-        </h5>
-      </div>
+      <Publisher pic={ pic }
+                 displayName={ name }
+                 profileLink={ profileLink }
+                 username={ username } />
 
       <TextBody text={ message } />
 

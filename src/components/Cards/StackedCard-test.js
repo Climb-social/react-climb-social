@@ -11,7 +11,7 @@ test('StackedCard classes', assert => {
     link: 'http://climb.social',
     timestamp: 1455811260,
     author: {
-      pic: 'http://url/to/pic.jpg',
+      picture: 'http://url/to/pic.jpg',
       name: 'ClimbSocialUK',
       link: 'http://twitter.com/ClimbSocialUK',
       username: 'ClimbSocialUK'
