@@ -29,7 +29,6 @@ test('ImageBody classes', assert => {
     expected,
     'Climb__Media--image'
   );
-
 });
 
 test('ImageBody styles: without height', assert => {
