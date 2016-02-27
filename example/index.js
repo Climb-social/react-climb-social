@@ -15,7 +15,8 @@ const App = () => {
 
       <ClimbView collectionId='56b4b06908216f0cac62a86b' Card={ StackedCard } />
 
-      <ClimbView collectionId='56b4b06908216f0cac62a86b'
+
+       <ClimbView collectionId='56b4b06908216f0cac62a86b'
                  View={ RegularSquareView } />
 
       <div className='sm-col sm-col-6 md-col-4 lg-col-3 px2'>

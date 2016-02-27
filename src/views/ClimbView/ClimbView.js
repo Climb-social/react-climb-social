@@ -2,9 +2,7 @@ import React, { PropTypes } from 'react';
 import Climb from 'climb-social';
 
 import ListView from '../ListView/ListView';
-
 import StackedCard from '../../components/Cards/StackedCard';
-
 
 class ClimbView extends React.Component {
 
@@ -34,7 +32,7 @@ class ClimbView extends React.Component {
       } = this.props;
 
     return (
-      <div className='Climb'>
+      <div className='Climb__Container'>
         <View items={ this.state.items } { ...otherProps } />
       </div>
     );
