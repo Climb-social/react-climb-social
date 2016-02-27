@@ -18,12 +18,28 @@ html, body {
 .Climb--ColumnView .Climb__TextBody,
 .Climb--ColumnView .Climb__Profile,
 .Climb--ColumnView .Climb__MediaBody,
-.Climb--ColumnView .Climb__Meta__Timestamp
-{
+.Climb--ColumnView .Climb__Meta__Timestamp,
+.Climb--RegularSquareView .Climb__TextBody,
+.Climb--RegularSquareView .Climb__Meta__Publisher,
+.Climb--RegularSquareView .Climb__MediaBody,
+.Climb--RegularSquareView .Climb__Meta__Timestamp{
     display: none;
 }
 
-.Climb--ColumnView .Climb__Card {
+.Climb--ColumnView .Climb__Card,
+.Climb--RegularSquareView .Climb__Card{
     padding: 0;
     transition: all 0.5s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+}
+
+.Climb--RegularSquareView .Climb__Card {
+    margin: 0;
+    background-color: #215CFF;
+    box-shadow: none;
+    color: white;
+    border-radius: 0;
+}
+
+.Climb--RegularSquareView .Climb__Media {
+    height: 100% !important;
 }

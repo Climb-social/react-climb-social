@@ -1,5 +1,6 @@
 export { default as ListView } from './views/ListView/ListView';
 export { default as ColumnView } from './views/ColumnView/ColumnView';
+export { default as RegularSquareView} from './views/RegularSquareView/RegularSquareView';
 
 export { default as StackedCard } from './components/Cards/StackedCard';
 export { default as MediaBody } from './components/MediaBody/MediaBody';

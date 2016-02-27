@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ListView, ColumnView } from 'react-climb-social';
+import { ListView, ColumnView, RegularSquareView } from 'react-climb-social';
 
 import 'react-climb-social/styles/main.css';
 import './style.css';
@@ -12,6 +12,8 @@ const App = () => {
       <h1>
         React Climb Social
       </h1>
+
+      <RegularSquareView collectionId='56b4b06908216f0cac62a86b' />
 
       <div className='sm-col sm-col-6 md-col-4 lg-col-3 px2'>
         <h2>List View</h2>

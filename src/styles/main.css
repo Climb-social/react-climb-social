@@ -10,7 +10,7 @@
 
 .Climb__Media--image {
     max-width: 100%;
-    height: auto;
+    height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -18,4 +18,38 @@
 
 .Climb--ColumnView .Climb__Card {
     width: 275px;
+}
+
+.Climb--RegularSquareView {
+    overflow: hidden;
+}
+
+.Climb--RegularSquareView__square {
+    float: left;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    overflow: hidden;
+}
+
+@media (min-width: 700px) {
+    .Climb--RegularSquareView__square {
+        width: 50%;
+        padding-bottom: 50%;
+    }
+}
+
+@media (min-width: 1100px) {
+    .Climb--RegularSquareView__square {
+        width: 33.3333%;
+        padding-bottom: 33.3333%;
+    }
+}
+
+.Climb--RegularSquareView__square > .Climb__Card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
