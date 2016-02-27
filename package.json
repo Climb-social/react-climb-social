@@ -74,7 +74,7 @@
   },
   "config": {
     "ghooks": {
-      "pre-commit": "npm run test | faucet"
+      "pre-commit": "npm run test"
     },
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
