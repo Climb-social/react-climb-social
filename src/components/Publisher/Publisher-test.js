@@ -1,11 +1,10 @@
 import test from 'tape';
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import { shallow } from 'enzyme';
 
 import Publisher from './Publisher';
 
 test('Publisher output classes', assert => {
-  const renderer = TestUtils.createRenderer();
   const props = {
     pic: 'http://100shapes.com/pic.jpg',
     displayName: 'Climb Social',
@@ -13,15 +12,12 @@ test('Publisher output classes', assert => {
     profileLink: 'http://twitter.com/ClimbSocialUK'
   };
 
-  renderer.render(<Publisher {...props} />);
-  const output = renderer.getRenderOutput();
+  const output = shallow(<Publisher {...props} />);
 
   assert.plan(2);
   const expected = true;
 
-  let actual = output
-    .props.className
-    .includes('Climb__Meta '); // Note: the Space is important here
+  let actual = output.hasClass('Climb__Meta');
 
   assert.equal(
     actual,
@@ -29,9 +25,7 @@ test('Publisher output classes', assert => {
     'Climb__Meta'
   );
 
-  actual = output
-    .props.className
-    .includes('Climb__Meta__Publisher');
+  actual = output.hasClass('Climb__Meta__Publisher');
 
   assert.equal(
     actual,

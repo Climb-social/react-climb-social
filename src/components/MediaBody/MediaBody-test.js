@@ -1,22 +1,20 @@
 import test from 'tape';
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import { shallow } from 'enzyme';
 
 import MediaBody from './MediaBody';
 import VideoBody from './VideoBody';
 import ImageBody from './ImageBody';
 
 test('MediaBody element: Video', assert => {
-  const renderer = TestUtils.createRenderer();
   const props = {
     videoUrl: 'http://url.to.video.com'
   };
 
-  renderer.render(<MediaBody {...props} />);
-  const output = renderer.getRenderOutput();
+  const output = shallow(<MediaBody {...props} />);
 
   const expected = VideoBody;
-  const actual = output.type;
+  const actual = output.type();
 
   assert.equal(
     actual,
@@ -28,7 +26,6 @@ test('MediaBody element: Video', assert => {
 });
 
 test('MediaBody element: Image', assert => {
-  const renderer = TestUtils.createRenderer();
   const props = {
     image: {
       url: 'path/to/image.jpg',
@@ -37,11 +34,10 @@ test('MediaBody element: Image', assert => {
     }
   };
 
-  renderer.render(<MediaBody {...props} />);
-  const output = renderer.getRenderOutput();
+  const output = shallow(<MediaBody {...props} />);
 
   const expected = ImageBody;
-  const actual = output.type;
+  const actual = output.type();
 
   assert.equal(
     actual,
@@ -53,7 +49,6 @@ test('MediaBody element: Image', assert => {
 });
 
 test('MediaBody element: Both specified', assert => {
-  const renderer = TestUtils.createRenderer();
   const props = {
     image: {
       url: 'path/to/image.jpg',
@@ -63,11 +58,10 @@ test('MediaBody element: Both specified', assert => {
     videoUrl: 'http://url.to.video.com'
   };
 
-  renderer.render(<MediaBody {...props} />);
-  const output = renderer.getRenderOutput();
+  const output = shallow(<MediaBody {...props} />);
 
   const expected = VideoBody;
-  const actual = output.type;
+  const actual = output.type();
 
   assert.equal(
     actual,
@@ -79,17 +73,15 @@ test('MediaBody element: Both specified', assert => {
 });
 
 test('MediaBody element: No media', assert => {
-  const renderer = TestUtils.createRenderer();
   const props = {
     image: null,
     videoUrl: null
   };
 
-  renderer.render(<MediaBody {...props} />);
-  const output = renderer.getRenderOutput();
+  const output = shallow(<MediaBody {...props} />);
 
   const expected = 'span';
-  const actual = output.type;
+  const actual = output.type();
 
   assert.equal(
     actual,

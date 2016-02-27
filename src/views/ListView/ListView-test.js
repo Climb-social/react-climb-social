@@ -1,16 +1,20 @@
 import test from 'tape';
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import { shallow } from 'enzyme';
 
 import ListView from './ListView';
 
 test('ListView output classes', assert => {
-  const renderer = TestUtils.createRenderer();
-  renderer.render(<ListView collectionId='aaa' />);
-  const output = renderer.getRenderOutput();
+  const output = shallow(<ListView collectionId='aaa' />);
 
-  const expected = 'Climb--ListView';
-  const actual = output.props.className;
-  assert.equal(actual, expected, 'ListView should have a `Climb--ListView` className');
+  const expected = true;
+  const actual = output.hasClass('Climb--ListView');
+
+  assert.equal(
+    actual,
+    expected,
+    'Climb--ListView'
+  );
+
   assert.end();
 });
