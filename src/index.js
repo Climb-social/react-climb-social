@@ -7,3 +7,4 @@ export { default as ImageBody } from './components/MediaBody/ImageBody';
 export { default as VideoBody } from './components/MediaBody/VideoBody';
 export { default as TextBody } from './components/TextBody/TextBody';
 export { default as Timestamp } from './components/Timestamp/Timestamp';
+export { default as Publisher } from './components/Publisher/Publisher';
