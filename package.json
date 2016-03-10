@@ -11,7 +11,7 @@
     "coverage": "./scripts/coverage.sh",
     "test": "./scripts/test.sh",
     "lint": "eslint .",
-    "prepublish": "npm run lint && npm run build && ./scripts/ghPages.sh",
+    "prepublish": "npm run lint && npm run build",
     "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
