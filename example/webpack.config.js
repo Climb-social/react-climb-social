@@ -3,8 +3,6 @@ var webpack = require('webpack');
 
 module.exports = {
 
-  devtool: 'cheap-eval-source-map',
-
   entry: [
     path.join(__dirname, 'index.js'),
     'webpack-dev-server/client?http://localhost:8080',
@@ -12,7 +10,7 @@ module.exports = {
   ],
 
   output: {
-    path: 'build/',
+    path: 'example/build/',
     filename: '[name].js',
     publicPath: 'build'
   },

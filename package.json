@@ -7,7 +7,7 @@
   "scripts": {
     "start": "./scripts/startSiteDevServer.sh",
     "commit": "git cz",
-    "build": "./scripts/build.sh",
+    "build": "./scripts/build.sh && ./scripts/buildExample.sh",
     "coverage": "./scripts/coverage.sh",
     "test": "./scripts/test.sh",
     "lint": "eslint .",

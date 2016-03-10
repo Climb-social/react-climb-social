@@ -3,5 +3,6 @@ dist
 lib
 **/node_modules
 **/webpack*.config.js
+example/build
 karma.conf.js
 coverage
