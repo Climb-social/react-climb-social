@@ -8,3 +8,4 @@ webpack.config.js
 .babelrc
 .eslintrc
 bower.json
+coverage
