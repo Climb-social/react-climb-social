@@ -13,13 +13,13 @@ class ClimbView extends React.Component {
     };
   }
 
-  componentDidMount() {
+  _setupStream(props) {
     const {
       collectionId,
       refresh,
       domain,
       limit
-      } = this.props;
+      } = props;
     this.subscription = Climb.getStream(collectionId, refresh, domain)
       .subscribe(items => {
         const latestItems = items.slice(0, limit);
@@ -27,8 +27,21 @@ class ClimbView extends React.Component {
       });
   }
 
-  componentWillUnmount() {
+  _teardownStream() {
     this.subscription.dispose();
+  }
+
+  componentDidMount() {
+    this._setupStream(this.props);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this._teardownStream();
+    this._setupStream(nextProps);
+  }
+
+  componentWillUnmount() {
+    this._teardownStream();
   }
 
   render() {

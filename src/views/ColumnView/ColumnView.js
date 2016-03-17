@@ -11,8 +11,8 @@ class ColumnView extends React.Component {
     };
   }
 
-  componentDidMount() {
-    const { collectionId, sizes } = this.props;
+  _setupStream(props) {
+    const { collectionId, sizes } = props;
 
     this.instance = Bricks({
       container: '.Climb--ColumnView',
@@ -30,8 +30,21 @@ class ColumnView extends React.Component {
       });
   }
 
-  componentWillUnmount() {
+  _teardownStream() {
     this.subscription.dispose();
+  }
+
+  componentDidMount() {
+    this._setupStream();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this._teardownStream();
+    this._setupStream(nextProps);
+  }
+
+  componentWillUnmount() {
+    this._teardownStream();
   }
 
   render() {
