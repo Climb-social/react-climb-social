@@ -16,6 +16,11 @@
     background-size: cover;
 }
 
+.Climb--ColumnView {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .Climb--ColumnView .Climb__Card {
     width: 275px;
 }

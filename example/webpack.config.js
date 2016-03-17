@@ -30,9 +30,7 @@ module.exports = {
         loaders: ['style-loader', 'css-loader']
       }
     ],
-    noParse: [
-      path.join(__dirname, '../node_modules/bricks.js/dist/bricks.min.js')
-    ]
+    noParse: [/bricks.js/]
   },
 
   resolve: {

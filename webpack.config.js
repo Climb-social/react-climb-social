@@ -12,12 +12,14 @@ module.exports = {
       { test: /\.js$/, loader: 'eslint', exclude: /node_modules/ }
     ],
     loaders: [
-      { test: /\.js$/, loader: 'babel', exclude: /node_modules/ },
+      {
+        test: /\.js$/,
+        loader: 'babel',
+        exclude: /node_modules/
+      },
       { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader', 'postcss-loader'), exclude: /node_modules/ }
     ],
-    noParse: [
-      path.join(__dirname, './node_modules/bricks.js/dist/bricks.min.js')
-    ]
+    noParse: [/bricks.js/]
   },
   postcss: function (webpack) {
     return [

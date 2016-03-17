@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ListView, ColumnView, RegularSquareView, ClimbView, StackedCard } from 'react-climb-social';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 import 'react-climb-social/styles/main.css';
 import './style.css';
@@ -13,25 +14,50 @@ const App = () => {
         React Climb Social
       </h1>
 
-      <ClimbView collectionId='56b4b06908216f0cac62a86b' Card={ StackedCard } />
+      <Tabs>
+
+        <TabList>
+          <Tab>Default</Tab>
+          <Tab>RegularSquareView</Tab>
+          <Tab>Custom formatting</Tab>
+          <Tab>ColumnView</Tab>
+          <Tab>HTML</Tab>
+        </TabList>
+
+        <TabPanel>
+          <ClimbView collectionId='56b4b06908216f0cac62a86b' Card={ StackedCard } />
+        </TabPanel>
+
+        <TabPanel>
+          <ClimbView collectionId='56b4b06908216f0cac62a86b'
+                     View={ RegularSquareView } />
+        </TabPanel>
+
+        <TabPanel>
+          <h2>List View</h2>
+
+          <ClimbView collectionId='56b4b06908216f0cac62a86b'
+                     View={ ListView } />
 
 
-       <ClimbView collectionId='56b4b06908216f0cac62a86b'
-                 View={ RegularSquareView } />
+        </TabPanel>
 
-      <div className='sm-col sm-col-6 md-col-4 lg-col-3 px2'>
-        <h2>List View</h2>
+        <TabPanel>
+          <h2>Column View</h2>
+          <ClimbView collectionId='56b4b06908216f0cac62a86b'
+                     View={ ColumnView } />
 
-        <ClimbView collectionId='56b4b06908216f0cac62a86b'
-                   View={ ListView } />
+        </TabPanel>
 
-      </div>
+        <TabPanel>
+          <div className="Climb"
+               data-collection-id="56b4b06908216f0cac62a86b"
+               data-limit="3"
+               data-view="columnView"></div>
+        </TabPanel>
 
-      <div className='sm-col sm-col-6 md-col-8 lg-col-9 px2'>
-        <h2>Column View</h2>
-        <ClimbView collectionId='56b4b06908216f0cac62a86b'
-                   View={ ColumnView } />
-      </div>
+      </Tabs>
+
 
     </div>
   );

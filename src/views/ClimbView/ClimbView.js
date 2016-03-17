@@ -27,7 +27,7 @@ class ClimbView extends React.Component {
       });
   }
 
-  componentWillUnMount() {
+  componentWillUnmount() {
     this.subscription.dispose();
   }
 
