@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { ListView, ColumnView, RegularSquareView, ClimbView, StackedCard } from 'react-climb-social';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
-import 'react-climb-social/styles/main.css';
 import './style.css';
 
 const App = () => {
@@ -38,15 +37,12 @@ const App = () => {
 
           <ClimbView collectionId='56b4b06908216f0cac62a86b'
                      View={ ListView } />
-
-
         </TabPanel>
 
         <TabPanel>
           <h2>Column View</h2>
           <ClimbView collectionId='56b4b06908216f0cac62a86b'
                      View={ ColumnView } />
-
         </TabPanel>
 
         <TabPanel>

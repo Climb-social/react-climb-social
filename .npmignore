@@ -9,3 +9,5 @@ webpack.config.js
 .eslintrc
 bower.json
 coverage
+.DS_Store
+.idea
