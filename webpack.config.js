@@ -41,6 +41,7 @@ module.exports = {
   plugins: [
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.IgnorePlugin(/^\.\/locale$/, [/moment$/]), // saves ~100k from build
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
