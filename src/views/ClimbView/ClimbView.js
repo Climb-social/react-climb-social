@@ -3,6 +3,7 @@ import Climb from 'climb-social';
 
 import ListView from '../ListView/ListView';
 import StackedCard from '../../components/Cards/StackedCard';
+import TagManager from '../../components/TagManager/TagManager';
 
 class ClimbView extends React.Component {
 
@@ -53,6 +54,9 @@ class ClimbView extends React.Component {
     return (
       <div className='Climb__Container'>
         <View items={ this.state.items } { ...otherProps } />
+        <TagManager dataLayer={[{
+          collection_id: this.props.collectionId
+        }]} />
       </div>
     );
   }

@@ -36,7 +36,8 @@
     "climb-social": "^1.2.1",
     "knot.js": "^1.0.1",
     "moment": "^2.11.2",
-    "react": "^0.14.0"
+    "react": "^0.14.0",
+    "react-google-tag-manager": "^1.1.0"
   },
   "peerDependencies": {
     "react": "^0.14.0",

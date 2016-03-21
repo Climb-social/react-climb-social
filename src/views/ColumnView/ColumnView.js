@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import Climb from 'climb-social';
 import Bricks from 'bricks.js';
+import TagManager from '../../components/TagManager/TagManager';
 
 class ColumnView extends React.Component {
 
@@ -15,7 +16,7 @@ class ColumnView extends React.Component {
     const { collectionId, sizes } = props;
 
     this.instance = Bricks({
-      container: '.Climb--ColumnView',
+      container: '.Climb--ColumnView--inner',
       packed: 'data-packed',
       sizes
     });
@@ -54,11 +55,16 @@ class ColumnView extends React.Component {
 
     return (
       <div className='Climb--ColumnView'>
-        {this.state.items.map(item => {
-          return (
-            <Card key={ item.id } {...item} />
-          );
-        })}
+        <div className='Climb--ColumnView--inner'>
+          {this.state.items.map(item => {
+            return (
+              <Card key={ item.id } {...item} />
+            );
+          })}
+        </div>
+        <TagManager dataLayer={[{
+          collection_id: this.props.collectionId
+        }]} />
       </div>
     );
   }
