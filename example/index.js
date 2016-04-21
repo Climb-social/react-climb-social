@@ -24,30 +24,30 @@ const App = () => {
         </TabList>
 
         <TabPanel>
-          <ClimbView collectionId='56b4b06908216f0cac62a86b' Card={ StackedCard } />
+          <ClimbView collectionId='56b3759808216f7118fa2c93' Card={ StackedCard } />
         </TabPanel>
 
         <TabPanel>
-          <ClimbView collectionId='56b4b06908216f0cac62a86b'
+          <ClimbView collectionId='56b3759808216f7118fa2c93'
                      View={ RegularSquareView } />
         </TabPanel>
 
         <TabPanel>
           <h2>List View</h2>
 
-          <ClimbView collectionId='56b4b06908216f0cac62a86b'
+          <ClimbView collectionId='56b3759808216f7118fa2c93'
                      View={ ListView } />
         </TabPanel>
 
         <TabPanel>
           <h2>Column View</h2>
-          <ClimbView collectionId='56b4b06908216f0cac62a86b'
+          <ClimbView collectionId='56b3759808216f7118fa2c93'
                      View={ ColumnView } />
         </TabPanel>
 
         <TabPanel>
           <div className="Climb"
-               data-collection-id="56b4b06908216f0cac62a86b"
+               data-collection-id="56b3759808216f7118fa2c93"
                data-limit="3"
                data-view="columnView"></div>
         </TabPanel>
