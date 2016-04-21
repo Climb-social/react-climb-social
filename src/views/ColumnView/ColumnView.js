@@ -26,7 +26,11 @@ class ColumnView extends React.Component {
 
     this.subscription = Climb.getStream(collectionId)
       .subscribe(items => {
-        this.setState({ items });
+        const userId = items[0].userId;
+        this.setState({
+          items,
+          userId
+        });
         this.instance.pack();
       });
   }
@@ -63,7 +67,8 @@ class ColumnView extends React.Component {
           })}
         </div>
         <TagManager dataLayer={[{
-          collection_id: this.props.collectionId
+          collection_id: this.props.collectionId,
+          user_id: this.state.userId
         }]} />
       </div>
     );

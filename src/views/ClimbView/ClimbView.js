@@ -24,7 +24,11 @@ class ClimbView extends React.Component {
     this.subscription = Climb.getStream(collectionId, refresh, domain)
       .subscribe(items => {
         const latestItems = items.slice(0, limit);
-        this.setState({ items: latestItems });
+        const userId = items[0].userId;
+        this.setState({
+          items: latestItems,
+          userId
+        });
       });
   }
 
@@ -55,7 +59,8 @@ class ClimbView extends React.Component {
       <div className='Climb__Container'>
         <View items={ this.state.items } { ...otherProps } />
         <TagManager dataLayer={[{
-          collection_id: this.props.collectionId
+          collection_id: this.props.collectionId,
+          user_id: this.state.userId
         }]} />
       </div>
     );

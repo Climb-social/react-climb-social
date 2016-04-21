@@ -24,25 +24,30 @@ const App = () => {
         </TabList>
 
         <TabPanel>
-          <ClimbView collectionId='56b3759808216f7118fa2c93' Card={ StackedCard } />
+          <ClimbView collectionId='56b3759808216f7118fa2c93'
+                     Card={ StackedCard }
+                     domain='http://curate.vm-08.graph.uk' />
         </TabPanel>
 
         <TabPanel>
           <ClimbView collectionId='56b3759808216f7118fa2c93'
-                     View={ RegularSquareView } />
+                     View={ RegularSquareView }
+                     domain='http://curate.vm-08.graph.uk' />
         </TabPanel>
 
         <TabPanel>
           <h2>List View</h2>
 
           <ClimbView collectionId='56b3759808216f7118fa2c93'
-                     View={ ListView } />
+                     View={ ListView }
+                     domain='http://curate.vm-08.graph.uk' />
         </TabPanel>
 
         <TabPanel>
           <h2>Column View</h2>
           <ClimbView collectionId='56b3759808216f7118fa2c93'
-                     View={ ColumnView } />
+                     View={ ColumnView }
+                     domain='http://curate.vm-08.graph.uk' />
         </TabPanel>
 
         <TabPanel>
