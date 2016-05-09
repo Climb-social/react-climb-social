@@ -1,87 +1,56 @@
 import React, { PropTypes } from 'react';
-import Climb from 'climb-social';
 import Bricks from 'bricks.js';
-import TagManager from '../../components/TagManager/TagManager';
+
 
 class ColumnView extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      items: []
-    };
-  }
-
-  _setupStream(props) {
-    const { collectionId, sizes } = props;
-
-    this.instance = Bricks({
+  componentDidMount() {
+    // Layout cards with Bricks
+    this._packer = Bricks({
       container: '.Climb--ColumnView--inner',
       packed: 'data-packed',
-      sizes
+      sizes: this.props.sizes,
     });
 
-    this.instance
-      .resize();
-
-    this.subscription = Climb.getStream(collectionId)
-      .subscribe(items => {
-        const userId = items[0].userId;
-        this.setState({
-          items,
-          userId
-        });
-        this.instance.pack();
-      });
+    this._packer.resize(true);
+    this._packer.pack();
   }
 
-  _teardownStream() {
-    this.subscription.dispose();
-  }
-
-  componentDidMount() {
-    this._setupStream();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this._teardownStream();
-    this._setupStream(nextProps);
+  componentDidUpdate() {
+    this._packer.pack();
   }
 
   componentWillUnmount() {
-    this._teardownStream();
+    // Destory layout (?)
+    this._packer.resize(false);
   }
 
   render() {
-    const {
-      Card
-    } = this.props;
+    const { Card, items } = this.props;
 
     return (
       <div className='Climb--ColumnView'>
         <div className='Climb--ColumnView--inner'>
-          {this.state.items.map(item => {
-            return (
-              <Card key={ item.id } {...item} />
-            );
-          })}
+          {items.map(item =>
+            <div key={ item.id } style={{width: 290}}>
+              <Card {...item} />
+            </div>
+          )}
         </div>
-        <TagManager dataLayer={[{
-          collection_id: this.props.collectionId,
-          user_id: this.state.userId
-        }]} />
       </div>
     );
   }
 }
 
 ColumnView.propTypes = {
+  items: PropTypes.array,
   Card: PropTypes.oneOfType([PropTypes.func, PropTypes.elem]).isRequired,
   collectionId: PropTypes.string.isRequired,
   sizes: PropTypes.array
 };
 
 ColumnView.defaultProps = {
+  items: [],
   sizes: [
     { columns: 1, gutter: 30 },
     { mq: '640px', columns: 2, gutter: 30 },
