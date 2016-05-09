@@ -5,7 +5,6 @@ import Bricks from 'bricks.js';
 class ColumnView extends React.Component {
 
   componentDidMount() {
-    // Layout cards with Bricks
     this._packer = Bricks({
       container: '.Climb--ColumnView--inner',
       packed: 'data-packed',
@@ -21,8 +20,7 @@ class ColumnView extends React.Component {
   }
 
   componentWillUnmount() {
-    // Destory layout (?)
-    this._packer.resize(false);
+    this._packer.resize(false); // Does this destory ?
   }
 
   render() {
@@ -43,10 +41,9 @@ class ColumnView extends React.Component {
 }
 
 ColumnView.propTypes = {
-  items: PropTypes.array,
   Card: PropTypes.oneOfType([PropTypes.func, PropTypes.elem]).isRequired,
-  collectionId: PropTypes.string.isRequired,
-  sizes: PropTypes.array
+  items: PropTypes.array,
+  sizes: PropTypes.array,
 };
 
 ColumnView.defaultProps = {

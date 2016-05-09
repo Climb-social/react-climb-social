@@ -50,14 +50,15 @@ class ClimbView extends React.Component {
   }
 
   render() {
-    const {
-      View,
-      ...otherProps
-      } = this.props;
+    const { View, Card } = this.props;
+    const { items } = this.state;
 
     return (
       <div className='Climb__Container'>
-        <View items={ this.state.items } { ...otherProps } />
+        <View
+          items={items}
+          Card={Card}
+        />
         <TagManager dataLayer={[{
           collection_id: this.props.collectionId,
           user_id: this.state.userId

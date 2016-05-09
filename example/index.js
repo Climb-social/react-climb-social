@@ -2,66 +2,62 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ListView, ColumnView, RegularSquareView, ClimbView, StackedCard } from '../src';
+import { ColumnView, RegularSquareView, ClimbView } from 'react-climb-social';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 import './style.css';
 
-const COLLECTION_ID = '57308c212af2e605f81e53e2';
-const API_DOMAIN = 'http://curate.vm-08.graph.uk';
+const collectionId = process.env.COLLECTION_ID;
+const domain = process.env.API_DOMAIN;
 
 const App = () => {
   return (
     <div className='clearfix'>
 
-      <h1>
-        React Climb Social
-      </h1>
+      <h1>React Climb Social</h1>
 
       <Tabs>
-
         <TabList>
           <Tab>List View (Default)</Tab>
+          <Tab>Column View</Tab>
           <Tab>Square View</Tab>
-          <Tab>Column view</Tab>
-          <Tab>Custom formatting</Tab>
+          <Tab>Custom Card</Tab>
           <Tab>HTML embed</Tab>
         </TabList>
 
         <TabPanel>
           <h2>Default</h2>
           <ClimbView
-            collectionId={ COLLECTION_ID }
-            Card={ StackedCard }
-            domain={ API_DOMAIN }
-          />
-        </TabPanel>
-
-        <TabPanel>
-          <h2>Square View</h2>
-          <ClimbView
-            collectionId={ COLLECTION_ID }
-            View={ RegularSquareView }
-            domain={ API_DOMAIN }
+            collectionId={collectionId}
+            domain={domain}
           />
         </TabPanel>
 
         <TabPanel>
           <h2>Column View</h2>
           <ClimbView
-            collectionId={ COLLECTION_ID }
-            View={ ColumnView }
-            domain={ API_DOMAIN }
+            collectionId={collectionId}
+            domain={domain}
+            View={ColumnView}
           />
         </TabPanel>
 
         <TabPanel>
-          <h2>List View</h2>
+          <h2>Square View</h2>
+          <ClimbView
+            collectionId={collectionId}
+            domain={domain}
+            View={RegularSquareView}
+          />
+        </TabPanel>
+
+        <TabPanel>
+          <h2>Custom Card</h2>
           <p>TBC</p>
           <ClimbView
-            collectionId={ COLLECTION_ID }
-            View={ ListView }
-            domain={ API_DOMAIN }
+            collectionId={collectionId}
+            domain={domain}
+            Card={() => <div />}
           />
         </TabPanel>
 
@@ -70,14 +66,13 @@ const App = () => {
           <p>TBC</p>
           <div
             className="Climb"
-            data-collection-id={ COLLECTION_ID }
+            data-collection-id={collectionId}
             data-limit="3"
             data-view="columnView"
           />
         </TabPanel>
 
       </Tabs>
-
 
     </div>
   );

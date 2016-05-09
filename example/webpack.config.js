@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 var path = require('path');
 var webpack = require('webpack');
 
@@ -29,8 +31,7 @@ module.exports = {
         exclude: /node_modules/,
         loaders: ['style-loader', 'css-loader']
       }
-    ],
-    noParse: [/bricks.js/]
+    ]
   },
 
   resolve: {
@@ -43,7 +44,11 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, [/moment$/]), // saves ~100k from build
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      'process.env':
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+        'COLLECTION_ID': JSON.stringify(process.env.COLLECTION_ID),
+        'API_DOMAIN': JSON.stringify(process.env.API_DOMAIN),
+      }
     })
   ]
 };
