@@ -1,9 +1,14 @@
+// Demo features of the react-climb-social
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ListView, ColumnView, RegularSquareView, ClimbView, StackedCard } from 'react-climb-social';
+import { ListView, ColumnView, RegularSquareView, ClimbView, StackedCard } from '../src';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 import './style.css';
+
+const COLLECTION_ID = '57308c212af2e605f81e53e2';
+const API_DOMAIN = 'http://curate.vm-08.graph.uk';
 
 const App = () => {
   return (
@@ -16,45 +21,59 @@ const App = () => {
       <Tabs>
 
         <TabList>
-          <Tab>Default</Tab>
-          <Tab>RegularSquareView</Tab>
+          <Tab>List View (Default)</Tab>
+          <Tab>Square View</Tab>
+          <Tab>Column view</Tab>
           <Tab>Custom formatting</Tab>
-          <Tab>ColumnView</Tab>
-          <Tab>HTML</Tab>
+          <Tab>HTML embed</Tab>
         </TabList>
 
         <TabPanel>
-          <ClimbView collectionId='56b3759808216f7118fa2c93'
-                     Card={ StackedCard }
-                     domain='http://curate.vm-08.graph.uk' />
+          <h2>Default</h2>
+          <ClimbView
+            collectionId={ COLLECTION_ID }
+            Card={ StackedCard }
+            domain={ API_DOMAIN }
+          />
         </TabPanel>
 
         <TabPanel>
-          <ClimbView collectionId='56b3759808216f7118fa2c93'
-                     View={ RegularSquareView }
-                     domain='http://curate.vm-08.graph.uk' />
-        </TabPanel>
-
-        <TabPanel>
-          <h2>List View</h2>
-
-          <ClimbView collectionId='56b3759808216f7118fa2c93'
-                     View={ ListView }
-                     domain='http://curate.vm-08.graph.uk' />
+          <h2>Square View</h2>
+          <ClimbView
+            collectionId={ COLLECTION_ID }
+            View={ RegularSquareView }
+            domain={ API_DOMAIN }
+          />
         </TabPanel>
 
         <TabPanel>
           <h2>Column View</h2>
-          <ClimbView collectionId='56b3759808216f7118fa2c93'
-                     View={ ColumnView }
-                     domain='http://curate.vm-08.graph.uk' />
+          <ClimbView
+            collectionId={ COLLECTION_ID }
+            View={ ColumnView }
+            domain={ API_DOMAIN }
+          />
         </TabPanel>
 
         <TabPanel>
-          <div className="Climb"
-               data-collection-id="56b3759808216f7118fa2c93"
-               data-limit="3"
-               data-view="columnView"></div>
+          <h2>List View</h2>
+          <p>TBC</p>
+          <ClimbView
+            collectionId={ COLLECTION_ID }
+            View={ ListView }
+            domain={ API_DOMAIN }
+          />
+        </TabPanel>
+
+        <TabPanel>
+          <h2>HTML Embed</h2>
+          <p>TBC</p>
+          <div
+            className="Climb"
+            data-collection-id={ COLLECTION_ID }
+            data-limit="3"
+            data-view="columnView"
+          />
         </TabPanel>
 
       </Tabs>
