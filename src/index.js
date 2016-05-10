@@ -4,19 +4,22 @@ import ReactDOM from 'react-dom';
 import viewFinder from './utils/viewFinder';
 import isBrowser from './utils/isBrowser';
 
-import ClimbView from './views/ClimbView/ClimbView';
-export { ClimbView as ClimbView };
-export { default as ListView } from './views/ListView/ListView';
-export { default as ColumnView } from './views/ColumnView/ColumnView';
-export { default as RegularSquareView} from './views/RegularSquareView/RegularSquareView';
+import ClimbView from './components/ClimbView/ClimbView';
 
-export { default as StackedCard } from './components/Cards/StackedCard';
-export { default as MediaBody } from './components/MediaBody/MediaBody';
-export { default as ImageBody } from './components/MediaBody/ImageBody';
-export { default as VideoBody } from './components/MediaBody/VideoBody';
-export { default as TextBody } from './components/TextBody/TextBody';
-export { default as Timestamp } from './components/Timestamp/Timestamp';
-export { default as Publisher } from './components/Publisher/Publisher';
+export { ClimbView as ClimbView };
+
+export { default as ListLayout } from './components/layouts/ListLayout/ListLayout';
+export { default as ColumnLayout } from './components/layouts/ColumnLayout/ColumnLayout';
+export { default as SquareLayout} from './components/layouts/SquareLayout/SquareLayout';
+
+export { default as StackedCard } from './components/cards/StackedCard';
+
+export { default as MediaBody } from './components/cards/MediaBody/MediaBody';
+export { default as ImageBody } from './components/cards/MediaBody/ImageBody';
+export { default as VideoBody } from './components/cards/MediaBody/VideoBody';
+export { default as TextBody } from './components/cards/TextBody/TextBody';
+export { default as Timestamp } from './components/cards/Timestamp/Timestamp';
+export { default as Publisher } from './components/cards/Publisher/Publisher';
 
 const main = () => {
   const ClimbViews = document.querySelectorAll('.Climb');

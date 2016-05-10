@@ -1,13 +1,13 @@
 import React, { PropTypes } from 'react';
-import StackedCard from '../../components/Cards/StackedCard';
+import StackedCard from '../../cards/StackedCard';
 import Bricks from 'bricks.js';
 
 
-class ColumnView extends React.Component {
+class ColumnLayout extends React.Component {
 
   componentDidMount() {
     this._packer = Bricks({
-      container: '.Climb--ColumnView--inner',
+      container: '.Climb--ColumnLayout--inner',
       packed: 'data-packed',
       sizes: this.props.sizes,
     });
@@ -28,8 +28,8 @@ class ColumnView extends React.Component {
     const { Card, items } = this.props;
 
     return (
-      <div className='Climb--ColumnView'>
-        <div className='Climb--ColumnView--inner'>
+      <div className='Climb--ColumnLayout'>
+        <div className='Climb--ColumnLayout--inner'>
           {items.map(item =>
             <div key={ item.id } style={{width: 290}}>
               <Card {...item} />
@@ -41,13 +41,13 @@ class ColumnView extends React.Component {
   }
 }
 
-ColumnView.propTypes = {
+ColumnLayout.propTypes = {
   Card: PropTypes.oneOfType([PropTypes.func, PropTypes.elem]).isRequired,
   items: PropTypes.array,
   sizes: PropTypes.array,
 };
 
-ColumnView.defaultProps = {
+ColumnLayout.defaultProps = {
   Card: StackedCard,
   items: [],
   sizes: [
@@ -60,4 +60,4 @@ ColumnView.defaultProps = {
   ]
 };
 
-export default ColumnView;
+export default ColumnLayout;

@@ -26,14 +26,14 @@ html, body {
 
 
 /*
-.Climb--ColumnView .Climb__TextBody,
-.Climb--ColumnView .Climb__Profile,
-.Climb--ColumnView .Climb__MediaBody,
-.Climb--ColumnView .Climb__Meta__Timestamp,
-.Climb--RegularSquareView .Climb__TextBody,
-.Climb--RegularSquareView .Climb__Meta__Publisher,
-.Climb--RegularSquareView .Climb__MediaBody,
-.Climb--RegularSquareView .Climb__Meta__Timestamp{
+.Climb--ColumnLayout .Climb__TextBody,
+.Climb--ColumnLayout .Climb__Profile,
+.Climb--ColumnLayout .Climb__MediaBody,
+.Climb--ColumnLayout .Climb__Meta__Timestamp,
+.Climb--SquareLayout .Climb__TextBody,
+.Climb--SquareLayout .Climb__Meta__Publisher,
+.Climb--SquareLayout .Climb__MediaBody,
+.Climb--SquareLayout .Climb__Meta__Timestamp{
   display: none;
 }
 */

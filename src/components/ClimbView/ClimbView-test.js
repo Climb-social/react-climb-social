@@ -3,8 +3,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import ClimbView from './ClimbView';
-import ListView from '../ListView/ListView';
-import ColumnView from '../ColumnView/ColumnView';
+import ListLayout from '../layouts/ListLayout/ListLayout';
+import ColumnLayout from '../layouts/ColumnLayout/ColumnLayout';
 
 test('ClimbView output classes', assert => {
   const props = {
@@ -32,12 +32,12 @@ test('ClimbView default View', assert => {
   const output = shallow(<ClimbView {...props} />);
 
   const expected = 1;
-  const actual = output.find(ListView).length;
+  const actual = output.find(ListLayout).length;
 
   assert.equal(
     actual,
     expected,
-    'ListView'
+    'ListLayout'
   );
 
   assert.end();
@@ -46,17 +46,17 @@ test('ClimbView default View', assert => {
 test('ClimbView View override', assert => {
   const props = {
     collectionId: 'aaa',
-    View: ColumnView
+    View: ColumnLayout
   };
   const output = shallow(<ClimbView {...props} />);
 
   const expected = 1;
-  const actual = output.find(ColumnView).length;
+  const actual = output.find(ColumnLayout).length;
 
   assert.equal(
     actual,
     expected,
-    'ListView is replaced by ColumnView'
+    'ListLayout is replaced by ColumnLayout'
   );
 
   assert.end();

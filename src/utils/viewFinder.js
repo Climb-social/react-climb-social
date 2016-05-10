@@ -1,12 +1,12 @@
 
-import ListView from '../views/ListView/ListView';
-import ColumnView from '../views/ColumnView/ColumnView';
-import RegularSquareView from '../views/RegularSquareView/RegularSquareView';
+import ListLayout from '../components/layouts/ListLayout/ListLayout';
+import ColumnLayout from '../components/layouts/ColumnLayout/ColumnLayout';
+import SquareLayout from '../components/layouts/SquareLayout/SquareLayout';
 
 const VIEWS = {
-  listview: ListView,
-  columnview: ColumnView,
-  regularsquareview: RegularSquareView
+  list: ListLayout,
+  column: ColumnLayout,
+  square: SquareLayout,
 };
 
 const viewFinder = (viewStr = '') => {

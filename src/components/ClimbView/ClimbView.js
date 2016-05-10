@@ -1,9 +1,8 @@
 import React, { PropTypes } from 'react';
 import Climb from 'climb-social';
 
-import ListView from '../ListView/ListView';
-import StackedCard from '../../components/Cards/StackedCard';
-import TagManager from '../../components/TagManager/TagManager';
+import ListLayout from '../layouts/ListLayout/ListLayout';
+import TagManager from '../TagManager/TagManager';
 
 class ClimbView extends React.Component {
 
@@ -78,7 +77,7 @@ ClimbView.propTypes = {
 };
 
 ClimbView.defaultProps = {
-  View: ListView,
+  View: ListLayout,
   limit: 30,
   refresh: 8,
   domain: 'http://app.climb.social'

@@ -1,8 +1,8 @@
 import React from 'react';
-import Timestamp from '../Timestamp/Timestamp';
-import TextBody from '../TextBody/TextBody';
-import MediaBody from '../MediaBody/MediaBody';
-import Publisher from '../Publisher/Publisher';
+import Timestamp from './Timestamp/Timestamp';
+import TextBody from './TextBody/TextBody';
+import MediaBody from './MediaBody/MediaBody';
+import Publisher from './Publisher/Publisher';
 import {propTypes as defaultPropTypes} from './defaults';
 
 const StackedCard = ({

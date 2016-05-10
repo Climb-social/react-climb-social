@@ -16,20 +16,20 @@
     background-size: cover;
 }
 
-.Climb--ColumnView {
+.Climb--ColumnLayout {
   margin-left: auto;
   margin-right: auto;
 }
 
-.Climb--ColumnView .Climb__Card {
+.Climb--ColumnLayout .Climb__Card {
     width: 275px;
 }
 
-.Climb--RegularSquareView {
+.Climb--SquareLayout {
     overflow: hidden;
 }
 
-.Climb--RegularSquareView__square {
+.Climb--SquareLayout__square {
     float: left;
     position: relative;
     width: 100%;
@@ -38,20 +38,20 @@
 }
 
 @media (min-width: 700px) {
-    .Climb--RegularSquareView__square {
+    .Climb--SquareLayout__square {
         width: 50%;
         padding-bottom: 50%;
     }
 }
 
 @media (min-width: 1100px) {
-    .Climb--RegularSquareView__square {
+    .Climb--SquareLayout__square {
         width: 33.3333%;
         padding-bottom: 33.3333%;
     }
 }
 
-.Climb--RegularSquareView__square > .Climb__Card {
+.Climb--SquareLayout__square > .Climb__Card {
     position: absolute;
     top: 0;
     left: 0;

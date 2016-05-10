@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import Timestamp from '../Timestamp/Timestamp';
-import TextBody from '../TextBody/TextBody';
-import MediaBody from '../MediaBody/MediaBody';
-import Publisher from '../Publisher/Publisher';
+import Timestamp from './Timestamp/Timestamp';
+import TextBody from './TextBody/TextBody';
+import MediaBody from './MediaBody/MediaBody';
+import Publisher from './Publisher/Publisher';
 import {propTypes as defaultPropTypes} from './defaults';
 
 
@@ -18,16 +18,16 @@ class FocusCard extends Component {
   }
 
   _renderMedia() {
-    const {image, video: videoUrl} = this.props;
+    const {image, videoUrl} = this.props;
     return (
       <div>
-        <MediaBody image={this.props.image} videoUrl={this.props.video} />
+        <MediaBody image={image} videoUrl={videoUrl} />
       </div>
     );
   }
 
   _renderText() {
-    const {author, profileLink, username, message, timestamp, link} = this.props;
+    const {author, message, timestamp, link} = this.props;
     return (
       <div>
         <Publisher
@@ -41,7 +41,7 @@ class FocusCard extends Component {
           value={timestamp}
           link={link} />
       </div>
-    )
+    );
   }
 
   render() {

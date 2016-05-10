@@ -2,7 +2,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ColumnView, RegularSquareView, ClimbView } from 'react-climb-social';
+import { ColumnLayout, SquareLayout, ClimbView } from 'react-climb-social';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 import './style.css';
@@ -57,7 +57,7 @@ const App = () => {
           <ClimbView
             collectionId={collectionId}
             domain={domain}
-            View={ColumnView}
+            View={ColumnLayout}
           />
         </TabPanel>
 
@@ -70,7 +70,7 @@ const App = () => {
           <ClimbView
             collectionId={collectionId}
             domain={domain}
-            View={RegularSquareView}
+            View={SquareLayout}
           />
         </TabPanel>
 
@@ -99,7 +99,7 @@ const App = () => {
             className="Climb"
             data-collection-id={collectionId}
             data-limit="3"
-            data-view="columnView"
+            data-view="ColumnLayout"
           />
         </TabPanel>
 

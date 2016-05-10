@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
-import StackedCard from '../../components/Cards/StackedCard';
+import StackedCard from '../../cards/StackedCard';
 
-const ListView = ({items, Card}) => (
-  <div className='Climb--ListView'>
+const ListLayout = ({items, Card}) => (
+  <div className='Climb--ListLayout'>
     {items.map(item =>
       <div key={ item.id }>
         <Card {...item} />
@@ -11,14 +11,14 @@ const ListView = ({items, Card}) => (
   </div>
 );
 
-ListView.propTypes = {
+ListLayout.propTypes = {
   Card: PropTypes.oneOfType([PropTypes.func, PropTypes.elem]).isRequired,
   items: PropTypes.array
 };
 
-ListView.defaultProps = {
+ListLayout.defaultProps = {
   Card: StackedCard,
   items: []
 };
 
-export default ListView;
+export default ListLayout;
