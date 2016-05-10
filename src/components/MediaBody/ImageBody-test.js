@@ -4,101 +4,126 @@ import { shallow } from 'enzyme';
 
 import ImageBody from './ImageBody';
 
-test('ImageBody classes', assert => {
+const IMAGE_URL = 'http://url.to.image.com';
+
+const formatUrl = url => `url(${url})`;
+const randomSize = () => Math.floor(Math.random() * 100) + 10;
+
+
+test('ImageBody default classes', t => {
   const props = {
-    url: 'http://url.to.image.com'
+    url: IMAGE_URL,
   };
 
   const output = shallow(<ImageBody {...props} />);
 
-  assert.plan(2);
-  const expected = true;
+  t.plan(2);
 
-  let actual = output.hasClass('Climb__Media');
+  t.equal(output.hasClass('Climb__Media'), true, 'has Climb__Media class');
 
-  assert.equal(
-    actual,
-    expected,
-    'Climb__Media'
-  );
+  t.equal(output.hasClass('Climb__Media--image'), true, 'has Climb__Media--image class');
 
-  actual = output.hasClass('Climb__Media--image');
-
-  assert.equal(
-    actual,
-    expected,
-    'Climb__Media--image'
-  );
-});
-
-test('ImageBody styles: without height', assert => {
-  const props = {
-    url: 'http://url.to.image.com'
-  };
-
-  const output = shallow(<ImageBody {...props} />);
-
-  const expected = false;
-  const actual = output.prop('style').hasOwnProperty('height');
-
-  assert.equal(
-    expected,
-    actual,
-    'height no specified'
-  );
-
-  assert.end();
-});
-
-test('ImageBody styles: with height', assert => {
-  assert.plan(2);
-
-  const height = 40;
-  const url = 'http://url.to.image.com';
-  const props = {
-    url,
-    height
-  };
-
-  const output = shallow(<ImageBody {...props} />);
-
-  let expected = height;
-  let actual = output.prop('style').height;
-
-  assert.equal(
-    expected,
-    actual,
-    'Outputs a height inline style'
-  );
-
-  expected = true;
-  actual = output.prop('style').hasOwnProperty('backgroundImage');
-
-  assert.equal(
-    expected,
-    actual,
-    'Outputs a backgroundImage inline style'
-  );
+  t.end();
 });
 
 
-test('ImageBody inline image url', assert => {
-  const img = 'http://url.to.image.com';
+test('ImageBody with height', t => {
   const props = {
-    url: img
+    url: IMAGE_URL,
+    height: randomSize(),
   };
 
   const output = shallow(<ImageBody {...props} />);
 
-  const expected = `url(${img})`;
-  const actual = output.prop('style').backgroundImage;
+  t.plan(3);
 
-  assert.equal(
-    expected,
-    actual,
-    'backgroundImage url'
-  );
+  t.equal(output.prop('height'), props.height, 'correct height attribute');
 
-  assert.end();
+  t.equal(output.prop('width'), undefined, 'no width attribute');
+
+  t.equal(output.prop('src'), props.url, 'correct image src');
+
+  t.end();
+});
+
+test('ImageBody with width', t => {
+  const props = {
+    url: IMAGE_URL,
+    width: randomSize(),
+  };
+
+  const output = shallow(<ImageBody {...props} />);
+
+  t.plan(3);
+
+  t.equal(output.prop('width'), props.width, 'correct width attribute');
+
+  t.equal(output.prop('height'), undefined, 'no height attribute');
+
+  t.equal(output.prop('src'), props.url, 'correct image src');
+
+  t.end();
+});
+
+test('ImageBody with width and height', t => {
+  const props = {
+    url: IMAGE_URL,
+    width: randomSize(),
+    height: randomSize(),
+  };
+
+  const output = shallow(<ImageBody {...props} />);
+
+  t.plan(3);
+
+  t.equal(output.prop('width'), props.width, 'correct width attribute');
+
+  t.equal(output.prop('height'), props.height, 'correct height attribute');
+
+  t.equal(output.prop('src'), props.url, 'correct image src');
+
+  t.end();
+});
+
+
+test('ImageBody as background with width', t => {
+  const props = {
+    url: IMAGE_URL,
+    asBackground: true,
+    width: randomSize(),
+  };
+
+  const output = shallow(<ImageBody {...props} />);
+
+  t.plan(3);
+
+  t.equal(output.prop('style').width, props.width, 'correct width style');
+
+  t.equal(output.prop('style').height, undefined, 'no height style specified');
+
+  t.equal(output.prop('style').backgroundImage, formatUrl(props.url), 'correct background-image style');
+
+  t.end();
+});
+
+test('ImageBody as background with width and height', t => {
+  const props = {
+    url: IMAGE_URL,
+    asBackground: true,
+    width: randomSize(),
+    height: randomSize(),
+  };
+
+  const output = shallow(<ImageBody {...props} />);
+
+  t.plan(3);
+
+  t.equal(output.prop('style').width, props.width, 'correct width style');
+
+  t.equal(output.prop('style').height, props.height, 'correct height style');
+
+  t.equal(output.prop('style').backgroundImage, formatUrl(props.url), 'correct background-image style');
+
+  t.end();
 });
 
