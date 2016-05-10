@@ -6,7 +6,7 @@
   "main": "lib/index.js",
   "scripts": {
     "start": "./scripts/startSiteDevServer.sh",
-    "commit": "git cz",
+    "commit": "npm run test && npm run lint && git cz",
     "build": "./scripts/build.sh && ./scripts/buildExample.sh",
     "coverage": "./scripts/coverage.sh",
     "test": "./scripts/test.sh",
