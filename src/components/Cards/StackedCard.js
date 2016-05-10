@@ -1,8 +1,9 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import Timestamp from '../Timestamp/Timestamp';
 import TextBody from '../TextBody/TextBody';
 import MediaBody from '../MediaBody/MediaBody';
 import Publisher from '../Publisher/Publisher';
+import {propTypes as defaultPropTypes} from './defaults';
 
 const StackedCard = ({
   message,
@@ -38,22 +39,6 @@ const StackedCard = ({
   );
 };
 
-StackedCard.propTypes = {
-  message: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
-  timestamp: PropTypes.number.isRequired,
-  author: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    link: PropTypes.string,
-    username: PropTypes.string.isRequired
-  }).isRequired,
-  sourceType: PropTypes.string.isRequired,
-  image: PropTypes.shape({
-    url: PropTypes.string.isRequired,
-    width: PropTypes.number.isRequired,
-    height: PropTypes.number.isRequired
-  }),
-  videoUrl: PropTypes.string
-};
+StackedCard.propTypes = defaultPropTypes;
 
 export default StackedCard;

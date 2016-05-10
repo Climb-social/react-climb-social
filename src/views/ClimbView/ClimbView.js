@@ -79,7 +79,6 @@ ClimbView.propTypes = {
 
 ClimbView.defaultProps = {
   View: ListView,
-  Card: StackedCard,
   limit: 30,
   refresh: 8,
   domain: 'http://app.climb.social'

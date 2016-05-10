@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import StackedCard from '../../components/Cards/StackedCard';
 
 const ListView = ({items, Card}) => (
   <div className='Climb--ListView'>
@@ -16,6 +17,7 @@ ListView.propTypes = {
 };
 
 ListView.defaultProps = {
+  Card: StackedCard,
   items: []
 };
 

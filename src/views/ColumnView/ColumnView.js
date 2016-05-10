@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import StackedCard from '../../components/Cards/StackedCard';
 import Bricks from 'bricks.js';
 
 
@@ -47,6 +48,7 @@ ColumnView.propTypes = {
 };
 
 ColumnView.defaultProps = {
+  Card: StackedCard,
   items: [],
   sizes: [
     { columns: 1, gutter: 30 },

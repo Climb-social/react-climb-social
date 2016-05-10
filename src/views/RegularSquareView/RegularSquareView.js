@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import FocusCard from '../../components/Cards/FocusCard';
 
 const RegularSquareView = ({Card, items}) => (
   <div className='Climb--RegularSquareView'>
@@ -16,6 +17,7 @@ RegularSquareView.propTypes = {
 };
 
 RegularSquareView.defaultProps = {
+  Card: FocusCard,
   items: []
 };
 
