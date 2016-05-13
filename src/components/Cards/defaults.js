@@ -7,13 +7,13 @@ export const propsTypes = {
   author: PropTypes.shape({
     name: PropTypes.string.isRequired,
     link: PropTypes.string,
-    username: PropTypes.string.isRequired
+    username: PropTypes.string.isRequired,
   }).isRequired,
   sourceType: PropTypes.string.isRequired,
   image: PropTypes.shape({
     url: PropTypes.string.isRequired,
     width: PropTypes.number.isRequired,
-    height: PropTypes.number.isRequired
+    height: PropTypes.number.isRequired,
   }),
-  videoUrl: PropTypes.string
+  videoUrl: PropTypes.string,
 };

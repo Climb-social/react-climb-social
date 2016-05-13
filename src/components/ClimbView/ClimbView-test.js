@@ -8,7 +8,7 @@ import ColumnLayout from '../layouts/ColumnLayout/ColumnLayout';
 
 test('ClimbView output classes', assert => {
   const props = {
-    collectionId: 'aaa'
+    collectionId: 'aaa',
   };
   const output = shallow(<ClimbView {...props} />);
 
@@ -27,7 +27,7 @@ test('ClimbView output classes', assert => {
 
 test('ClimbView default View', assert => {
   const props = {
-    collectionId: 'aaa'
+    collectionId: 'aaa',
   };
   const output = shallow(<ClimbView {...props} />);
 
@@ -46,7 +46,7 @@ test('ClimbView default View', assert => {
 test('ClimbView View override', assert => {
   const props = {
     collectionId: 'aaa',
-    View: ColumnLayout
+    View: ColumnLayout,
   };
   const output = shallow(<ClimbView {...props} />);
 

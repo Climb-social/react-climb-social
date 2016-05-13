@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
 import StackedCard from '../../cards/StackedCard';
 
-const ListLayout = ({items, Card}) => (
-  <div className='Climb--ListLayout'>
+const ListLayout = ({ items, Card }) => (
+  <div className="Climb--ListLayout">
     {items.map(item =>
-      <div key={ item.id }>
+      <div key={item.id}>
         <Card {...item} />
       </div>
     )}
@@ -13,12 +13,12 @@ const ListLayout = ({items, Card}) => (
 
 ListLayout.propTypes = {
   Card: PropTypes.oneOfType([PropTypes.func, PropTypes.elem]).isRequired,
-  items: PropTypes.array
+  items: PropTypes.array,
 };
 
 ListLayout.defaultProps = {
   Card: StackedCard,
-  items: []
+  items: [],
 };
 
 export default ListLayout;

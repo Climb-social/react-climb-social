@@ -13,9 +13,9 @@ test('StackedCard classes', assert => {
       picture: 'http://url/to/pic.jpg',
       name: 'ClimbSocialUK',
       link: 'http://twitter.com/ClimbSocialUK',
-      username: 'ClimbSocialUK'
+      username: 'ClimbSocialUK',
     },
-    sourceType: 'MegaSocial'
+    sourceType: 'MegaSocial',
   };
 
   const output = shallow(<StackedCard {...props} />);

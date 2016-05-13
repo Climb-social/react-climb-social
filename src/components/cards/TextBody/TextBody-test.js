@@ -6,7 +6,7 @@ import TextBody from './TextBody';
 
 test('TextBody output classes', assert => {
   const props = {
-    text: `I'm <strong> HTML </strong>`
+    text: 'I\'m <strong> HTML </strong>',
   };
 
   const output = shallow(<TextBody {...props} />);

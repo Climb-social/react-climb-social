@@ -8,7 +8,7 @@ import StackedCard from '../../cards/StackedCard';
 test('SquareLayout classes', assert => {
   const props = {
     collectionId: 'aaa',
-    Card: StackedCard
+    Card: StackedCard,
   };
   const output = shallow(<SquareLayout {...props} />);
 

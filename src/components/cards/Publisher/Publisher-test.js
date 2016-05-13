@@ -9,7 +9,7 @@ test('Publisher output classes', assert => {
     pic: 'http://100shapes.com/pic.jpg',
     displayName: 'Climb Social',
     username: 'ClimbSocialUK',
-    profileLink: 'http://twitter.com/ClimbSocialUK'
+    profileLink: 'http://twitter.com/ClimbSocialUK',
   };
 
   const output = shallow(<Publisher {...props} />);

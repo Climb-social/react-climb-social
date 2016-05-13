@@ -1,37 +1,40 @@
 import React, { PropTypes } from 'react';
+import css from 'react-css-modules';
+import bricks from 'bricks.js';
+
 import StackedCard from '../../cards/StackedCard';
-import Bricks from 'bricks.js';
+import styles from './ColumnLayout.sass';
 
 
 class ColumnLayout extends React.Component {
 
   componentDidMount() {
-    this._packer = Bricks({
+    this.packer = bricks({
       container: '.Climb--ColumnLayout--inner',
       packed: 'data-packed',
       sizes: this.props.sizes,
     });
 
-    this._packer.resize(true);
-    this._packer.pack();
+    this.packer.resize(true);
+    this.packer.pack();
   }
 
   componentDidUpdate() {
-    this._packer.pack();
+    this.packer.pack();
   }
 
   componentWillUnmount() {
-    this._packer.resize(false); // Does this destory ?
+    this.packer.resize(false); // Does this destory ?
   }
 
   render() {
     const { Card, items } = this.props;
 
     return (
-      <div className='Climb--ColumnLayout'>
-        <div className='Climb--ColumnLayout--inner'>
+      <div className="Climb--ColumnLayout" styleName="root">
+        <div className="Climb--ColumnLayout--inner">
           {items.map(item =>
-            <div key={ item.id } style={{width: 290}}>
+            <div key={item.id} style={{ width: 290 }} styleName="card">
               <Card {...item} />
             </div>
           )}
@@ -56,8 +59,8 @@ ColumnLayout.defaultProps = {
     { mq: '945px', columns: 3, gutter: 30 },
     { mq: '1250px', columns: 4, gutter: 30 },
     { mq: '1556px', columns: 5, gutter: 30 },
-    { mq: '1860px', columns: 6, gutter: 30 }
-  ]
+    { mq: '1860px', columns: 6, gutter: 30 },
+  ],
 };
 
-export default ColumnLayout;
+export default css(ColumnLayout, styles);

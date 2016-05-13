@@ -27,11 +27,23 @@ module.exports = {
         loaders: ['react-hot-loader', 'babel-loader']
       },
       {
-        test: /\.css$/,
-        exclude: /node_modules/,
-        loaders: ['style-loader', 'css-loader']
-      }
+        test: /\.sass$/,
+        loaders: [
+          'style?sourceMap',
+          'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+          'resolve-url',
+          'postcss',
+          'sass?sourceMap'
+        ],
+      },
     ]
+  },
+
+  postcss: function (webpack) {
+    return [
+      require('autoprefixer')({ browsers: ['last 2 versions'] }),
+      require('precss')
+    ];
   },
 
   resolve: {

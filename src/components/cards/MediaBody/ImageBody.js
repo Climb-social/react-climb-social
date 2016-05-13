@@ -1,27 +1,35 @@
 import React, { PropTypes } from 'react';
+import css from 'react-css-modules';
 
-const ImageBody = ({url, asBackground, width, height}) => {
+import styles from './ImageBody.sass';
+
+
+const ImageBody = ({ url, asBackground, width, height, alt }) => {
   if (!asBackground) {
     return (
       <img
-        className='Climb__Media Climb__Media--image'
+        className="Climb__Media Climb__Media--image"
+        styleName="image"
         src={url}
         width={width}
         height={height}
+        alt={alt}
       />
     );
   }
 
-  const styles = {
+  const inlineStyles = {
     backgroundImage: `url(${url})`,
-    height: height ? height : undefined,
-    width: width ? width : height ? '100%' : undefined,
+    height,
+    width: width || (height ? '100%' : undefined),
   };
 
   return (
     <div
-      className='Climb__Media Climb__Media--image Climb__Media--image--asBackground'
-      style={ styles }
+      className="Climb__Media Climb__Media--image Climb__Media--image--asBackground"
+      styleName="imageAsBackground"
+      style={inlineStyles}
+      alt={alt}
     />
   );
 };
@@ -31,10 +39,12 @@ ImageBody.propTypes = {
   asBackground: PropTypes.bool,
   width: PropTypes.number,
   height: PropTypes.number,
+  alt: PropTypes.string.isRequired,
 };
 
 ImageBody.defaultProps = {
   asBackground: false,
 };
 
-export default ImageBody;
+
+export default css(ImageBody, styles);

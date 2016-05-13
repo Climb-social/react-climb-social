@@ -1,21 +1,14 @@
 import React, { PropTypes } from 'react';
 
-
-const createMarkup = (text) => {
-  return {__html: text};
-};
-
-const TextBody = ({
-  text
-  }) => {
-  return (
-    <p className='Climb__TextBody'
-       dangerouslySetInnerHTML={ createMarkup(text) } />
-  );
-};
+const TextBody = ({ text }) => (
+  <p
+    className="Climb__TextBody"
+    dangerouslySetInnerHTML={{ __html: text }}
+  />
+);
 
 TextBody.propTypes = {
-  text: PropTypes.string.isRequired
+  text: PropTypes.string.isRequired,
 };
 
 export default TextBody;

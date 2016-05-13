@@ -8,7 +8,7 @@ import ImageBody from './ImageBody';
 
 test('MediaBody element: Video', assert => {
   const props = {
-    videoUrl: 'http://url.to.video.com'
+    videoUrl: 'http://url.to.video.com',
   };
 
   const output = shallow(<MediaBody {...props} />);
@@ -30,8 +30,8 @@ test('MediaBody element: Image', assert => {
     image: {
       url: 'path/to/image.jpg',
       width: 40,
-      height: 40
-    }
+      height: 40,
+    },
   };
 
   const output = shallow(<MediaBody {...props} />);
@@ -53,9 +53,9 @@ test('MediaBody element: Both specified', assert => {
     image: {
       url: 'path/to/image.jpg',
       width: 40,
-      height: 40
+      height: 40,
     },
-    videoUrl: 'http://url.to.video.com'
+    videoUrl: 'http://url.to.video.com',
   };
 
   const output = shallow(<MediaBody {...props} />);
@@ -75,7 +75,7 @@ test('MediaBody element: Both specified', assert => {
 test('MediaBody element: No media', assert => {
   const props = {
     image: null,
-    videoUrl: null
+    videoUrl: null,
   };
 
   const output = shallow(<MediaBody {...props} />);

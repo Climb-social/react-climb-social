@@ -9,59 +9,51 @@ class ClimbView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: []
+      items: [],
     };
   }
 
-  _setupStream(props) {
-    const {
-      collectionId,
-      refresh,
-      domain,
-      limit
-      } = props;
-    this.subscription = Climb.getStream(collectionId, refresh, domain)
+  componentDidMount() {
+    this.setupStream(this.props);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.teardownStream();
+    this.setupStream(nextProps);
+  }
+
+  componentWillUnmount() {
+    this.teardownStream();
+  }
+
+
+  setupStream(props) {
+    const { collectionId, refresh, domain, limit } = props;
+
+    this.subscription = Climb
+      .getStream(collectionId, refresh, domain)
       .subscribe(items => {
         const latestItems = items.slice(0, limit);
         const userId = items[0].userId;
         this.setState({
           items: latestItems,
-          userId
+          userId,
         });
       });
   }
 
-  _teardownStream() {
+  teardownStream() {
     this.subscription.dispose();
   }
 
-  componentDidMount() {
-    this._setupStream(this.props);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this._teardownStream();
-    this._setupStream(nextProps);
-  }
-
-  componentWillUnmount() {
-    this._teardownStream();
-  }
-
   render() {
-    const { View, Card } = this.props;
-    const { items } = this.state;
+    const { View, Card, collectionId } = this.props;
+    const { items, userId } = this.state;
 
     return (
-      <div className='Climb__Container'>
-        <View
-          items={items}
-          Card={Card}
-        />
-        <TagManager dataLayer={[{
-          collection_id: this.props.collectionId,
-          user_id: this.state.userId
-        }]} />
+      <div className="Climb__Container">
+        <View items={items} Card={Card} />
+        <TagManager dataLayer={[{ collection_id: collectionId, user_id: userId }]} />
       </div>
     );
   }
@@ -73,14 +65,14 @@ ClimbView.propTypes = {
   collectionId: PropTypes.string.isRequired,
   limit: PropTypes.number,
   refresh: PropTypes.number,
-  domain: PropTypes.string
+  domain: PropTypes.string,
 };
 
 ClimbView.defaultProps = {
   View: ListLayout,
   limit: 30,
   refresh: 8,
-  domain: 'http://app.climb.social'
+  domain: 'http://app.climb.social',
 };
 
 export default ClimbView;

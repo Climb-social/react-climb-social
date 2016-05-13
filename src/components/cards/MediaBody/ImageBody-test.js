@@ -101,7 +101,7 @@ test('ImageBody as background with width', t => {
 
   t.equal(output.prop('style').height, undefined, 'no height style specified');
 
-  t.equal(output.prop('style').backgroundImage, formatUrl(props.url), 'correct background-image style');
+  t.equal(output.prop('style').backgroundImage, formatUrl(props.url), 'correct bg-image style');
 
   t.end();
 });
@@ -122,7 +122,7 @@ test('ImageBody as background with width and height', t => {
 
   t.equal(output.prop('style').height, props.height, 'correct height style');
 
-  t.equal(output.prop('style').backgroundImage, formatUrl(props.url), 'correct background-image style');
+  t.equal(output.prop('style').backgroundImage, formatUrl(props.url), 'correct bg-image style');
 
   t.end();
 });

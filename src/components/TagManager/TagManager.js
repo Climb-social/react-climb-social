@@ -3,15 +3,16 @@ import ReactDOM from 'react-dom';
 import gtmParts from 'react-google-tag-manager';
 
 class GoogleTagManager extends Component {
+
   componentDidMount() {
-    this._evaluate(this.props);
+    this.evaluate(this.props);
   }
 
   componentWillReceiveProps(newProps) {
-    this._evaluate(newProps);
+    this.evaluate(newProps);
   }
 
-  _evaluate(props) {
+  evaluate(props) {
     const { dataLayer, dataLayerName } = props;
     window[dataLayerName] = dataLayer;
     const node = ReactDOM.findDOMNode(this).childNodes[1];
@@ -24,13 +25,13 @@ class GoogleTagManager extends Component {
     const gtm = gtmParts({
       id: gtmId,
       dataLayerName,
-      additionalEvents
+      additionalEvents,
     });
 
     return (
       <div>
-        { gtm.noScriptAsReact() }
-        { gtm.scriptAsReact() }
+        {gtm.noScriptAsReact()}
+        {gtm.scriptAsReact()}
       </div>
     );
   }
@@ -40,14 +41,14 @@ GoogleTagManager.defaultProps = {
   gtmId: 'GTM-NVT6ZP',
   additionalEvents: {},
   dataLayer: [],
-  dataLayerName: 'dataLayer'
+  dataLayerName: 'dataLayer',
 };
 
 GoogleTagManager.propTypes = {
   gtmId: PropTypes.string.isRequired,
   dataLayerName: PropTypes.string,
   additionalEvents: PropTypes.object,
-  dataLayer: PropTypes.array
+  dataLayer: PropTypes.array,
 };
 
 export default GoogleTagManager;

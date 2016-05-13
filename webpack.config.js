@@ -1,12 +1,8 @@
 var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require('path');
 
 module.exports = {
-  entry: [
-    './src/index',
-    './src/styles/main.css'
-  ],
+  entry: './src/index',
   module: {
     preLoaders: [
       { test: /\.js$/, loader: 'eslint', exclude: /node_modules/ }
@@ -15,9 +11,18 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel',
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
-      { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader', 'postcss-loader'), exclude: /node_modules/ }
+      {
+        test: /\.sass$/,
+        loaders: [
+          'style?sourceMap',
+          'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+          'resolve-url',
+          'postcss',
+          'sass?sourceMap'
+        ],
+      },
     ],
     noParse: [/bricks.js/]
   },
@@ -36,7 +41,7 @@ module.exports = {
     }
   }],
   output: {
-    filename: 'dist/react-climb-social.min.js',
+    filename: 'react-climb-social.min.js',
     libraryTarget: 'umd',
     library: 'react-climb-social'
   },
@@ -48,9 +53,6 @@ module.exports = {
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
       }
-    }),
-    new ExtractTextPlugin('dist/react-climb-social.min.css', {
-      allChunks: true
     })
   ]
 };

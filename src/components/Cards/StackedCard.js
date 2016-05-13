@@ -1,9 +1,13 @@
 import React from 'react';
+import css from 'react-css-modules';
+
 import Timestamp from './Timestamp/Timestamp';
 import TextBody from './TextBody/TextBody';
 import MediaBody from './MediaBody/MediaBody';
 import Publisher from './Publisher/Publisher';
-import {propTypes as defaultPropTypes} from './defaults';
+
+import { propTypes as defaultPropTypes } from './defaults';
+import styles from './StackedCard.sass';
 
 const StackedCard = ({
   message,
@@ -12,33 +16,39 @@ const StackedCard = ({
     picture: pic,
     name,
     link: profileLink,
-    username
+    username,
   },
   sourceType,
   timestamp,
   image,
-  videoUrl
-  }) => {
-  return (
-    <div className={ `Climb__Card Climb__Card--Stacked Climb__Card--${sourceType}` }>
+  videoUrl,
+  }) => (
+  <div
+    className={`Climb__Card Climb__Card--Stacked Climb__Card--${sourceType}`}
+    styleName="card"
+  >
+    <Publisher
+      pic={pic}
+      displayName={name}
+      profileLink={profileLink}
+      username={username}
+    />
 
-      <Publisher pic={ pic }
-                 displayName={ name }
-                 profileLink={ profileLink }
-                 username={ username } />
+    <TextBody text={message} />
 
-      <TextBody text={ message } />
+    <MediaBody
+      image={image}
+      videoUrl={videoUrl}
+    />
 
-      <MediaBody image={ image }
-                 videoUrl={ videoUrl } />
+    <Timestamp
+      value={timestamp}
+      link={link}
+    />
 
-      <Timestamp value={ timestamp }
-                 link={ link } />
-
-    </div>
-  );
-};
+  </div>
+);
 
 StackedCard.propTypes = defaultPropTypes;
 
-export default StackedCard;
+export default css(StackedCard, styles);

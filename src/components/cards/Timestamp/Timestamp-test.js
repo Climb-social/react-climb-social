@@ -6,7 +6,7 @@ import Timestamp from './Timestamp';
 
 test('Timestamp output classes', assert => {
   const props = {
-    value: 1455702231
+    value: 1455702231,
   };
 
   const output = shallow(<Timestamp {...props} />);

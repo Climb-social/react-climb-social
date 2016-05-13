@@ -4,11 +4,11 @@ import VideoBody from './VideoBody';
 
 const MediaBody = ({
   image,
-  videoUrl
+  videoUrl,
   }) => {
   if (videoUrl) {
     return (
-      <VideoBody url={ videoUrl } />
+      <VideoBody url={videoUrl} />
     );
   }
 
@@ -25,9 +25,9 @@ MediaBody.propTypes = {
   image: PropTypes.shape({
     url: PropTypes.string.isRequired,
     width: PropTypes.number.isRequired,
-    height: PropTypes.number.isRequired
+    height: PropTypes.number.isRequired,
   }),
-  videoUrl: PropTypes.string
+  videoUrl: PropTypes.string,
 };
 
 export default MediaBody;

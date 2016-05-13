@@ -8,7 +8,7 @@ import StackedCard from '../../cards/StackedCard';
 test('ListLayout output classes', assert => {
   const props = {
     collectionId: 'aaa',
-    Card: StackedCard
+    Card: StackedCard,
   };
   const output = shallow(<ListLayout {...props} />);
 
