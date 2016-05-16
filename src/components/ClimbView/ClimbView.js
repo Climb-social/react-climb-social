@@ -6,6 +6,22 @@ import TagManager from '../TagManager/TagManager';
 
 class ClimbView extends React.Component {
 
+  static propTypes = {
+    View: PropTypes.oneOfType([PropTypes.func, PropTypes.elem]).isRequired,
+    Card: PropTypes.oneOfType([PropTypes.func, PropTypes.elem]),
+    collectionId: PropTypes.string.isRequired,
+    limit: PropTypes.number,
+    refresh: PropTypes.number,
+    domain: PropTypes.string,
+  };
+
+  static defaultProps = {
+    View: ListLayout,
+    limit: 30,
+    refresh: 8,
+    domain: 'http://app.climb.social',
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -46,33 +62,18 @@ class ClimbView extends React.Component {
     this.subscription.dispose();
   }
 
+
   render() {
-    const { View, Card, collectionId } = this.props;
+    const { View, Card, collectionId, ...props } = this.props;
     const { items, userId } = this.state;
 
     return (
       <div className="Climb__Container">
-        <View items={items} Card={Card} />
+        <View items={items} Card={Card} {...props} />
         <TagManager dataLayer={[{ collection_id: collectionId, user_id: userId }]} />
       </div>
     );
   }
 }
-
-ClimbView.propTypes = {
-  View: PropTypes.oneOfType([PropTypes.func, PropTypes.elem]),
-  Card: PropTypes.oneOfType([PropTypes.func, PropTypes.elem]),
-  collectionId: PropTypes.string.isRequired,
-  limit: PropTypes.number,
-  refresh: PropTypes.number,
-  domain: PropTypes.string,
-};
-
-ClimbView.defaultProps = {
-  View: ListLayout,
-  limit: 30,
-  refresh: 8,
-  domain: 'http://app.climb.social',
-};
 
 export default ClimbView;

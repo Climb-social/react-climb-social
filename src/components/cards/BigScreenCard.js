@@ -3,12 +3,15 @@ import Timestamp from './Timestamp/Timestamp';
 import TextBody from './TextBody/TextBody';
 import MediaBody from './MediaBody/MediaBody';
 import Publisher from './Publisher/Publisher';
-import { propTypes } from './cardDefaults';
+import { propTypes, defaultProps } from './cardDefaults';
 
 
-class FocusCard extends Component {
+class BigScreenCard extends Component {
 
   static propTypes = propTypes;
+
+  static defaultProps = defaultProps;
+
 
   getFocusType() {
     const { image, videoUrl: video } = this.props;
@@ -19,7 +22,8 @@ class FocusCard extends Component {
     return this.getFocusType() === 'image';
   }
 
-  renderMedia() {
+
+  renderImage() {
     const { image, videoUrl } = this.props;
     return (
       <div>
@@ -57,16 +61,16 @@ class FocusCard extends Component {
         className={`
           Climb__Card
           Climb__Card--${sourceType}
-          Climb__Card--focus
-          Climb__Card--focus--${this.getFocusType()}
+          Climb__Card--bigScreen
+          Climb__Card--bigScreen--${this.getFocusType()}
         `}
       >
-        <div className="Climb__Card--focus__alpha">
-          {this.isImageType() ? this.renderMedia() : this.renderText()}
+        <div className="Climb__Card--bigScreen__alpha">
+          {this.isImageType() ? this.renderImage() : this.renderText()}
         </div>
 
         {this.isImageType() ?
-          <div className="Climb__Card--focus__beta">
+          <div className="Climb__Card--bigScreen__beta">
             {this.renderText()}
           </div>
         : null}
@@ -76,4 +80,4 @@ class FocusCard extends Component {
 
 }
 
-export default FocusCard;
+export default BigScreenCard;

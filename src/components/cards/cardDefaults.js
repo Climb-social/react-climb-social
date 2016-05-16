@@ -17,3 +17,6 @@ export const propsTypes = {
   }),
   videoUrl: PropTypes.string,
 };
+
+export const defaultProps = {
+};

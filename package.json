@@ -75,6 +75,7 @@
     "istanbul": "^0.4.2",
     "less": "^2.6.0",
     "less-loader": "^2.2.2",
+    "node-sass": "^3.7.0",
     "postcss-loader": "^0.9.1",
     "precss": "^1.4.0",
     "react-addons-test-utils": "^15.0.2",

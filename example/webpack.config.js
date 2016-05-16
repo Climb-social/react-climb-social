@@ -19,6 +19,8 @@ module.exports = {
 
   target: 'web',
 
+  devtool: 'source-map',
+
   module: {
     loaders: [
       {

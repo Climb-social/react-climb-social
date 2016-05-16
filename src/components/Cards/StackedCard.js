@@ -6,7 +6,7 @@ import TextBody from './TextBody/TextBody';
 import MediaBody from './MediaBody/MediaBody';
 import Publisher from './Publisher/Publisher';
 
-import { propTypes as defaultPropTypes } from './defaults';
+import { propTypes as defaultPropTypes } from './cardDefaults';
 import styles from './StackedCard.sass';
 
 const StackedCard = ({

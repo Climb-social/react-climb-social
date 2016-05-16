@@ -2,8 +2,9 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ColumnLayout, SquareLayout, ClimbView } from '../src';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+
+import { ClimbView, ColumnLayout, SquareLayout, SlideshowLayout } from '../src';
 
 // import './style.css';
 
@@ -17,6 +18,8 @@ const App = () => (
 
     <Tabs>
       <TabList>
+        <Tab>Slideshow</Tab>
+
         <Tab>List View (Default)</Tab>
         <Tab>List View (Styled)</Tab>
         <Tab>Column View</Tab>
@@ -24,6 +27,20 @@ const App = () => (
         <Tab>Custom Card</Tab>
         <Tab>HTML embed</Tab>
       </TabList>
+
+
+      <TabPanel
+        className="Example Example--slideShow"
+      >
+        <h2>Slideshow</h2>
+        <p><code>.Example.Example--slideShow</code></p>
+        <ClimbView
+          collectionId={collectionId}
+          domain={domain}
+          View={SlideshowLayout}
+          duration={2000}
+        />
+      </TabPanel>
 
 
       <TabPanel
