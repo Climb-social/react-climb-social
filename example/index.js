@@ -11,6 +11,7 @@ import { ClimbView, ColumnLayout, SquareLayout, SlideshowLayout } from '../src';
 const collectionId = process.env.COLLECTION_ID;
 const domain = process.env.API_DOMAIN;
 
+
 const App = () => (
   <div className="clearfix">
 
@@ -38,7 +39,6 @@ const App = () => (
           collectionId={collectionId}
           domain={domain}
           View={SlideshowLayout}
-          duration={2000}
         />
       </TabPanel>
 

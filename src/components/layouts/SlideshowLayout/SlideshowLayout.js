@@ -1,9 +1,10 @@
 import React, { PropTypes } from 'react';
 import css from 'react-css-modules';
 
-import BigScreenCard from '../../cards/BigScreenCard';
-import styles from './SlideshowLayout.sass';
 import { propTypes, defaultProps } from '../layoutDefaults';
+import styles from './SlideshowLayout.sass';
+import BigScreenCard from '../../cards/BigScreenCard/BigScreenCard';
+
 
 class SlideshowLayout extends React.Component {
 
@@ -15,7 +16,7 @@ class SlideshowLayout extends React.Component {
   static defaultProps = {
     ...defaultProps,
     Card: BigScreenCard,
-    duration: 5000,
+    duration: 1000 * 10,
   };
 
   constructor(props) {
@@ -60,12 +61,16 @@ class SlideshowLayout extends React.Component {
 
   render() {
     const { Card } = this.props;
+    const { currentIndex } = this.state;
 
     return (
-      <div className="Climb--SlideshowLayout">
+      <div
+        styleName="root"
+        className="Climb--SlideshowLayout"
+      >
         {this.currentItem ?
-          <Card {...this.currentItem} />
-          :
+          <Card index={currentIndex} {...this.currentItem} />
+        :
           'Loading'
         }
       </div>

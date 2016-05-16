@@ -1,13 +1,14 @@
 import React from 'react';
 import css from 'react-css-modules';
 
-import Timestamp from './Timestamp/Timestamp';
-import TextBody from './TextBody/TextBody';
-import MediaBody from './MediaBody/MediaBody';
-import Publisher from './Publisher/Publisher';
-
-import { propTypes as defaultPropTypes } from './cardDefaults';
+import { propTypes } from '../cardDefaults';
 import styles from './StackedCard.sass';
+
+import Timestamp from '../components/Timestamp/Timestamp';
+import TextBody from '../components/TextBody/TextBody';
+import MediaBody from '../components/MediaBody/MediaBody';
+import Publisher from '../components/Publisher/Publisher';
+
 
 const StackedCard = ({
   message,
@@ -49,6 +50,6 @@ const StackedCard = ({
   </div>
 );
 
-StackedCard.propTypes = defaultPropTypes;
+StackedCard.propTypes = propTypes;
 
 export default css(StackedCard, styles);

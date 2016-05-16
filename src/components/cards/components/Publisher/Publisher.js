@@ -7,7 +7,7 @@ const Publisher = ({ pic, displayName, username, profileLink }) => (
       className="Climb__Publisher__name"
       width="50"
       height="50"
-      alt={`${displayName}"s profile`}
+      alt={`${displayName}’s profile`}
     />
     <h6 className="Climb__Publisher__name">
       {displayName}

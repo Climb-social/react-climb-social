@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import css from 'react-css-modules';
 import bricks from 'bricks.js';
 
-import StackedCard from '../../cards/StackedCard';
+import StackedCard from '../../cards/StackedCard/StackedCard';
 import styles from './ColumnLayout.sass';
 
 

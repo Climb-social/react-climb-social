@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import Timestamp from './Timestamp/Timestamp';
-import TextBody from './TextBody/TextBody';
-import MediaBody from './MediaBody/MediaBody';
-import Publisher from './Publisher/Publisher';
-import { propTypes } from './cardDefaults';
+
+import { propTypes } from '../cardDefaults';
+
+import Timestamp from '../components/Timestamp/Timestamp';
+import TextBody from '../components/TextBody/TextBody';
+import MediaBody from '../components/MediaBody/MediaBody';
+import Publisher from '../components/Publisher/Publisher';
 
 
 class FocusCard extends Component {

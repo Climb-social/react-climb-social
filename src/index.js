@@ -5,7 +5,9 @@ import ColumnLayout from './components/layouts/ColumnLayout/ColumnLayout';
 import SquareLayout from './components/layouts/SquareLayout/SquareLayout';
 import SlideshowLayout from './components/layouts/SlideshowLayout/SlideshowLayout';
 
-import StackedCard from './components/cards/StackedCard';
+import StackedCard from './components/cards/StackedCard/StackedCard';
+import BigScreenCard from './components/cards/BigScreenCard/BigScreenCard';
+
 
 export {
   ClimbView,
@@ -16,6 +18,7 @@ export {
   SlideshowLayout,
 
   StackedCard,
+  BigScreenCard,
 };
 
 import './embedLoader';

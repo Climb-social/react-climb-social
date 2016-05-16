@@ -3,12 +3,10 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import ListLayout from './ListLayout';
-import StackedCard from '../../cards/StackedCard';
 
 test('ListLayout output classes', assert => {
   const props = {
     collectionId: 'aaa',
-    Card: StackedCard,
   };
   const output = shallow(<ListLayout {...props} />);
 

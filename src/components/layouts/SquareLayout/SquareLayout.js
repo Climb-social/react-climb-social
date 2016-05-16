@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
-import FocusCard from '../../cards/FocusCard';
+import FocusCard from '../../cards/FocusCard/FocusCard';
+
 
 const SquareLayout = ({ Card, items }) => (
   <div className="Climb--SquareLayout">

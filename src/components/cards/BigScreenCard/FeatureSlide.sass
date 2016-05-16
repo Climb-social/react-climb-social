@@ -1,0 +1,63 @@
+.root
+  width: 100%
+  height: 100%
+
+
+.feature
+  position: absolute
+  z-index: 2
+  top: 0
+  right: 0
+  background-color: black
+
+  &,
+  > img
+    width: 100%
+    height: 100%
+    transition: all 300ms ease
+
+  > img
+    object-fit: contain
+
+
+.feature-right
+  composes: feature
+
+.feature-left
+  composes: feature
+  right: auto
+  left: 0
+
+
+
+.body
+  position: absolute
+  z-index: 1
+  top: 0
+  left: 0
+  width: 50%
+  height: 100%
+
+  display: flex
+  flex-direction: column
+  justify-content: center
+
+  padding: 3vmin
+
+
+.body-left
+  composes: body
+
+.body-right
+  composes: body
+  left: auto
+  right: 0
+
+
+
+// Demo transition with hover
+
+.root:hover .feature,
+  width: 50%
+
+

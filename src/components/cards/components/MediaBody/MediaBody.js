@@ -5,16 +5,17 @@ import VideoBody from './VideoBody';
 const MediaBody = ({
   image,
   videoUrl,
-  }) => {
+  alt,
+}) => {
   if (videoUrl) {
     return (
-      <VideoBody url={videoUrl} />
+      <VideoBody url={videoUrl} alt={alt} />
     );
   }
 
   if (image) {
     return (
-      <ImageBody {...image} />
+      <ImageBody {...image} alt={alt} />
     );
   }
 
@@ -28,6 +29,7 @@ MediaBody.propTypes = {
     height: PropTypes.number.isRequired,
   }),
   videoUrl: PropTypes.string,
+  alt: PropTypes.string,
 };
 
 export default MediaBody;

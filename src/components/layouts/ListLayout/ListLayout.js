@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import StackedCard from '../../cards/StackedCard';
+import StackedCard from '../../cards/StackedCard/StackedCard';
 
 const ListLayout = ({ items, Card }) => (
   <div className="Climb--ListLayout">
