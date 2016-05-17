@@ -62,14 +62,15 @@ class SlideshowLayout extends React.Component {
   render() {
     const { Card } = this.props;
     const { currentIndex } = this.state;
+    const { currentItem } = this;
 
     return (
       <div
         styleName="root"
         className="Climb--SlideshowLayout"
       >
-        {this.currentItem ?
-          <Card index={currentIndex} {...this.currentItem} />
+        {currentItem ?
+          <Card key={currentItem.id} index={currentIndex} {...this.currentItem} />
         :
           'Loading'
         }

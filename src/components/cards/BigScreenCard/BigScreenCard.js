@@ -30,9 +30,9 @@ class BigScreenCard extends React.Component {
 
 
   get media() {
-    const { image, videoUrl, message } = this.props;
+    const { image, videoUrl } = this.props;
     return (
-      <MediaBody image={image} videoUrl={videoUrl} alt={message} />
+      <MediaBody image={image} videoUrl={videoUrl} alt={'Feature image'} />
     );
   }
 

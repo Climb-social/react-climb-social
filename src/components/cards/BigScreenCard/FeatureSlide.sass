@@ -14,10 +14,12 @@
   > img
     width: 100%
     height: 100%
-    transition: all 300ms ease
 
   > img
     object-fit: contain
+
+  &
+    width: 50%
 
 
 .feature-right
@@ -52,12 +54,3 @@
   composes: body
   left: auto
   right: 0
-
-
-
-// Demo transition with hover
-
-.root:hover .feature,
-  width: 50%
-
-

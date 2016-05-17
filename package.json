@@ -41,7 +41,8 @@
     "node-sass": "^3.7.0",
     "react": "^15.0.2",
     "react-css-modules": "^3.7.6",
-    "react-google-tag-manager": "^1.1.0"
+    "react-google-tag-manager": "^1.1.0",
+    "react-motion": "^0.4.3"
   },
   "peerDependencies": {},
   "devDependencies": {
