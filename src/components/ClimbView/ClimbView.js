@@ -1,10 +1,14 @@
 import React, { PropTypes } from 'react';
 import Climb from 'climb-social';
+import css from 'react-css-modules';
 
+import styles from './ClimbView.sass';
 import ListLayout from '../layouts/ListLayout/ListLayout';
 import TagManager from '../TagManager/TagManager';
 
-class ClimbView extends React.Component {
+
+@css(styles)
+export default class ClimbView extends React.Component {
 
   static propTypes = {
     View: PropTypes.oneOfType([PropTypes.func, PropTypes.elem]).isRequired,
@@ -55,6 +59,9 @@ class ClimbView extends React.Component {
           items: latestItems,
           userId,
         });
+
+        // TODO: Handle re-renders
+        this.subscription.dispose();
       });
   }
 
@@ -68,12 +75,13 @@ class ClimbView extends React.Component {
     const { items, userId } = this.state;
 
     return (
-      <div className="Climb__Container">
+      <div
+        styleName="root"
+        className="Climb__Container"
+      >
         <View items={items} Card={Card} {...props} />
         <TagManager dataLayer={[{ collection_id: collectionId, user_id: userId }]} />
       </div>
     );
   }
 }
-
-export default ClimbView;

@@ -4,11 +4,14 @@ import css from 'react-css-modules';
 import { propTypes, defaultProps } from '../cardDefaults';
 import styles from './BigScreenCard.sass';
 
-import FeatureSlide from './FeatureSlide';
+import Panel from './Panel';
+import FeaturePanel from './FeaturePanel';
+
 import MediaBody from '../components/MediaBody/MediaBody';
 import StandardBody from '../components/StandardBody/StandardBody';
 
 
+@css(styles)
 class BigScreenCard extends React.Component {
 
   static propTypes = {
@@ -17,6 +20,15 @@ class BigScreenCard extends React.Component {
   };
 
   static defaultProps = defaultProps;
+
+  state = {
+    handleLeave: null,
+  };
+
+
+  componentWillLeave(cb) {
+    this.setState({ handleLeave: cb });
+  }
 
 
   get focusType() {
@@ -28,7 +40,6 @@ class BigScreenCard extends React.Component {
     return this.focusType === 'image';
   }
 
-
   get media() {
     const { image, videoUrl } = this.props;
     return (
@@ -38,6 +49,7 @@ class BigScreenCard extends React.Component {
 
   render() {
     const { sourceType, index } = this.props;
+    const { handleLeave } = this.state;
 
     return (
       <div
@@ -50,18 +62,21 @@ class BigScreenCard extends React.Component {
         `}
       >
         {this.isImageType ?
-          <FeatureSlide
+          <FeaturePanel
             feature={this.media}
             reverse={index % 2 === 0}
             children={<StandardBody {...this.props} />}
+            onLeave={handleLeave}
           />
         :
-          <StandardBody {...this.props} />
+          <Panel
+            children={<StandardBody {...this.props} />}
+            onLeave={handleLeave}
+          />
         }
       </div>
     );
   }
-
 }
 
-export default css(BigScreenCard, styles);
+export default BigScreenCard;

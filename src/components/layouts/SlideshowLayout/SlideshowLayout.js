@@ -1,12 +1,27 @@
 import React, { PropTypes } from 'react';
-import css from 'react-css-modules';
+import ReactTransitionGroup from 'react-addons-transition-group';
 
 import { propTypes, defaultProps } from '../layoutDefaults';
 import styles from './SlideshowLayout.sass';
 import BigScreenCard from '../../cards/BigScreenCard/BigScreenCard';
 
 
-class SlideshowLayout extends React.Component {
+const transitionComponent = ({ children, ...props }) => (
+  <div className={`Climb--SlideshowLayout ${styles.root}`}>
+    {React.Children.map(children, child =>
+      <div className={styles.item}>
+        {React.cloneElement(child, props)}
+      </div>
+    )}
+  </div>
+);
+
+transitionComponent.propTypes = {
+  children: PropTypes.node,
+};
+
+
+export default class SlideshowLayout extends React.Component {
 
   static propTypes = {
     ...propTypes,
@@ -19,22 +34,28 @@ class SlideshowLayout extends React.Component {
     duration: 1000 * 10,
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentIndex: 0,
-    };
-  }
-
+  state = {
+    currentIndex: 0,
+    show: true,
+  };
 
   componentDidMount() {
-    this.startTimer();
+    this.checkStartTimer();
+    // setTimeout(() => this.stopTimer(), 4000);
+  }
+
+  componentDidUpdate() {
+    this.checkStartTimer();
   }
 
   componentWillUnmount() {
     this.stopTimer();
   }
 
+
+  checkStartTimer() {
+    if (!this.timer && this.props.items.length) this.startTimer();
+  }
 
   startTimer() {
     const { duration } = this.props;
@@ -43,41 +64,33 @@ class SlideshowLayout extends React.Component {
 
   stopTimer() {
     clearInterval(this.timer);
+    this.timer = null;
   }
 
   showNextItem() {
     const { items } = this.props;
     const { currentIndex } = this.state;
-
-    this.setState({
-      currentIndex: currentIndex >= items.length - 1 ? 0 : currentIndex + 1,
-    });
+    this.setState({ currentIndex: currentIndex >= items.length - 1 ? 0 : currentIndex + 1 });
   }
 
-
-  get currentItem() {
-    return this.props.items[this.state.currentIndex];
-  }
 
   render() {
-    const { Card } = this.props;
-    const { currentIndex } = this.state;
-    const { currentItem } = this;
+    const { Card, items } = this.props;
+    const { currentIndex, show } = this.state;
+
+    const currentItem = items[this.state.currentIndex];
 
     return (
-      <div
-        styleName="root"
-        className="Climb--SlideshowLayout"
-      >
-        {currentItem ?
-          <Card key={currentItem.id} index={currentIndex} {...this.currentItem} />
-        :
-          'Loading'
-        }
-      </div>
+      <ReactTransitionGroup
+        component={transitionComponent}
+        children={show && currentItem ?
+          <Card
+            key={currentItem.id}
+            index={currentIndex}
+            {...currentItem}
+          />
+        : null}
+      />
     );
   }
 }
-
-
-export default css(SlideshowLayout, styles);

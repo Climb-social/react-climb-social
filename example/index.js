@@ -38,6 +38,7 @@ const App = () => (
         <ClimbView
           collectionId={collectionId}
           domain={domain}
+          duration={2000}
           View={SlideshowLayout}
         />
       </TabPanel>
