@@ -2,6 +2,7 @@ var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
+  devtool: 'sourcemap',
   entry: './src/index',
   module: {
     preLoaders: [
@@ -40,10 +41,12 @@ module.exports = {
       amd: 'react'
     }
   }],
+
   output: {
-    filename: 'react-climb-social.min.js',
+    filename: 'react-climb-social.js',
+    sourceMapFilename: 'react-climb-social.map',
     libraryTarget: 'umd',
-    library: 'react-climb-social'
+    library: 'ReactClimbSocial'
   },
   plugins: [
     new webpack.NoErrorsPlugin(),

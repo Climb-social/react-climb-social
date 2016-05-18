@@ -52,16 +52,19 @@ export default class ClimbView extends React.Component {
 
     this.subscription = Climb
       .getStream(collectionId, refresh, domain)
-      .subscribe(items => {
-        const latestItems = items.slice(0, limit);
+      .subscribe(latestItems => {
+        if (!latestItems.length) return;
+
+        const items = latestItems.slice(0, limit);
         const userId = items[0].userId;
+
         this.setState({
-          items: latestItems,
+          items,
           userId,
         });
 
-        // TODO: Handle re-renders
-        this.subscription.dispose();
+        // TODO: Handle re-renders rather than disposing of stream
+        // this.subscription.dispose();
       });
   }
 

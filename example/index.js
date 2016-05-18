@@ -6,15 +6,12 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 import { ClimbView, ColumnLayout, SquareLayout, SlideshowLayout } from '../src';
 
-// import './style.css';
-
 const collectionId = process.env.COLLECTION_ID;
 const domain = process.env.API_DOMAIN;
 
 
 const App = () => (
   <div className="clearfix">
-
     <h1>React Climb Social</h1>
 
     <Tabs>
@@ -121,11 +118,11 @@ const App = () => (
       </TabPanel>
 
     </Tabs>
-
   </div>
 );
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('container')
-);
+const containerRoot = document.getElementById('container');
+
+if (containerRoot) {
+  ReactDOM.render(<App />, containerRoot);
+}

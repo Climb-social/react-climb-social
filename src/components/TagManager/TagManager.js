@@ -1,32 +1,27 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import gtmParts from 'react-google-tag-manager';
 
-class GoogleTagManager extends Component {
+class GoogleTagManager extends React.Component {
 
   componentDidMount() {
-    this.evaluate(this.props);
+    this.evaluate();
   }
 
-  componentWillReceiveProps(newProps) {
-    this.evaluate(newProps);
+  componentDidUpdate(prevProps) {
+    if (this.props !== prevProps) this.evaluate();
   }
 
-  evaluate(props) {
-    const { dataLayer, dataLayerName } = props;
+  evaluate() {
+    const { dataLayer, dataLayerName } = this.props;
     window[dataLayerName] = dataLayer;
     const node = ReactDOM.findDOMNode(this).childNodes[1];
     eval(node.textContent); // eslint-disable-line no-eval
   }
 
   render() {
-    const { gtmId, dataLayerName, additionalEvents } = this.props;
-
-    const gtm = gtmParts({
-      id: gtmId,
-      dataLayerName,
-      additionalEvents,
-    });
+    const { gtmId: id, dataLayerName, additionalEvents } = this.props;
+    const gtm = gtmParts({ id, dataLayerName, additionalEvents });
 
     return (
       <div>

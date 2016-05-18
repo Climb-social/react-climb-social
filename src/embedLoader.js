@@ -1,34 +1,26 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 
 import viewFinder from './utils/viewFinder';
 import isBrowser from './utils/isBrowser';
-
 import ClimbView from './components/ClimbView/ClimbView';
 
 
 const main = () => {
-  const ClimbViews = document.querySelectorAll('.Climb');
+  const embeds = document.querySelectorAll('.Climb');
 
-  Array.from(ClimbViews).forEach(elem => {
-    const { collectionId, view, limit } = elem.dataset;
+  Array.from(embeds).forEach(elem => {
+    const { collectionId, view, limit, domain, duration } = elem.dataset;
 
-    let props = { collectionId };
+    const props = {
+      collectionId,
+      View: viewFinder(view),
+      limit: limit ? parseInt(limit, 10) : undefined,
+      domain,
+      duration,
+    };
 
-    const View = viewFinder(view);
-
-    if (View) {
-      props = { View, ...props };
-    }
-
-    if (limit) {
-      props = { limit: parseInt(limit, 10), ...props };
-    }
-
-    ReactDOM.render(
-      React.createElement(ClimbView, props),
-      elem
-    );
+    render(<ClimbView {...props} />, elem);
   });
 };
 
