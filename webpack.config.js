@@ -44,10 +44,11 @@ module.exports = {
 
   output: {
     filename: 'react-climb-social.js',
-    sourceMapFilename: 'react-climb-social.map',
+    sourceMapFilename: 'dist/react-climb-social.map',
+    library: 'ReactClimbSocial',
     libraryTarget: 'umd',
-    library: 'ReactClimbSocial'
   },
+
   plugins: [
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
