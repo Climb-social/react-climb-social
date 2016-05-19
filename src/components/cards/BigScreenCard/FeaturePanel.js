@@ -6,7 +6,7 @@ import styles from './FeaturePanel.sass';
 
 
 const featureStyleHide = {
-  opacity: spring(0.01),
+  opacity: spring(0.0),
 };
 const featureStyleShow = {
   opacity: spring(1),
@@ -36,6 +36,7 @@ export default class FeaturePanel extends React.Component {
   state = {
     featureStyle: featureStyleHide,
     bodyStyle: bodyStyleHide,
+    isLeaving: false,
   };
 
   componentDidMount() {
@@ -49,8 +50,13 @@ export default class FeaturePanel extends React.Component {
 
   componentWillUnmount() {
     clearTimeout(this.showBodyTimeout);
+    clearTimeout(this.staggeredTransitionTimeout);
   }
 
+
+  handleOnRest() {
+    if (this.state.isLeaving) this.props.onLeave();
+  }
 
   staggeredTransitionTimeout = null;
 
@@ -60,6 +66,7 @@ export default class FeaturePanel extends React.Component {
   }
 
   transitionOut() {
+    this.setState({ isLeaving: true });
     this.hideBody();
     this.staggeredTransitionTimeout = setTimeout(() => this.hideFeature(), 250);
   }
@@ -71,7 +78,7 @@ export default class FeaturePanel extends React.Component {
 
 
   render() {
-    const { feature, children, reverse, onLeave } = this.props;
+    const { feature, children, reverse } = this.props;
     const { featureStyle, bodyStyle } = this.state;
 
     return (
@@ -79,7 +86,7 @@ export default class FeaturePanel extends React.Component {
 
         <Motion
           style={featureStyle}
-          onRest={onLeave}
+          onRest={() => this.handleOnRest()}
         >{style =>
           <div
             className={styles[`feature-${reverse ? 'right' : 'left'}`]}

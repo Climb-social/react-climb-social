@@ -40,37 +40,63 @@ export default class SlideshowLayout extends React.Component {
   };
 
   componentDidMount() {
-    this.checkStartTimer();
-    // setTimeout(() => this.stopTimer(), 4000);
+    this.timerCheck();
   }
 
   componentDidUpdate() {
-    this.checkStartTimer();
+    this.timerCheck();
   }
 
   componentWillUnmount() {
-    this.stopTimer();
+    this.timerStop();
   }
 
 
-  checkStartTimer() {
-    if (!this.timer && this.props.items.length) this.startTimer();
+  getNextItemIndex() {
+    const { items } = this.props;
+    const { currentIndex } = this.state;
+    return currentIndex >= items.length - 1 ? 0 : currentIndex + 1;
   }
 
-  startTimer() {
+
+  timerCheck() {
+    if (!this.timer && this.props.items.length) this.timerStart();
+  }
+
+  timerStart() {
     const { duration } = this.props;
-    this.timer = setInterval(() => this.showNextItem(), duration);
+    this.timer = setTimeout(() => this.timerTick(), duration);
   }
 
-  stopTimer() {
-    clearInterval(this.timer);
+  timerStop() {
+    clearTimeout(this.timer);
     this.timer = null;
   }
 
-  showNextItem() {
-    const { items } = this.props;
-    const { currentIndex } = this.state;
-    this.setState({ currentIndex: currentIndex >= items.length - 1 ? 0 : currentIndex + 1 });
+  timerReset() {
+    this.timerStop();
+    this.timerStart();
+  }
+
+  timerTick() {
+    if (!this.state.isInTransition) {
+      this.setState({
+        isInTransition: true,
+        show: false,
+      });
+    }
+  }
+
+  handleCardLeave() {
+    if (this.state.isInTransition) {
+      setTimeout(() =>
+        this.setState({
+          isInTransition: false,
+          show: true,
+          currentIndex: this.getNextItemIndex(),
+        }), 0);
+      this.timerStart();
+    }
   }
 
 
@@ -87,6 +113,7 @@ export default class SlideshowLayout extends React.Component {
           <Card
             key={currentItem.id}
             index={currentIndex}
+            onLeave={() => this.handleCardLeave()}
             {...currentItem}
           />
         : null}

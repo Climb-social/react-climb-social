@@ -9,7 +9,9 @@ class Panel extends React.Component {
 
   componentWillUpdate({ onLeave: nextOnLeave }) {
     const { onLeave: currentOnLeave } = this.props;
-    if (!currentOnLeave && nextOnLeave) nextOnLeave();
+    if (!currentOnLeave && nextOnLeave) {
+      setTimeout(nextOnLeave, 0);
+    }
   }
 
   render() {

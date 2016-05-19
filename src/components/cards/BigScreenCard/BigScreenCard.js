@@ -17,6 +17,7 @@ class BigScreenCard extends React.Component {
   static propTypes = {
     ...propTypes,
     index: PropTypes.number.isRequired,
+    onLeave: PropTypes.func,
   };
 
   static defaultProps = defaultProps;
@@ -27,7 +28,14 @@ class BigScreenCard extends React.Component {
 
 
   componentWillLeave(cb) {
-    this.setState({ handleLeave: cb });
+    const { onLeave } = this.props;
+
+    const handleLeave = () => {
+      if (onLeave) onLeave();
+      cb();
+    };
+
+    this.setState({ handleLeave });
   }
 
 
