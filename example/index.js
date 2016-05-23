@@ -17,13 +17,11 @@ const App = () => (
     <Tabs>
       <TabList>
         <Tab>Slideshow</Tab>
-
         <Tab>List View (Default)</Tab>
         <Tab>List View (Styled)</Tab>
         <Tab>Column View</Tab>
         <Tab>Square View</Tab>
         <Tab>Custom Card</Tab>
-        <Tab>HTML embed</Tab>
       </TabList>
 
 
@@ -99,21 +97,6 @@ const App = () => (
           collectionId={collectionId}
           domain={domain}
           Card={() => <div />}
-        />
-      </TabPanel>
-
-
-      <TabPanel
-        className="Example Example--embed"
-      >
-        <h2>HTML Embed</h2>
-        <p><code>.Example.Example--embed</code></p>
-        <p><strong>TBC</strong></p>
-        <div
-          className="Climb"
-          data-collection-id={collectionId}
-          data-limit="3"
-          data-view="ColumnLayout"
         />
       </TabPanel>
 

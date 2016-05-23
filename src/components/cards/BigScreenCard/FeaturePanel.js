@@ -5,18 +5,38 @@ import css from 'react-css-modules';
 import styles from './FeaturePanel.sass';
 
 
-const featureStyleHide = {
-  opacity: spring(0.0),
-};
-const featureStyleShow = {
-  opacity: spring(1),
+const featureStyleStates = {
+  initial: {
+    opacity: spring(0.1),
+    width: spring(100),
+  },
+  feature: {
+    opacity: spring(1),
+    width: spring(100),
+  },
+  show: {
+    opacity: spring(1),
+    width: spring(50),
+  },
+  hide: {
+    opacity: spring(0),
+    width: spring(50),
+  },
 };
 
-const bodyStyleHide = {
-  opacity: spring(0),
-};
-const bodyStyleShow = {
-  opacity: spring(1),
+const bodyStyleStates = {
+  initial: {
+    opacity: spring(0),
+    left: spring(20),
+  },
+  show: {
+    opacity: spring(1),
+    left: spring(0),
+  },
+  hide: {
+    opacity: spring(0),
+    left: spring(0),
+  },
 };
 
 
@@ -34,8 +54,8 @@ export default class FeaturePanel extends React.Component {
   };
 
   state = {
-    featureStyle: featureStyleHide,
-    bodyStyle: bodyStyleHide,
+    featureStyle: featureStyleStates.initial,
+    bodyStyle: bodyStyleStates.initial,
     isLeaving: false,
   };
 
@@ -49,32 +69,49 @@ export default class FeaturePanel extends React.Component {
   }
 
   componentWillUnmount() {
-    clearTimeout(this.showBodyTimeout);
-    clearTimeout(this.staggeredTransitionTimeout);
+    clearTimeout(this.transitionTimeout);
   }
 
 
-  handleOnRest() {
-    if (this.state.isLeaving) this.props.onLeave();
-  }
-
-  staggeredTransitionTimeout = null;
+  transitionTimeout = null;
 
   transitionIn() {
-    this.showFeature();
-    this.staggeredTransitionTimeout = setTimeout(() => this.showBody(), 500);
+    this.transitionToFeature();
+    this.transitionTimeout = setTimeout(() => this.transitionToMain(), 1000);
   }
 
   transitionOut() {
     this.setState({ isLeaving: true });
-    this.hideBody();
-    this.staggeredTransitionTimeout = setTimeout(() => this.hideFeature(), 250);
+    this.transitionToNone();
   }
 
-  showFeature = () => this.setState({ featureStyle: featureStyleShow });
-  showBody = () => this.setState({ bodyStyle: bodyStyleShow });
-  hideFeature = () => this.setState({ featureStyle: featureStyleHide });
-  hideBody = () => this.setState({ bodyStyle: bodyStyleHide });
+  transitionToFeature() {
+    this.setState({
+      featureStyle: featureStyleStates.feature,
+      bodyStyle: bodyStyleStates.initial,
+    });
+  }
+
+  transitionToMain() {
+    this.setState({
+      featureStyle: featureStyleStates.show,
+      bodyStyle: bodyStyleStates.show,
+    });
+  }
+
+  transitionToNone() {
+    this.setState({
+      featureStyle: featureStyleStates.hide,
+      bodyStyle: bodyStyleStates.hide,
+    });
+  }
+
+
+  handleRest() {
+    const { onLeave } = this.props;
+    const { isLeaving } = this.state;
+    if (isLeaving && onLeave) onLeave();
+  }
 
 
   render() {
@@ -86,21 +123,28 @@ export default class FeaturePanel extends React.Component {
 
         <Motion
           style={featureStyle}
-          onRest={() => this.handleOnRest()}
-        >{style =>
+          onRest={() => this.handleRest()}
+        >{({ width, ...otherStyles }) =>
           <div
             className={styles[`feature-${reverse ? 'right' : 'left'}`]}
-            style={style}
+            style={{
+              width: `${width}%`,
+              ...otherStyles,
+            }}
             children={feature}
           />
         }</Motion>
 
         <Motion
           style={bodyStyle}
-        >{style =>
+        >{({ left, ...otherStyles }) =>
           <div
             className={styles[`body-${reverse ? 'left' : 'right'}`]}
-            style={style}
+            style={{
+              left: !reverse ? 'auto' : `${left}%`,
+              right: reverse ? 'auto' : `${left}%`,
+              ...otherStyles,
+            }}
             children={children}
           />
         }</Motion>

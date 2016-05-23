@@ -1,13 +1,15 @@
 import React, { PropTypes } from 'react';
 import ReactTransitionGroup from 'react-addons-transition-group';
+import css from 'react-css-modules';
 
 import { propTypes, defaultProps } from '../layoutDefaults';
 import styles from './SlideshowLayout.sass';
+import SlideshowNavigation from './SlideshowNavigation';
 import BigScreenCard from '../../cards/BigScreenCard/BigScreenCard';
 
 
 const transitionComponent = ({ children, ...props }) => (
-  <div className={`Climb--SlideshowLayout ${styles.root}`}>
+  <div className={`Climb--SlideshowLayout ${styles.wrapper}`}>
     {React.Children.map(children, child =>
       <div className={styles.item}>
         {React.cloneElement(child, props)}
@@ -21,6 +23,7 @@ transitionComponent.propTypes = {
 };
 
 
+@css(styles)
 export default class SlideshowLayout extends React.Component {
 
   static propTypes = {
@@ -37,6 +40,7 @@ export default class SlideshowLayout extends React.Component {
   state = {
     currentIndex: 0,
     show: true,
+    paused: false,
   };
 
   componentDidMount() {
@@ -60,7 +64,10 @@ export default class SlideshowLayout extends React.Component {
 
 
   timerCheck() {
-    if (!this.timer && this.props.items.length) this.timerStart();
+    const { timer } = this;
+    const { paused } = this.state;
+    const { items } = this.props;
+    if (!paused && !timer && items.length) this.timerStart();
   }
 
   timerStart() {
@@ -87,6 +94,18 @@ export default class SlideshowLayout extends React.Component {
     }
   }
 
+
+  pause() {
+    this.setState({ paused: true });
+    this.timerStop();
+  }
+
+  play() {
+    this.setState({ paused: false });
+    this.timerStart();
+  }
+
+
   handleCardLeave() {
     if (this.state.isInTransition) {
       setTimeout(() =>
@@ -94,30 +113,37 @@ export default class SlideshowLayout extends React.Component {
           isInTransition: false,
           show: true,
           currentIndex: this.getNextItemIndex(),
-        }), 0);
-      this.timerStart();
+        }, () => this.timerStart()), 0);
     }
   }
 
 
   render() {
     const { Card, items } = this.props;
-    const { currentIndex, show } = this.state;
+    const { currentIndex, show, paused } = this.state;
 
     const currentItem = items[this.state.currentIndex];
 
+    // Use className in this component due to props bug in react-css-modules
     return (
-      <ReactTransitionGroup
-        component={transitionComponent}
-        children={show && currentItem ?
-          <Card
-            key={currentItem.id}
-            index={currentIndex}
-            onLeave={() => this.handleCardLeave()}
-            {...currentItem}
-          />
-        : null}
-      />
+      <div className={styles.root}>
+        <ReactTransitionGroup
+          component={transitionComponent}
+          children={show && currentItem ?
+            <Card
+              key={currentItem.id}
+              index={currentIndex}
+              onLeave={() => this.handleCardLeave()}
+              {...currentItem}
+            />
+          : null}
+        />
+        <SlideshowNavigation
+          playing={!paused}
+          onPlay={() => this.play()}
+          onPause={() => this.pause()}
+        />
+      </div>
     );
   }
 }

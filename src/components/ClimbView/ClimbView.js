@@ -35,6 +35,8 @@ export default class ClimbView extends React.Component {
 
   componentDidMount() {
     this.setupStream(this.props);
+
+    setTimeout(() => this.teardownStream(), 3000);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -62,9 +64,6 @@ export default class ClimbView extends React.Component {
           items,
           userId,
         });
-
-        // TODO: Handle re-renders rather than disposing of stream
-        // this.subscription.dispose();
       });
   }
 
