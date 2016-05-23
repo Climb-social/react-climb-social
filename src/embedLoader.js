@@ -7,7 +7,7 @@ import ClimbView from './components/ClimbView/ClimbView';
 
 
 const main = () => {
-  const embeds = document.querySelectorAll('.Climb');
+  const embeds = document.querySelectorAll('[data-climb]');
 
   Array.from(embeds).forEach(elem => {
     const { collectionId, view, limit, domain, duration } = elem.dataset;
