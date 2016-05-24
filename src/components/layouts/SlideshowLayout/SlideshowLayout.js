@@ -142,6 +142,7 @@ export default class SlideshowLayout extends React.Component {
           : null}
         />
         <SlideshowNavigation
+          showControls
           playing={!paused}
           onPlay={() => this.play()}
           onPause={() => this.pause()}

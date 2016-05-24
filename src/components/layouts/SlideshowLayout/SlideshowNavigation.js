@@ -8,10 +8,15 @@ import styles from './SlideshowNavigation.sass';
 export default class SlideshowNavigation extends React.Component {
 
   static propTypes = {
+    showControls: PropTypes.bool.isRequired,
     playing: PropTypes.bool.isRequired,
     onPlay: PropTypes.func.isRequired,
     onPause: PropTypes.func.isRequired,
   };
+
+  static defaultProps = {
+    showControls: false,
+  }
 
 
   handleClick() {
@@ -21,16 +26,18 @@ export default class SlideshowNavigation extends React.Component {
   }
 
   render() {
-    const { playing } = this.props;
+    const { showControls, playing } = this.props;
 
     return (
       <div
         styleName="root"
         onClick={() => this.handleClick()}
       >
-        <div styleName="banner">
-          <p>{playing ? 'Playing' : 'Paused'}</p>
-        </div>
+        {showControls ?
+          <div styleName="banner">
+            <p>{playing ? 'Playing' : 'Paused'}</p>
+          </div>
+        : null}
       </div>
     );
   }

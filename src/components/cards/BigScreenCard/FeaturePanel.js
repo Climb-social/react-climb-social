@@ -1,41 +1,43 @@
 import React, { PropTypes } from 'react';
-import { Motion, spring } from 'react-motion';
+import { Motion, spring, presets as motionPresets } from 'react-motion';
 import css from 'react-css-modules';
+import reduce from 'lodash.reduce';
 
 import styles from './FeaturePanel.sass';
 
 
-const featureStyleStates = {
-  initial: {
-    opacity: spring(0.1),
-    width: spring(100),
-  },
+const elementStyleStates = {
   feature: {
-    opacity: spring(1),
-    width: spring(100),
+    initial: {
+      opacity: 0.1,
+      width: 100,
+    },
+    feature: {
+      opacity: 1,
+      width: 100,
+    },
+    show: {
+      opacity: 1,
+      width: 50,
+    },
+    hide: {
+      opacity: 0,
+      width: 50,
+    },
   },
-  show: {
-    opacity: spring(1),
-    width: spring(50),
-  },
-  hide: {
-    opacity: spring(0),
-    width: spring(50),
-  },
-};
-
-const bodyStyleStates = {
-  initial: {
-    opacity: spring(0),
-    left: spring(20),
-  },
-  show: {
-    opacity: spring(1),
-    left: spring(0),
-  },
-  hide: {
-    opacity: spring(0),
-    left: spring(0),
+  body: {
+    initial: {
+      opacity: 0,
+      left: 20,
+    },
+    show: {
+      opacity: 1,
+      left: 0,
+    },
+    hide: {
+      opacity: 0,
+      left: 0,
+    },
   },
 };
 
@@ -47,17 +49,32 @@ export default class FeaturePanel extends React.Component {
     children: PropTypes.node.isRequired,
     reverse: PropTypes.bool.isRequired,
     onLeave: PropTypes.func,
+    spring: PropTypes.shape({
+      stiffness: PropTypes.number.isRequired,
+      damping: PropTypes.number.isRequired,
+    }),
   };
 
   static defaultProps = {
     reverse: false,
+    spring: motionPresets.gentle,
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      ...this.state,
+      featureStyle: this.getCalculatedStyleState('feature', 'initial'),
+      bodyStyle: this.getCalculatedStyleState('body', 'initial'),
+    };
+  }
+
   state = {
-    featureStyle: featureStyleStates.initial,
-    bodyStyle: bodyStyleStates.initial,
     isLeaving: false,
+    featureStyle: null,
+    bodyStyle: null,
   };
+
 
   componentDidMount() {
     this.transitionIn();
@@ -73,7 +90,37 @@ export default class FeaturePanel extends React.Component {
   }
 
 
+  getCalculatedStyleState(element, frame, springOptions = this.props.spring) {
+    const frameStyles = elementStyleStates[element][frame];
+    return reduce(
+      frameStyles,
+      (result, value, key) => ({ ...result, ...{ [key]: spring(value, springOptions) } }),
+      {});
+  }
+
+
   transitionTimeout = null;
+
+  transitionToFeature() {
+    this.setState({
+      featureStyle: this.getCalculatedStyleState('feature', 'feature'),
+      bodyStyle: this.getCalculatedStyleState('body', 'initial'),
+    });
+  }
+
+  transitionToMain() {
+    this.setState({
+      featureStyle: this.getCalculatedStyleState('feature', 'show'),
+      bodyStyle: this.getCalculatedStyleState('body', 'show'),
+    });
+  }
+
+  transitionToNone() {
+    this.setState({
+      featureStyle: this.getCalculatedStyleState('feature', 'hide'),
+      bodyStyle: this.getCalculatedStyleState('body', 'hide'),
+    });
+  }
 
   transitionIn() {
     this.transitionToFeature();
@@ -83,27 +130,6 @@ export default class FeaturePanel extends React.Component {
   transitionOut() {
     this.setState({ isLeaving: true });
     this.transitionToNone();
-  }
-
-  transitionToFeature() {
-    this.setState({
-      featureStyle: featureStyleStates.feature,
-      bodyStyle: bodyStyleStates.initial,
-    });
-  }
-
-  transitionToMain() {
-    this.setState({
-      featureStyle: featureStyleStates.show,
-      bodyStyle: bodyStyleStates.show,
-    });
-  }
-
-  transitionToNone() {
-    this.setState({
-      featureStyle: featureStyleStates.hide,
-      bodyStyle: bodyStyleStates.hide,
-    });
   }
 
 

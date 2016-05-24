@@ -37,6 +37,7 @@
     "climb-social": "^1.2.1",
     "eslint-plugin-promise": "^1.1.0",
     "knot.js": "^1.0.1",
+    "lodash.reduce": "^4.4.0",
     "moment": "^2.11.2",
     "node-sass": "^3.7.0",
     "react": "^15.0.2",

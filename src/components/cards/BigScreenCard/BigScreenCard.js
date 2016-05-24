@@ -59,6 +59,8 @@ class BigScreenCard extends React.Component {
     const { sourceType, index } = this.props;
     const { handleLeave } = this.state;
 
+    const body = <StandardBody {...this.props} />;
+
     return (
       <div
         styleName="root"
@@ -73,12 +75,12 @@ class BigScreenCard extends React.Component {
           <FeaturePanel
             feature={this.media}
             reverse={index % 2 === 0}
-            children={<StandardBody {...this.props} />}
+            children={body}
             onLeave={handleLeave}
           />
         :
           <Panel
-            children={<StandardBody {...this.props} />}
+            children={body}
             onLeave={handleLeave}
           />
         }
