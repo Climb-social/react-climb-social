@@ -1,6 +1,6 @@
 {
   "name": "react-climb-social",
-  "version": "2.0.0-alpha.4",
+  "version": "2.0.0-alpha.5",
   "private": false,
   "description": "React components for interactions with Climb.social",
   "main": "dist/react-climb-social.js",
