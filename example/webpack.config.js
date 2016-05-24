@@ -3,6 +3,11 @@ require('dotenv').config();
 var path = require('path');
 var webpack = require('webpack');
 
+var config = {
+  env: process.env.NODE_ENV || 'development',
+}
+
+
 module.exports = {
 
   entry: [
@@ -38,6 +43,11 @@ module.exports = {
           'sass?sourceMap'
         ],
       },
+      {
+        test: /\.json$/,
+        exclude: /node_modules/,
+        loaders: ['json']
+      }
     ]
   },
 
@@ -59,10 +69,13 @@ module.exports = {
     new webpack.IgnorePlugin(/^\.\/locale$/, [/moment$/]), // saves ~100k from build
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+        'NODE_ENV': JSON.stringify(config.env),
         'COLLECTION_ID': JSON.stringify(process.env.COLLECTION_ID),
         'API_DOMAIN': JSON.stringify(process.env.API_DOMAIN),
-      }
+      },
+      'NODE_ENV': config.env,
+      '__DEV__': config.env === 'development',
+      '__PROD__': config.env === 'production',
     })
   ]
 };

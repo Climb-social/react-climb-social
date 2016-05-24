@@ -13,6 +13,7 @@ export default class ClimbView extends React.Component {
   static propTypes = {
     View: PropTypes.oneOfType([PropTypes.func, PropTypes.elem]).isRequired,
     Card: PropTypes.oneOfType([PropTypes.func, PropTypes.elem]),
+    items: PropTypes.arrayOf(PropTypes.object),
     collectionId: PropTypes.string.isRequired,
     limit: PropTypes.number,
     refresh: PropTypes.number,
@@ -21,6 +22,7 @@ export default class ClimbView extends React.Component {
 
   static defaultProps = {
     View: ListLayout,
+    items: [],
     limit: 30,
     refresh: 8,
     domain: 'http://app.climb.social',
@@ -34,8 +36,9 @@ export default class ClimbView extends React.Component {
   }
 
   componentDidMount() {
-    this.setupStream(this.props);
-    // setTimeout(() => this.teardownStream(), 3000);
+    // Use provided items, otherwise setup steam
+    if (this.props.items.length) this.handleItems(this.props.items);
+    else this.setupStream(this.props);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -53,7 +56,7 @@ export default class ClimbView extends React.Component {
 
     this.subscription = Climb
       .getStream(collectionId, refresh, domain)
-      .subscribe(this.handleItems);
+      .subscribe(this.handleItems.bind(this));
   }
 
   teardownStream() {
@@ -61,10 +64,9 @@ export default class ClimbView extends React.Component {
   }
 
 
-  handleItems(latestItems) {
-    if (!latestItems.length) return;
+  handleItems(items) {
+    if (!items.length) return;
 
-    const items = latestItems;
     const userId = items[0].userId;
 
     this.setState({ items, userId });
@@ -72,7 +74,7 @@ export default class ClimbView extends React.Component {
 
 
   render() {
-    const { View, Card, collectionId, ...props } = this.props;
+    const { View, collectionId, ...props } = this.props;
     const { items, userId } = this.state;
 
     return (
@@ -80,7 +82,7 @@ export default class ClimbView extends React.Component {
         styleName="root"
         className="Climb__Container"
       >
-        <View items={items} Card={Card} {...props} />
+        <View items={items} {...props} />
         <TagManager dataLayer={[{ collection_id: collectionId, user_id: userId }]} />
       </div>
     );

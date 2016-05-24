@@ -20,6 +20,12 @@ const main = () => {
       duration,
     };
 
+    if (__DEV__) {
+      // Use dummy data if running in development
+      /* eslint global-require: 0 */
+      props.items = require('./dummyData.json');
+    }
+
     render(<ClimbView {...props} />, elem);
   });
 };

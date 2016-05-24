@@ -132,6 +132,7 @@ export default class SlideshowLayout extends React.Component {
     return (
       <div className={styles.root}>
         <ReactTransitionGroup
+          key="main"
           component={transitionComponent}
           children={show && currentItem ?
             <Card
