@@ -83,7 +83,8 @@ export default class SlideshowLayout extends React.Component {
   }
 
   timerTick() {
-    if (!this.state.isInTransition) this.transitionOut();
+    const { isInTransition, paused } = this.state;
+    if (!isInTransition && !paused) this.transitionOut();
   }
 
 

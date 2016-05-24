@@ -1,6 +1,6 @@
 import { PropTypes } from 'react';
 
-export const propsTypes = {
+export const propTypes = {
   message: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
   timestamp: PropTypes.number.isRequired,

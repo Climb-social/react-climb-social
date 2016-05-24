@@ -35,8 +35,7 @@ export default class ClimbView extends React.Component {
 
   componentDidMount() {
     this.setupStream(this.props);
-
-    setTimeout(() => this.teardownStream(), 3000);
+    // setTimeout(() => this.teardownStream(), 3000);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -50,25 +49,25 @@ export default class ClimbView extends React.Component {
 
 
   setupStream(props) {
-    const { collectionId, refresh, domain, limit } = props;
+    const { collectionId, refresh, domain } = props;
 
     this.subscription = Climb
       .getStream(collectionId, refresh, domain)
-      .subscribe(latestItems => {
-        if (!latestItems.length) return;
-
-        const items = latestItems.slice(0, limit);
-        const userId = items[0].userId;
-
-        this.setState({
-          items,
-          userId,
-        });
-      });
+      .subscribe(this.handleItems);
   }
 
   teardownStream() {
     this.subscription.dispose();
+  }
+
+
+  handleItems(latestItems) {
+    if (!latestItems.length) return;
+
+    const items = latestItems;
+    const userId = items[0].userId;
+
+    this.setState({ items, userId });
   }
 
 

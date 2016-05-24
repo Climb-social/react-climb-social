@@ -1,8 +1,9 @@
 import React, { PropTypes } from 'react';
-import { Motion, spring, presets as motionPresets } from 'react-motion';
+import { Motion, spring } from 'react-motion';
 import css from 'react-css-modules';
 import reduce from 'lodash.reduce';
 
+import { propTypes, defaultProps } from './PanelDefaults';
 import styles from './FeaturePanel.sass';
 
 
@@ -11,18 +12,22 @@ const elementStyleStates = {
     initial: {
       opacity: 0.1,
       width: 100,
+      scale: 0.75,
     },
     feature: {
       opacity: 1,
       width: 100,
+      scale: 1,
     },
     show: {
       opacity: 1,
-      width: 50,
+      width: 66,
+      scale: 1,
     },
     hide: {
       opacity: 0,
-      width: 50,
+      width: 66,
+      scale: 1,
     },
   },
   body: {
@@ -45,19 +50,16 @@ const elementStyleStates = {
 @css(styles)
 export default class FeaturePanel extends React.Component {
   static propTypes = {
+    ...propTypes,
     feature: PropTypes.node.isRequired,
-    children: PropTypes.node.isRequired,
     reverse: PropTypes.bool.isRequired,
-    onLeave: PropTypes.func,
-    spring: PropTypes.shape({
-      stiffness: PropTypes.number.isRequired,
-      damping: PropTypes.number.isRequired,
-    }),
+    duration: PropTypes.number.isRequired,
   };
 
   static defaultProps = {
+    ...defaultProps,
     reverse: false,
-    spring: motionPresets.gentle,
+    duration: 1500,
   };
 
   constructor(props) {
@@ -99,8 +101,6 @@ export default class FeaturePanel extends React.Component {
   }
 
 
-  transitionTimeout = null;
-
   transitionToFeature() {
     this.setState({
       featureStyle: this.getCalculatedStyleState('feature', 'feature'),
@@ -108,28 +108,32 @@ export default class FeaturePanel extends React.Component {
     });
   }
 
-  transitionToMain() {
+  transitionToShow() {
     this.setState({
       featureStyle: this.getCalculatedStyleState('feature', 'show'),
       bodyStyle: this.getCalculatedStyleState('body', 'show'),
     });
   }
 
-  transitionToNone() {
+  transitionToHide() {
     this.setState({
       featureStyle: this.getCalculatedStyleState('feature', 'hide'),
       bodyStyle: this.getCalculatedStyleState('body', 'hide'),
     });
   }
 
+
+  transitionTimeout = null;
+
   transitionIn() {
+    const { duration } = this.props;
     this.transitionToFeature();
-    this.transitionTimeout = setTimeout(() => this.transitionToMain(), 1000);
+    this.transitionTimeout = setTimeout(() => this.transitionToShow(), duration);
   }
 
   transitionOut() {
     this.setState({ isLeaving: true });
-    this.transitionToNone();
+    this.transitionToHide();
   }
 
 
@@ -150,12 +154,13 @@ export default class FeaturePanel extends React.Component {
         <Motion
           style={featureStyle}
           onRest={() => this.handleRest()}
-        >{({ width, ...otherStyles }) =>
+        >{({ width, scale, ...otherStyles }) =>
           <div
             className={styles[`feature-${reverse ? 'right' : 'left'}`]}
             style={{
-              width: `${width}%`,
               ...otherStyles,
+              width: `${width}%`,
+              transform: `scale(${scale})`,
             }}
             children={feature}
           />
@@ -167,12 +172,13 @@ export default class FeaturePanel extends React.Component {
           <div
             className={styles[`body-${reverse ? 'left' : 'right'}`]}
             style={{
+              ...otherStyles,
               left: !reverse ? 'auto' : `${left}%`,
               right: reverse ? 'auto' : `${left}%`,
-              ...otherStyles,
             }}
-            children={children}
-          />
+          >
+            <div className={styles.bodyInner}>{children}</div>
+          </div>
         }</Motion>
       </div>
     );
