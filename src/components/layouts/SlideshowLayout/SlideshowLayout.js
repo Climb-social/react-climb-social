@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import ReactTransitionGroup from 'react-addons-transition-group';
-import css from 'react-css-modules';
 
 import { propTypes, defaultProps } from '../layoutDefaults';
 import styles from './SlideshowLayout.sass';
@@ -23,9 +22,7 @@ transitionComponent.propTypes = {
 };
 
 
-@css(styles)
 export default class SlideshowLayout extends React.Component {
-
   static propTypes = {
     ...propTypes,
     duration: PropTypes.number.isRequired,
@@ -86,14 +83,24 @@ export default class SlideshowLayout extends React.Component {
   }
 
   timerTick() {
-    if (!this.state.isInTransition) {
-      this.setState({
-        isInTransition: true,
-        show: false,
-      });
-    }
+    if (!this.state.isInTransition) this.transitionOut();
   }
 
+
+  transitionOut() {
+    this.setState({
+      isInTransition: true,
+      show: false,
+    }, () => this.timerStop());
+  }
+
+  transitionIn() {
+    this.setState({
+      isInTransition: false,
+      show: true,
+      currentIndex: this.getNextItemIndex(),
+    }, () => this.timerStart());
+  }
 
   pause() {
     this.setState({ paused: true });
@@ -108,12 +115,7 @@ export default class SlideshowLayout extends React.Component {
 
   handleCardLeave() {
     if (this.state.isInTransition) {
-      setTimeout(() =>
-        this.setState({
-          isInTransition: false,
-          show: true,
-          currentIndex: this.getNextItemIndex(),
-        }, () => this.timerStart()), 0);
+      setTimeout(() => this.transitionIn(), 0);
     }
   }
 
@@ -125,6 +127,7 @@ export default class SlideshowLayout extends React.Component {
     const currentItem = items[this.state.currentIndex];
 
     // Use className in this component due to props bug in react-css-modules
+    // https://github.com/gajus/react-css-modules/issues/58
     return (
       <div className={styles.root}>
         <ReactTransitionGroup
