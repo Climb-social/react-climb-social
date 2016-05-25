@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import Climb from '../../../api';
 import ReactTransitionGroup from 'react-addons-transition-group';
 
 import { propTypes, defaultProps } from '../layoutDefaults';
@@ -33,6 +34,8 @@ export default class SlideshowLayout extends React.Component {
     Card: BigScreenCard,
     duration: 1000 * 10,
   };
+
+  static createStream = Climb.fetchLatestPage;
 
   state = {
     currentIndex: 0,

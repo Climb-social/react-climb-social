@@ -7,7 +7,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { ClimbView, ColumnLayout, SquareLayout, SlideshowLayout } from '../src';
 
 const collectionId = process.env.COLLECTION_ID;
-const domain = process.env.API_DOMAIN;
+const hostname = process.env.API_HOSTNAME;
 
 
 const App = () => (
@@ -16,27 +16,13 @@ const App = () => (
 
     <Tabs>
       <TabList>
-        <Tab>Slideshow</Tab>
         <Tab>List View (Default)</Tab>
         <Tab>List View (Styled)</Tab>
         <Tab>Column View</Tab>
+        <Tab>Slideshow</Tab>
         <Tab>Square View</Tab>
         <Tab>Custom Card</Tab>
       </TabList>
-
-
-      <TabPanel
-        className="Example Example--slideShow"
-      >
-        <h2>Slideshow</h2>
-        <p><code>.Example.Example--slideShow</code></p>
-        <ClimbView
-          collectionId={collectionId}
-          domain={domain}
-          duration={2000}
-          View={SlideshowLayout}
-        />
-      </TabPanel>
 
 
       <TabPanel
@@ -46,7 +32,7 @@ const App = () => (
         <p><code>.Example</code></p>
         <ClimbView
           collectionId={collectionId}
-          domain={domain}
+          hostname={hostname}
         />
       </TabPanel>
 
@@ -57,7 +43,7 @@ const App = () => (
         <p><code>.Example.Example--listStyled</code></p>
         <ClimbView
           collectionId={collectionId}
-          domain={domain}
+          hostname={hostname}
         />
       </TabPanel>
 
@@ -68,8 +54,21 @@ const App = () => (
         <p><code>.Example.Example--column</code></p>
         <ClimbView
           collectionId={collectionId}
-          domain={domain}
+          hostname={hostname}
           View={ColumnLayout}
+        />
+      </TabPanel>
+
+      <TabPanel
+        className="Example Example--slideShow"
+      >
+        <h2>Slideshow</h2>
+        <p><code>.Example.Example--slideShow</code></p>
+        <ClimbView
+          collectionId={collectionId}
+          hostname={hostname}
+          duration={2000}
+          View={SlideshowLayout}
         />
       </TabPanel>
 
@@ -81,7 +80,7 @@ const App = () => (
         <p><code>.Example.Example--square</code></p>
         <ClimbView
           collectionId={collectionId}
-          domain={domain}
+          hostname={hostname}
           View={SquareLayout}
         />
       </TabPanel>
@@ -95,7 +94,7 @@ const App = () => (
         <p><strong>TBC</strong></p>
         <ClimbView
           collectionId={collectionId}
-          domain={domain}
+          hostname={hostname}
           Card={() => <div />}
         />
       </TabPanel>

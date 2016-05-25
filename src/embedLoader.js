@@ -10,20 +10,18 @@ const main = () => {
   const embeds = document.querySelectorAll('[data-climb]');
 
   Array.from(embeds).forEach(elem => {
-    const { collectionId, view, limit, domain, duration } = elem.dataset;
+    const { view, limit, ...otherData } = elem.dataset;
 
     const props = {
-      collectionId,
+      ...otherData,
       View: viewFinder(view),
       limit: limit ? parseInt(limit, 10) : undefined,
-      domain,
-      duration,
     };
 
     if (__DEV__) {
       // Use dummy data if running in development
       /* eslint global-require: 0 */
-      props.items = require('./dummyData.json');
+      // props.items = require('./dummyData.json');
     }
 
     render(<ClimbView {...props} />, elem);

@@ -71,7 +71,7 @@ module.exports = {
       'process.env': {
         'NODE_ENV': JSON.stringify(config.env),
         'COLLECTION_ID': JSON.stringify(process.env.COLLECTION_ID),
-        'API_DOMAIN': JSON.stringify(process.env.API_DOMAIN),
+        'API_HOSTNAME': JSON.stringify(process.env.API_HOSTNAME),
       },
       'NODE_ENV': config.env,
       '__DEV__': config.env === 'development',

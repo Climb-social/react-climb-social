@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import Climb from 'climb-social';
+import Climb from '../../api';
 import css from 'react-css-modules';
 
 import styles from './ClimbView.sass';
@@ -37,8 +37,8 @@ export default class ClimbView extends React.Component {
 
   componentDidMount() {
     // Use provided items, otherwise setup steam
-    if (this.props.items.length) this.handleItems(this.props.items);
-    else this.setupStream(this.props);
+    // if (this.props.items.length) return this.handleItems(this.props.items);
+    this.setupStream(this.props);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -52,10 +52,18 @@ export default class ClimbView extends React.Component {
 
 
   setupStream(props) {
-    const { collectionId, refresh, domain } = props;
+    const {
+      View,
+      collectionId,
+      hostname,
+      protocol,
+      refresh: interval,
+    } = props;
 
-    this.subscription = Climb
-      .getStream(collectionId, refresh, domain)
+    const createStream = View.createStream || Climb.defaultStream;
+
+    this.subscription =
+      createStream(collectionId, { protocol, hostname, interval })
       .subscribe(this.handleItems.bind(this));
   }
 
@@ -78,11 +86,8 @@ export default class ClimbView extends React.Component {
     const { items, userId } = this.state;
 
     return (
-      <div
-        styleName="root"
-        className="Climb__Container"
-      >
-        <View items={items} {...props} />
+      <div styleName="root" className="Climb__Container">
+        <View {...props} items={items} />
         <TagManager dataLayer={[{ collection_id: collectionId, user_id: userId }]} />
       </div>
     );

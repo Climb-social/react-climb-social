@@ -36,6 +36,7 @@
     "bricks.js": "^1.0.0",
     "climb-social": "^1.2.1",
     "eslint-plugin-promise": "^1.1.0",
+    "fetch-jsonp": "^1.0.0",
     "knot.js": "^1.0.1",
     "lodash.reduce": "^4.4.0",
     "moment": "^2.11.2",
@@ -45,7 +46,8 @@
     "react-css-modules": "^3.7.6",
     "react-dom": "^15.0.2",
     "react-google-tag-manager": "^1.1.0",
-    "react-motion": "^0.4.3"
+    "react-motion": "^0.4.3",
+    "rx-lite": "^4.0.8"
   },
   "peerDependencies": {
     "react": "^15.0.2",
