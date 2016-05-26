@@ -38,6 +38,8 @@
     "eslint-plugin-promise": "^1.1.0",
     "fetch-jsonp": "^1.0.0",
     "knot.js": "^1.0.1",
+    "lodash.filter": "^4.4.0",
+    "lodash.indexby": "^3.1.1",
     "lodash.reduce": "^4.4.0",
     "moment": "^2.11.2",
     "node-sass": "^3.7.0",

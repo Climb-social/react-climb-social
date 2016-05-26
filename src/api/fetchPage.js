@@ -3,7 +3,7 @@ import { Observable } from 'rx-lite';
 import { checkParams, createEndpoint, fetchData } from './utils';
 
 
-const fetchLatestPage = (collectionId, { interval = 5, ...options } = {}) => {
+export default function (collectionId, { interval = 5, ...options } = {}) {
   checkParams({ collectionId, interval });
 
   const endPoint = createEndpoint(collectionId, options);
@@ -13,6 +13,4 @@ const fetchLatestPage = (collectionId, { interval = 5, ...options } = {}) => {
 
   return request$
     .take(1);
-};
-
-export default fetchLatestPage;
+}

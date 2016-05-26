@@ -35,7 +35,7 @@ export default class SlideshowLayout extends React.Component {
     duration: 1000 * 10,
   };
 
-  static createStream = Climb.fetchLatestPage;
+  static createStream = Climb.fetchPageThenStreamItems;
 
   state = {
     currentIndex: 0,
