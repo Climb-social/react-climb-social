@@ -27,6 +27,7 @@ export default class SlideshowLayout extends React.Component {
   static propTypes = {
     ...propTypes,
     duration: PropTypes.number.isRequired,
+    showControls: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -125,7 +126,7 @@ export default class SlideshowLayout extends React.Component {
 
 
   render() {
-    const { Card, items } = this.props;
+    const { Card, items, showControls } = this.props;
     const { currentIndex, show, paused } = this.state;
 
     const currentItem = items[this.state.currentIndex];
@@ -146,12 +147,15 @@ export default class SlideshowLayout extends React.Component {
             />
           : null}
         />
-        <SlideshowNavigation
-          showControls
-          playing={!paused}
-          onPlay={() => this.play()}
-          onPause={() => this.pause()}
-        />
+
+        {showControls ?
+          <SlideshowNavigation
+            showControls
+            playing={!paused}
+            onPlay={() => this.play()}
+            onPause={() => this.pause()}
+          />
+        : null}
       </div>
     );
   }
