@@ -8,6 +8,12 @@ import SlideshowNavigation from './SlideshowNavigation';
 import BigScreenCard from '../../cards/BigScreenCard/BigScreenCard';
 
 
+function randomNumber(min, max, current) {
+  if (min === max || min < 0 || max < 0) return 0;
+  const num = Math.floor(Math.random() * max) + min;
+  return num === current ? randomNumber(min, max, current) : num;
+}
+
 const transitionComponent = ({ children, ...props }) => (
   <div className={`Climb--SlideshowLayout ${styles.wrapper}`}>
     {React.Children.map(children, child =>
@@ -36,10 +42,11 @@ export default class SlideshowLayout extends React.Component {
     duration: 1000 * 10,
   };
 
-  static createStream = Climb.fetchPageThenStreamItems;
+  static createStream = Climb.growingList;
 
   state = {
     currentIndex: 0,
+    maxIndex: 0,
     show: true,
     paused: false,
   };
@@ -57,10 +64,15 @@ export default class SlideshowLayout extends React.Component {
   }
 
 
-  getNextItemIndex() {
+  getNextIndex() {
     const { items } = this.props;
-    const { currentIndex } = this.state;
-    return currentIndex >= items.length - 1 ? 0 : currentIndex + 1;
+    const { currentIndex, maxIndex } = this.state;
+
+    // New items avaliable, step to next
+    if (items.length - 1 > maxIndex) return maxIndex + 1;
+
+    // All items seen, step to random
+    return randomNumber(0, items.length - 1, currentIndex);
   }
 
 
@@ -100,10 +112,16 @@ export default class SlideshowLayout extends React.Component {
   }
 
   transitionIn() {
+    const { maxIndex: prevMaxIndex } = this.state;
+
+    const currentIndex = this.getNextIndex();
+    const maxIndex = prevMaxIndex < currentIndex ? currentIndex : prevMaxIndex;
+
     this.setState({
       isInTransition: false,
       show: true,
-      currentIndex: this.getNextItemIndex(),
+      currentIndex,
+      maxIndex,
     }, () => this.timerStart());
   }
 
@@ -116,7 +134,6 @@ export default class SlideshowLayout extends React.Component {
     this.setState({ paused: false });
     this.timerStart();
   }
-
 
   handleCardLeave() {
     if (this.state.isInTransition) {

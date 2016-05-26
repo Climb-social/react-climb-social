@@ -4,6 +4,8 @@ import filter from 'lodash.filter';
 
 import { checkParams, createEndpoint, fetchData } from './utils';
 
+// Emits an array of items, new to old, and then new items without any duplication
+
 // TODO: Pause timer between requests
 
 export default function (collectionId, { interval = 5, ...options } = {}) {
@@ -21,7 +23,7 @@ export default function (collectionId, { interval = 5, ...options } = {}) {
     .take(1)
 
     // Start timer
-    .merge(timer$.flatMapLatest(createRequest$))
+    .merge(timer$.flatMap(createRequest$))
 
     // Filter out repeated items
     .scan(({ previous }, newest) => {

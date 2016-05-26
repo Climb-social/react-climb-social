@@ -36,7 +36,7 @@
     "bricks.js": "^1.0.0",
     "climb-social": "^1.2.1",
     "eslint-plugin-promise": "^1.1.0",
-    "fetch-jsonp": "^1.0.0",
+    "jsonp": "^0.2.0",
     "knot.js": "^1.0.1",
     "lodash.filter": "^4.4.0",
     "lodash.indexby": "^3.1.1",

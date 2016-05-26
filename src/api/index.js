@@ -1,6 +1,7 @@
 import streamPage from './streamPage';
 import fetchPage from './fetchPage';
 import fetchPageThenStreamItems from './fetchPageThenStreamItems';
+import growingList from './growingList';
 
 
 export default {
@@ -8,4 +9,5 @@ export default {
   streamPage,
   fetchPage,
   fetchPageThenStreamItems,
+  growingList,
 };

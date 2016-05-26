@@ -17,15 +17,13 @@ export default class ClimbView extends React.Component {
     collectionId: PropTypes.string.isRequired,
     limit: PropTypes.number,
     refresh: PropTypes.number,
-    domain: PropTypes.string,
+    hostname: PropTypes.string,
   };
 
   static defaultProps = {
     View: ListLayout,
     items: [],
-    limit: 30,
     refresh: 8,
-    domain: 'http://app.climb.social',
   };
 
   constructor(props) {
