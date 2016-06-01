@@ -11,13 +11,15 @@ test('ColumnLayout classes', assert => {
   const output = shallow(<ColumnLayout {...props} />);
 
   const expected = true;
-  const actual = output.hasClass('Climb--ColumnLayout');
+  const actual = output.hasClass('Climb-ColumnLayout');
 
   assert.equal(
     actual,
     expected,
-    'Climb--ColumnLayout'
+    'Climb-ColumnLayout'
   );
 
   assert.end();
+
+  // TODO: Add child node className tests
 });

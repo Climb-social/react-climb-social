@@ -19,9 +19,9 @@ test('ImageBody default classes', t => {
 
   t.plan(2);
 
-  t.equal(output.hasClass('Climb__Media'), true, 'has Climb__Media class');
+  t.equal(output.hasClass('Climb-Card__media'), true, 'has Climb-Card__media class');
 
-  t.equal(output.hasClass('Climb__Media--image'), true, 'has Climb__Media--image class');
+  t.equal(output.hasClass('Climb-Card__media--image'), true, 'has Climb-Card__media--image class');
 
   t.end();
 });

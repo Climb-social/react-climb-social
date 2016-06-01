@@ -29,7 +29,7 @@ export default class ColumnLayout extends React.Component {
 
   componentDidMount() {
     this.packer = bricks({
-      container: '.Climb--ColumnLayout--inner',
+      container: '.Climb-ColumnLayout__inner',
       packed: 'data-packed',
       sizes: this.props.sizes,
     });
@@ -52,13 +52,15 @@ export default class ColumnLayout extends React.Component {
     // Use className in this component due to props bug in react-css-modules
     // https://github.com/gajus/react-css-modules/issues/58
     return (
-      <div className="Climb--ColumnLayout" className={`Climb--ColumnLayout ${styles.root}`}>
-        <div className="Climb--ColumnLayout__inner">
+      <div
+        className={`Climb-ColumnLayout ${styles.root}`}
+      >
+        <div className="Climb-ColumnLayout__inner">
           {items.map(item =>
             <div
               key={item.id}
               style={{ width: 290 }}
-              className={`Climb--ColumnLayout__item ${styles.item}`}
+              className={`Climb-ColumnLayout__item ${styles.item}`}
               children={<Card {...item} />}
             />
           )}

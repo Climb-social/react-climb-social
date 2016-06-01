@@ -1,19 +1,19 @@
 import React, { PropTypes } from 'react';
 
 const Publisher = ({ pic, displayName, username, profileLink }) => (
-  <div className="Climb__Meta Climb__Meta__Publisher">
+  <div className="Climb-Card__publisher">
     <img
       src={pic}
-      className="Climb__Publisher__name"
+      className="Climb-Card__publisher__image"
       width="50"
       height="50"
       alt={`${displayName}’s profile`}
     />
-    <h6 className="Climb__Publisher__name">
+    <h6 className="Climb-Card__publisher__display-name">
       {displayName}
     </h6>
 
-    <h5 className="Climb__Publisher__username">
+    <h5 className="Climb-Card__publisher__username">
       <a href={profileLink}>
         @{username}
       </a>

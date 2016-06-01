@@ -15,9 +15,19 @@ function randomNumber(min, max, current) {
 }
 
 const transitionComponent = ({ children, ...props }) => (
-  <div className={`Climb--SlideshowLayout ${styles.wrapper}`}>
+  <div
+    className={`
+      Climb-SlideshowLayout
+      ${styles.wrapper}
+    `}
+  >
     {React.Children.map(children, child =>
-      <div className={styles.item}>
+      <div
+        className={`
+          Climb-SlideshowLayout__item
+          ${styles.item}
+        `}
+      >
         {React.cloneElement(child, props)}
       </div>
     )}

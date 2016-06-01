@@ -11,12 +11,12 @@ test('ListLayout output classes', assert => {
   const output = shallow(<ListLayout {...props} />);
 
   const expected = true;
-  const actual = output.hasClass('Climb--ListLayout');
+  const actual = output.hasClass('Climb-ListLayout');
 
   assert.equal(
     actual,
     expected,
-    'Climb--ListLayout'
+    'Climb-ListLayout'
   );
 
   assert.end();

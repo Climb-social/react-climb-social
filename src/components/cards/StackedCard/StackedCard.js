@@ -25,8 +25,12 @@ const StackedCard = ({
   videoUrl,
   }) => (
   <div
-    className={`Climb__Card Climb__Card--Stacked Climb__Card--${sourceType}`}
-    styleName="card"
+    className={`
+      Climb-Card
+      Climb-Card--${sourceType}
+      Climb-StackedCard
+    `}
+    styleName="root"
   >
     <Publisher
       pic={pic}

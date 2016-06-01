@@ -14,23 +14,16 @@ test('Publisher output classes', assert => {
 
   const output = shallow(<Publisher {...props} />);
 
-  assert.plan(2);
+  assert.plan(1);
   const expected = true;
 
-  let actual = output.hasClass('Climb__Meta');
+  const actual = output.hasClass('Climb-Card__publisher');
 
   assert.equal(
     actual,
     expected,
-    'Climb__Meta'
+    'Climb-Card__publisher'
   );
 
-  actual = output.hasClass('Climb__Meta__Publisher');
-
-  assert.equal(
-    actual,
-    expected,
-    'Climb__Meta__Publisher'
-  );
+  // TODO: Add child node className tests
 });
-

@@ -149,14 +149,20 @@ export default class FeaturePanel extends React.Component {
     const { featureStyle, bodyStyle } = this.state;
 
     return (
-      <div styleName="root">
+      <div
+        styleName="root"
+        className="Climb-BigScreenCard__panel Climb-BigScreenCard__panel--feature"
+      >
 
         <Motion
           style={featureStyle}
           onRest={() => this.handleRest()}
         >{({ width, scale, ...otherStyles }) =>
           <div
-            className={styles[`feature-${reverse ? 'right' : 'left'}`]}
+            className={`
+              Climb-BigScreenCard__panel__feature
+              ${styles[`feature-${reverse ? 'right' : 'left'}`]}
+            `}
             style={{
               ...otherStyles,
               width: `${width}%`,
@@ -170,7 +176,10 @@ export default class FeaturePanel extends React.Component {
           style={bodyStyle}
         >{({ left, ...otherStyles }) =>
           <div
-            className={styles[`body-${reverse ? 'left' : 'right'}`]}
+            className={`
+              Climb-BigScreenCard__panel__body
+              ${styles[`body-${reverse ? 'left' : 'right'}`]}
+            `}
             style={{
               ...otherStyles,
               left: !reverse ? 'auto' : `${left}%`,

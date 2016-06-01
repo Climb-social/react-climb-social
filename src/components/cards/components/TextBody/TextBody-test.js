@@ -12,12 +12,12 @@ test('TextBody output classes', assert => {
   const output = shallow(<TextBody {...props} />);
 
   const expected = true;
-  const actual = output.hasClass('Climb__TextBody');
+  const actual = output.hasClass('Climb-Card__text-body');
 
   assert.equal(
     actual,
     expected,
-    'Climb__TextBody'
+    'Climb-Card__text-body'
   );
 
   assert.end();

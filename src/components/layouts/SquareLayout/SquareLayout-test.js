@@ -11,13 +11,15 @@ test('SquareLayout classes', assert => {
   const output = shallow(<SquareLayout {...props} />);
 
   const expected = true;
-  const actual = output.hasClass('Climb--SquareLayout');
+  const actual = output.hasClass('Climb-SquareLayout');
 
   assert.equal(
     actual,
     expected,
-    'Climb--SquareLayout'
+    'Climb-SquareLayout'
   );
 
   assert.end();
+
+  // TODO: Add child node className tests
 });

@@ -11,7 +11,7 @@ const Timestamp = ({
     return (
       <a
         href={link}
-        className="Climb__Meta Climb__Meta__Timestamp"
+        className="Climb-Card__timestamp Climb-Card__timestamp--link"
       >
         {valueStr}
       </a>
@@ -19,7 +19,7 @@ const Timestamp = ({
   }
 
   return (
-    <span className="Climb__Meta Climb__Meta__Timestamp">
+    <span className="Climb-Card__timestamp">
       {valueStr}
     </span>
   );

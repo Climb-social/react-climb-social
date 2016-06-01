@@ -9,7 +9,7 @@ const ImageBody = ({ url, asBackground, width, height, alt }) => {
     return (
       <img
         styleName="image"
-        className="Climb__Media Climb__Media--image"
+        className="Climb-Card__media Climb-Card__media--image"
         src={url}
         width={width}
         height={height}
@@ -27,7 +27,7 @@ const ImageBody = ({ url, asBackground, width, height, alt }) => {
   return (
     <div
       styleName="background"
-      className="Climb__Media Climb__Media--image Climb__Media--image--asBackground"
+      className="Climb-Card__media Climb-Card__media--image Climb-Card__media--image--asBackground"
       style={inlineStyles}
       alt={alt}
     />

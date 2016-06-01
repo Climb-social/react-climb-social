@@ -11,23 +11,17 @@ test('Timestamp output classes', assert => {
 
   const output = shallow(<Timestamp {...props} />);
 
-  assert.plan(2);
+  assert.plan(1);
   const expected = true;
 
-  let actual = output.hasClass('Climb__Meta');
+  const actual = output.hasClass('Climb-Card__timestamp');
 
   assert.equal(
     actual,
     expected,
-    'Climb__Meta'
+    'Climb-Card__timestamp'
   );
 
-  actual = output.hasClass('Climb__Meta__Timestamp');
-
-  assert.equal(
-    actual,
-    expected,
-    'Climb__Meta__Timestamp'
-  );
+  // TODO: Add modifier className tests (--link)
 });
 

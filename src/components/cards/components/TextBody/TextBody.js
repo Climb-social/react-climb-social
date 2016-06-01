@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 
 const TextBody = ({ text }) => (
   <p
-    className="Climb__TextBody"
+    className="Climb-Card__text-body"
     dangerouslySetInnerHTML={{ __html: text }}
   />
 );

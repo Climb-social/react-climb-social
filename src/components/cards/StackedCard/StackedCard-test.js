@@ -23,28 +23,29 @@ test('StackedCard classes', assert => {
   assert.plan(3);
   const expected = true;
 
-  let actual = output.hasClass('Climb__Card');
+  let actual = output.hasClass('Climb-Card');
 
   assert.equal(
     actual,
     expected,
-    'Climb__Card'
+    'Climb-Card'
   );
 
-  actual = output.hasClass('Climb__Card--Stacked');
 
-  assert.equal(
-    actual,
-    expected,
-    'Climb__Card--Stacked'
-  );
-
-  actual = output.hasClass('Climb__Card--MegaSocial');
+  actual = output.hasClass('Climb-Card--MegaSocial');
 
   assert.equal(
     actual,
     expected,
     'Climb__Card--MegaSocial'
   );
-});
 
+
+  actual = output.hasClass('Climb-StackedCard');
+
+  assert.equal(
+    actual,
+    expected,
+    'Climb__Card--Stacked'
+  );
+});

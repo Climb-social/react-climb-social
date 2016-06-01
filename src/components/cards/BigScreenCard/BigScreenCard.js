@@ -65,10 +65,10 @@ class BigScreenCard extends React.Component {
       <div
         styleName="root"
         className={`
-          Climb__Card
-          Climb__Card--${sourceType}
-          Climb__Card--bigScreen
-          Climb__Card--bigScreen--${this.focusType}
+          Climb-Card
+          Climb-Card--${sourceType}
+          Climb-BigScreenCard
+          Climb-BigScreen--${this.focusType}
         `}
       >
         {this.isImageType ?

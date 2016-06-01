@@ -84,7 +84,7 @@ export default class ClimbView extends React.Component {
     const { items, userId } = this.state;
 
     return (
-      <div styleName="root" className="Climb__Container">
+      <div styleName="root" className="Climb-View">
         <View {...props} items={items} />
         <TagManager dataLayer={[{ collection_id: collectionId, user_id: userId }]} />
       </div>

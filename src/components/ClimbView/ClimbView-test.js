@@ -13,12 +13,12 @@ test('ClimbView output classes', assert => {
   const output = shallow(<ClimbView {...props} />);
 
   const expected = true;
-  const actual = output.hasClass('Climb__Container');
+  const actual = output.hasClass('Climb-View');
 
   assert.equal(
     actual,
     expected,
-    'Climb__Container'
+    'Climb-View'
   );
 
   assert.end();

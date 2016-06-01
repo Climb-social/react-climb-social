@@ -2,9 +2,9 @@ import React, { PropTypes } from 'react';
 import StackedCard from '../../cards/StackedCard/StackedCard';
 
 const ListLayout = ({ items, Card }) => (
-  <div className="Climb--ListLayout">
+  <div className="Climb-ListLayout">
     {items.map(item =>
-      <div key={item.id}>
+      <div key={item.id} className="Climb-ListLayout__item">
         <Card {...item} />
       </div>
     )}

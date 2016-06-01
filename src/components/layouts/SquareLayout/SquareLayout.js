@@ -3,9 +3,9 @@ import FocusCard from '../../cards/FocusCard/FocusCard';
 
 
 const SquareLayout = ({ Card, items }) => (
-  <div className="Climb--SquareLayout">
+  <div className="Climb-SquareLayout">
     {items.map(item =>
-      <div key={item.id} className="Climb--SquareLayout__square">
+      <div key={item.id} className="Climb-SquareLayout__item">
         <Card {...item} />
       </div>
     )}

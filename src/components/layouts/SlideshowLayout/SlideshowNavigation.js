@@ -31,6 +31,7 @@ export default class SlideshowNavigation extends React.Component {
     return (
       <div
         styleName="root"
+        className="Climb-SlideshowLayout__navigation"
         onClick={() => this.handleClick()}
       >
         {showControls ?

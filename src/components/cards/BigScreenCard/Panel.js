@@ -106,13 +106,19 @@ class Panel extends React.Component {
     const { style } = this.state;
 
     return (
-      <div styleName="root">
+      <div
+        styleName="root"
+        className="Climb-BigScreenCard__panel"
+      >
         <Motion
           style={style}
           onRest={() => this.handleRest()}
         >{({ scale, ...otherStyles }) =>
           <div
-            className={styles.body}
+            className={`
+              Climb-BigScreenCard__panel__body
+              ${styles.body}
+            `}
             style={{
               ...otherStyles,
               transform: `scale(${scale})`,

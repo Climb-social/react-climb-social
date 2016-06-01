@@ -57,18 +57,18 @@ class FocusCard extends Component {
     return (
       <div
         className={`
-          Climb__Card
-          Climb__Card--${sourceType}
-          Climb__Card--focus
-          Climb__Card--focus--${this.getFocusType()}
+          Climb-Card
+          Climb-Card--${sourceType}
+          Climb-FocusCard
+          Climb-FocusCard--${this.getFocusType()}
         `}
       >
-        <div className="Climb__Card--focus__alpha">
+        <div className="Climb-FocusCard__alpha">
           {this.isImageType() ? this.renderMedia() : this.renderText()}
         </div>
 
         {this.isImageType() ?
-          <div className="Climb__Card--focus__beta">
+          <div className="Climb-FocusCard__beta">
             {this.renderText()}
           </div>
         : null}

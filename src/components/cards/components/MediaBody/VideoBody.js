@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 
 const VideoBody = ({ url }) => (
-  <div className="Climb__Media Climb__Media--video">
+  <div className="Climb-Card__media Climb-Card__media--video">
     <video width="100%" controls>
       <source src={url} type="video/mp4" />
     </video>

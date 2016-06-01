@@ -2,6 +2,8 @@ import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import gtmParts from 'react-google-tag-manager';
 
+// BUG: Too many Google script tags are written to the DOM
+
 class GoogleTagManager extends React.Component {
 
   componentDidMount() {
