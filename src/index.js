@@ -8,6 +8,8 @@ import SlideshowLayout from './components/layouts/SlideshowLayout/SlideshowLayou
 import StackedCard from './components/cards/StackedCard/StackedCard';
 import BigScreenCard from './components/cards/BigScreenCard/BigScreenCard';
 
+import findView from './utils/viewFinder';
+
 
 export {
   ClimbView,
@@ -19,6 +21,8 @@ export {
 
   StackedCard,
   BigScreenCard,
+
+  findView,
 };
 
 import './embedLoader';
