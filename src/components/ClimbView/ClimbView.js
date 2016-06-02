@@ -11,8 +11,8 @@ import TagManager from '../TagManager/TagManager';
 export default class ClimbView extends React.Component {
 
   static propTypes = {
-    View: PropTypes.oneOfType([PropTypes.func, PropTypes.elem]).isRequired,
-    Card: PropTypes.oneOfType([PropTypes.func, PropTypes.elem]),
+    View: PropTypes.oneOfType([PropTypes.func, PropTypes.element]).isRequired,
+    Card: PropTypes.oneOfType([PropTypes.func, PropTypes.element]),
     items: PropTypes.arrayOf(PropTypes.object),
     collectionId: PropTypes.string.isRequired,
     limit: PropTypes.number,

@@ -41,11 +41,11 @@ class BigScreenCard extends React.Component {
 
   get focusType() {
     const { image, videoUrl: video } = this.props;
-    return (image || video) ? 'image' : 'text';
+    return (image || video) ? 'media' : 'text';
   }
 
-  get isImageType() {
-    return this.focusType === 'image';
+  get isMediaType() {
+    return this.focusType === 'media';
   }
 
   get media() {
@@ -71,7 +71,7 @@ class BigScreenCard extends React.Component {
           Climb-BigScreen--${this.focusType}
         `}
       >
-        {this.isImageType ?
+        {this.isMediaType ?
           <FeaturePanel
             feature={this.media}
             reverse={index % 2 === 0}
